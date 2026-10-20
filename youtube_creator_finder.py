@@ -495,15 +495,20 @@ async def innertube(request, endpoint, payload):
         return None
 
 
-async def search_channels(request, query, region_code, limit, semaphore):
-    """
-    Search for channels, following continuation tokens.
+async def search_channels(
+    request, query, region_code, limit, semaphore, exclude_ids=None
+):
+    """Search channels deeply enough to return ``limit`` *eligible* IDs.
 
-    YouTube returns ~20 channels per response. Without following the
-    continuation you stop at the first page — which is why the old version
-    surfaced ~14 creators instead of ~40.
+    Previously, the limit was applied before already-processed channels were
+    removed. A search could report 100 channels, leave only 40 new ones to
+    review, and stop far short of the requested contact target. Exclusions are
+    now skipped while pagination continues, so deeper results replace them.
     """
     ids, token = [], None
+    seen_ids: set[str] = set()
+    seen_tokens: set[str] = set()
+    excluded = set(exclude_ids or ())
     client = dict(INNERTUBE_CLIENT, gl=region_code)
 
     while len(ids) < limit:
@@ -515,20 +520,27 @@ async def search_channels(request, query, region_code, limit, semaphore):
             payload["params"] = CHANNEL_FILTER
 
         async with semaphore:
-            await asyncio.sleep(random.uniform(0.4, 1.0))
+            await asyncio.sleep(random.uniform(0.25, 0.65))
             data = await innertube(request, "search", payload)
         if not data:
             break
 
-        fresh = [c for c in channel_ids_from(data) if c not in ids]
-        if not fresh:
-            break
-        ids.extend(fresh)
+        page_ids = channel_ids_from(data)
+        for channel_id in page_ids:
+            if channel_id in seen_ids:
+                continue
+            seen_ids.add(channel_id)
+            if channel_id not in excluded:
+                ids.append(channel_id)
+                if len(ids) >= limit:
+                    break
 
         cont = find_key(data, "continuationCommand")
-        token = cont.get("token") if isinstance(cont, dict) else None
-        if not token:
+        next_token = cont.get("token") if isinstance(cont, dict) else None
+        if not next_token or next_token in seen_tokens:
             break
+        seen_tokens.add(next_token)
+        token = next_token
 
     return ids[:limit]
 
@@ -680,7 +692,7 @@ async def reveal_business_email(page):
     if not clicked:
         return [], "no_reveal_button"
 
-    await page.wait_for_timeout(2200)
+    await page.wait_for_timeout(1400)
 
     for sel in CAPTCHA_SELECTORS:
         try:
@@ -714,7 +726,7 @@ async def scrape_channel(ctx, ref, semaphore):
         page = await ctx.new_page()
         try:
             url = build_channel_url(ref)
-            await asyncio.sleep(random.uniform(1.0, 2.5))
+            await asyncio.sleep(random.uniform(0.3, 0.8))
             try:
                 await page.goto(url, wait_until="domcontentloaded",
                                 timeout=PAGE_TIMEOUT)
@@ -737,7 +749,7 @@ async def scrape_channel(ctx, ref, semaphore):
                     ", ".join(ABOUT_RENDERER_SELECTORS), timeout=WAIT_TIMEOUT)
             except PWTimeout:
                 pass
-            await page.wait_for_timeout(1500)
+            await page.wait_for_timeout(850)
 
             meta = await page.evaluate("""() => {
                 const m = window.ytInitialData?.metadata?.channelMetadataRenderer;

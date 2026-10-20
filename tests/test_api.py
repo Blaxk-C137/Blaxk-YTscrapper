@@ -20,11 +20,24 @@ def test_job_endpoint_schedules_on_running_event_loop(tmp_path: Path, monkeypatc
         async with httpx.AsyncClient(transport=transport, base_url="http://test") as client:
             response = await client.post(
                 "/api/jobs",
-                json={"regions": ["NG", "CA"], "niches": ["vlog"], "limit": 10},
+                json={
+                    "regions": ["NG", "CA"],
+                    "niches": ["vlog"],
+                    "limit": 10,
+                    "preferences": {
+                        "min_subscribers": 10_000,
+                        "max_subscribers": 100_000,
+                        "min_videos": 25,
+                        "min_channel_age": 3,
+                        "contact_requirement": "email",
+                    },
+                },
             )
             assert response.status_code == 202
             payload = response.json()
             assert [region["code"] for region in payload["regions"]] == ["NG", "CA"]
+            assert payload["preferences"]["min_subscribers"] == 10_000
+            assert payload["preferences"]["contact_requirement"] == "email"
             # The no-session path can finish before we retrieve the task because
             # the manager removes completed tasks immediately.
             await asyncio.sleep(0.05)

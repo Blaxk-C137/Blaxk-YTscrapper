@@ -4,13 +4,31 @@ from __future__ import annotations
 
 from typing import Literal
 
-from pydantic import BaseModel, Field, field_validator
+from pydantic import BaseModel, Field, field_validator, model_validator
+
+
+class DiscoveryPreferences(BaseModel):
+    min_subscribers: int = Field(default=0, ge=0, le=10_000_000_000)
+    max_subscribers: int | None = Field(default=None, ge=1, le=10_000_000_000)
+    min_videos: int = Field(default=0, ge=0, le=10_000_000)
+    max_videos: int | None = Field(default=None, ge=1, le=10_000_000)
+    min_channel_age: int = Field(default=0, ge=0, le=30)
+    contact_requirement: Literal["any", "email", "business_email", "social"] = "any"
+
+    @model_validator(mode="after")
+    def valid_ranges(self):
+        if self.max_subscribers is not None and self.max_subscribers < self.min_subscribers:
+            raise ValueError("Maximum subscribers must be greater than the minimum")
+        if self.max_videos is not None and self.max_videos < self.min_videos:
+            raise ValueError("Maximum videos must be greater than the minimum")
+        return self
 
 
 class DiscoveryRequest(BaseModel):
     regions: list[str] = Field(min_length=1, max_length=10)
     niches: list[str] = Field(min_length=1, max_length=7)
     limit: int = Field(default=25, ge=1, le=200)
+    preferences: DiscoveryPreferences = Field(default_factory=DiscoveryPreferences)
 
     @field_validator("regions")
     @classmethod

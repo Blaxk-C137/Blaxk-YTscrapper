@@ -94,11 +94,15 @@ def test_job_lifecycle(tmp_path: Path):
             {"code": "NG", "name": "Nigeria"},
             {"code": "CA", "name": "Canada"},
         ],
-        "niches": [{"query": "vlog", "label": "Vlogs"}], "target": 10,
+        "niches": [{"query": "vlog", "label": "Vlogs"}],
+        "preferences": {"min_subscribers": 10_000, "contact_requirement": "email"},
+        "target": 10,
     })
     assert db.active_job_count() == 1
-    db.update_job("job123", status="running", found=4, processed=7)
+    db.update_job("job123", status="running", found=4, processed=7, filtered=2)
     job = db.get_job("job123")
     assert job["progress"] == 40
     assert job["niches"][0]["label"] == "Vlogs"
     assert [region["code"] for region in job["regions"]] == ["NG", "CA"]
+    assert job["preferences"]["min_subscribers"] == 10_000
+    assert job["filtered"] == 2

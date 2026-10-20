@@ -18,7 +18,12 @@ usable relationship pipeline—not another raw CSV.
   partnership-pipeline health.
 - **Clean by default** — every fresh install starts with an empty directory;
   only creators found by your own discovery runs are stored.
-- **Conservative automation** — one discovery run at a time, restrained
+- **Target-driven discovery** — pagination continues past processed, skipped,
+  and filtered channels until the requested number of matching contacts is
+  saved, search results are exhausted, or the documented safety ceiling is hit.
+- **Creator preferences** — qualify by subscriber range, upload count, channel
+  age, and required contact type before a result counts toward the target.
+- **Conservative automation** — one discovery run at a time, bounded
   concurrency, no CAPTCHA bypass, and partial results survive interruption.
 - **Security cleanup** — browser auth is ignored by Git and all local runtime
   state lives outside source control.
@@ -70,10 +75,15 @@ and the direct YouTube link.
 
 ### Discovery
 
-Choose up to 10 markets in one run, select one or more creator niches, and set
-a save target. CreatorScope searches every market/niche combination, deduplicates
-channels across countries, records every market match, and keeps every result
-saved before interruption. Runs continue in the background, show honest progress,
+Choose up to 10 markets, select one or more niches, then define the creator fit:
+subscriber range, minimum uploads, channel age, and required contact type. The
+save target counts only creators that match those preferences.
+
+CreatorScope searches every market/niche combination, skips IDs already handled
+in earlier runs while continuing into deeper result pages, and reviews fresh
+batches until it reaches the target. If YouTube runs out of results—or the
+2,000-review safety ceiling is reached—the final message says exactly why the
+run ended and how many matching contacts were saved. Runs keep partial results
 and can be stopped safely.
 
 ### Export
@@ -118,6 +128,23 @@ Interactive documentation is available at `/api/docs`.
 | `POST /api/jobs/{id}/cancel` | Stop after the current channel |
 | `GET /api/export.csv` | Spreadsheet-ready export |
 | `GET /api/export.json` | Structured backup |
+
+Example discovery request:
+
+```json
+{
+  "regions": ["NG", "CA"],
+  "niches": ["vlog", "lifestyle"],
+  "limit": 50,
+  "preferences": {
+    "min_subscribers": 10000,
+    "max_subscribers": 100000,
+    "min_videos": 50,
+    "min_channel_age": 3,
+    "contact_requirement": "email"
+  }
+}
+```
 
 ## Tests
 

@@ -121,11 +121,13 @@ class Database:
                     region_name TEXT NOT NULL,
                     regions TEXT NOT NULL DEFAULT '[]',
                     niches TEXT NOT NULL,
+                    preferences TEXT NOT NULL DEFAULT '{}',
                     target INTEGER NOT NULL,
                     discovered INTEGER NOT NULL DEFAULT 0,
                     processed INTEGER NOT NULL DEFAULT 0,
                     found INTEGER NOT NULL DEFAULT 0,
                     skipped INTEGER NOT NULL DEFAULT 0,
+                    filtered INTEGER NOT NULL DEFAULT 0,
                     message TEXT NOT NULL DEFAULT '',
                     error TEXT NOT NULL DEFAULT '',
                     cancel_requested INTEGER NOT NULL DEFAULT 0,
@@ -152,8 +154,14 @@ class Database:
             job_columns = {
                 row[1] for row in conn.execute("PRAGMA table_info(jobs)").fetchall()
             }
-            if "regions" not in job_columns:
-                conn.execute("ALTER TABLE jobs ADD COLUMN regions TEXT NOT NULL DEFAULT '[]'")
+            migrations = {
+                "regions": "TEXT NOT NULL DEFAULT '[]'",
+                "preferences": "TEXT NOT NULL DEFAULT '{}'",
+                "filtered": "INTEGER NOT NULL DEFAULT 0",
+            }
+            for column, definition in migrations.items():
+                if column not in job_columns:
+                    conn.execute(f"ALTER TABLE jobs ADD COLUMN {column} {definition}")
         self.backfill_creator_regions()
 
     def backfill_creator_regions(self) -> None:
@@ -188,6 +196,12 @@ class Database:
             return conn.execute(
                 "SELECT 1 FROM processed_channels WHERE channel_id=?", (channel_id,)
             ).fetchone() is not None
+
+    def processed_ids(self) -> set[str]:
+        with self.connection() as conn:
+            return {
+                row[0] for row in conn.execute("SELECT channel_id FROM processed_channels")
+            }
 
     def add_creator_regions(self, channel_id: str, regions: Iterable[str]) -> bool:
         """Attach additional search-market matches to an existing creator."""
@@ -552,19 +566,21 @@ class Database:
         with self.connection() as conn:
             conn.execute(
                 """INSERT INTO jobs(
-                    id,status,region_code,region_name,regions,niches,target,message,created_at
-                   ) VALUES(?,?,?,?,?,?,?,?,?)""",
+                    id,status,region_code,region_name,regions,niches,preferences,
+                    target,message,created_at
+                   ) VALUES(?,?,?,?,?,?,?,?,?,?)""",
                 (
                     job["id"], "queued", job["region_code"], job["region_name"],
                     _json(job.get("regions", []), []), _json(job["niches"], []),
-                    job["target"], "Waiting to start", utcnow(),
+                    _json(job.get("preferences", {}), {}), job["target"],
+                    "Waiting to start", utcnow(),
                 ),
             )
 
     def update_job(self, job_id: str, **fields: Any) -> None:
         allowed = {
-            "status", "discovered", "processed", "found", "skipped", "message",
-            "error", "cancel_requested", "started_at", "finished_at",
+            "status", "discovered", "processed", "found", "skipped", "filtered",
+            "message", "error", "cancel_requested", "started_at", "finished_at",
         }
         updates = {key: value for key, value in fields.items() if key in allowed}
         if not updates:
@@ -582,6 +598,10 @@ class Database:
             return None
         job = dict(row)
         job["niches"] = json.loads(job.get("niches") or "[]")
+        try:
+            job["preferences"] = json.loads(job.get("preferences") or "{}")
+        except (TypeError, json.JSONDecodeError):
+            job["preferences"] = {}
         try:
             job["regions"] = json.loads(job.get("regions") or "[]")
         except (TypeError, json.JSONDecodeError):

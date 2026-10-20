@@ -56,6 +56,18 @@ function jobMarketLabel(job) {
   return names.length ? names.join(', ') : (job.region_name || 'Unknown market');
 }
 
+function preferenceLabel(preferences = {}) {
+  const bits = [];
+  const min = Number(preferences.min_subscribers || 0);
+  const max = preferences.max_subscribers == null ? null : Number(preferences.max_subscribers);
+  if (min || max !== null) bits.push(`${min ? formatCompact(min) : '0'}–${max ? formatCompact(max) : '∞'} subs`);
+  if (preferences.min_videos) bits.push(`${preferences.min_videos}+ videos`);
+  if (preferences.min_channel_age) bits.push(`${preferences.min_channel_age}+ years`);
+  const contactLabels = { email: 'email required', business_email: 'business email required', social: 'social required' };
+  if (contactLabels[preferences.contact_requirement]) bits.push(contactLabels[preferences.contact_requirement]);
+  return bits.length ? bits.join(' · ') : 'Any creator with public contact details';
+}
+
 function socialCount(creator) {
   const socials = creator.socials || {};
   return Object.values(socials).reduce((total, entries) => total + (entries?.length || 0), 0);
@@ -493,11 +505,27 @@ async function startDiscovery(event) {
   const niches = $$('input[name="niche"]:checked').map(input => input.value);
   if (!regions.length) return toast('Choose at least one target market', 'error');
   if (!niches.length) return toast('Choose at least one niche', 'error');
+  const [minimumAudience, maximumAudience] = $('#audiencePreference').value.split(':');
+  const preferences = {
+    min_subscribers: Number(minimumAudience || 0),
+    max_subscribers: maximumAudience ? Number(maximumAudience) : null,
+    min_videos: Number($('#videoPreference').value || 0),
+    min_channel_age: Number($('#agePreference').value || 0),
+    contact_requirement: $('#contactPreference').value,
+  };
   const button = $('#startDiscovery');
   button.disabled = true;
   button.innerHTML = `${icon('clock')} Starting…`;
   try {
-    await api('/api/jobs', { method: 'POST', body: JSON.stringify({ regions, niches, limit: Number($('#discoveryLimit').value) }) });
+    await api('/api/jobs', {
+      method: 'POST',
+      body: JSON.stringify({
+        regions,
+        niches,
+        limit: Number($('#discoveryLimit').value),
+        preferences,
+      }),
+    });
     toast('Discovery started');
     await loadJobs();
     scheduleJobPoll();
@@ -533,7 +561,7 @@ function renderJobs() {
   history.innerHTML = state.jobs.length ? state.jobs.slice(0, 5).map(job => `
     <div class="job-row ${escapeHtml(job.status)}">
       <span>${icon(job.status === 'completed' ? 'check' : job.status === 'running' ? 'radar' : job.status === 'failed' ? 'x' : 'clock')}</span>
-      <div><strong>${escapeHtml(jobMarketLabel(job))} · ${job.niches.map(item => item.label).join(', ')}</strong><small>${stageLabel(job.status)} · ${formatDate(job.created_at, true)}</small></div>
+      <div><strong>${escapeHtml(jobMarketLabel(job))} · ${job.niches.map(item => item.label).join(', ')}</strong><small>${escapeHtml(preferenceLabel(job.preferences))} · ${stageLabel(job.status)} · ${formatDate(job.created_at, true)}</small></div>
       <b>${job.found}/${job.target}</b>
     </div>`).join('') : '<p class="run-message">No discovery runs yet.</p>';
 }
@@ -545,9 +573,10 @@ function renderActiveJob(job) {
     <div class="run-top"><span class="run-status ${escapeHtml(job.status)}"><i></i>${escapeHtml(stageLabel(job.status))}</span><small>${formatDate(job.created_at, true)}</small></div>
     <h2 class="run-title">${job.regions?.length > 1 ? `${job.regions.length}-market` : escapeHtml(jobMarketLabel(job))} creator search</h2>
     <p class="run-subtitle">${escapeHtml(jobMarketLabel(job))} · ${job.niches.map(item => escapeHtml(item.label)).join(' · ')}</p>
+    <p class="run-preferences">${escapeHtml(preferenceLabel(job.preferences))}</p>
     <div class="progress-track"><i style="width:${percent}%"></i></div>
     <div class="progress-meta"><span>${percent}% of save target</span><span>${job.found} / ${job.target} saved</span></div>
-    <div class="run-counters"><div class="run-counter"><strong>${job.discovered}</strong><span>Discovered</span></div><div class="run-counter"><strong>${job.processed}</strong><span>Reviewed</span></div><div class="run-counter"><strong>${job.skipped}</strong><span>Skipped</span></div></div>
+    <div class="run-counters"><div class="run-counter"><strong>${job.discovered}</strong><span>Fresh pool</span></div><div class="run-counter"><strong>${job.processed}</strong><span>Reviewed</span></div><div class="run-counter"><strong>${job.filtered || 0}</strong><span>Outside fit</span></div><div class="run-counter"><strong>${job.skipped}</strong><span>No contact / failed</span></div></div>
     <p class="run-message">${escapeHtml(job.message)}</p>
     ${job.error ? `<div class="run-error">${escapeHtml(job.error)}</div>` : ''}
     ${active ? `<div class="run-actions"><button class="btn btn-quiet" data-cancel-job="${escapeHtml(job.id)}">${icon('stop')} Stop safely</button></div>` : ''}`;

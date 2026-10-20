@@ -7,4 +7,5 @@ browser_profile
 exports
 *.db
 *.pyc
+creators.json
 creators_export*.csv

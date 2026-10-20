@@ -36,7 +36,7 @@ def test_metric_number_parses_youtube_abbreviations():
 
 
 def test_upsert_query_stats_and_update(tmp_path: Path):
-    db = Database(tmp_path / "test.db", seed_cache=None)
+    db = Database(tmp_path / "test.db")
     sample = creator()
     sample["regions_searched"] = ["Nigeria", "Canada"]
     db.upsert_creator(sample)
@@ -68,7 +68,7 @@ def test_upsert_query_stats_and_update(tmp_path: Path):
 
 
 def test_bulk_update_and_processed_tracking(tmp_path: Path):
-    db = Database(tmp_path / "test.db", seed_cache=None)
+    db = Database(tmp_path / "test.db")
     first = creator()
     second = creator("UC" + "b" * 22, "Bola Builds")
     db.upsert_creator(first)
@@ -80,9 +80,14 @@ def test_bulk_update_and_processed_tracking(tmp_path: Path):
     assert db.bulk_update([first["channel_id"]], "archive") == 1
     assert db.list_creators()["total"] == 1
 
+    cleared = db.clear_workspace()
+    assert cleared["creators"] == 2
+    assert db.list_creators()["total"] == 0
+    assert not db.is_processed(first["channel_id"])
+
 
 def test_job_lifecycle(tmp_path: Path):
-    db = Database(tmp_path / "test.db", seed_cache=None)
+    db = Database(tmp_path / "test.db")
     db.create_job({
         "id": "job123", "region_code": "NG", "region_name": "Nigeria, Canada",
         "regions": [

@@ -555,6 +555,23 @@ function renderActiveJob(job) {
 
 function setupExports() {
   $$('[data-export]').forEach(button => button.addEventListener('click', () => window.location.assign(`/api/export.${button.dataset.export}`)));
+  $('#clearWorkspace').addEventListener('click', async () => {
+    const confirmed = window.confirm(
+      'Clear every creator, processed channel, and discovery run? This cannot be undone.'
+    );
+    if (!confirmed) return;
+    try {
+      const result = await api('/api/creators', { method: 'DELETE' });
+      state.selected.clear();
+      state.creators.page = 1;
+      await Promise.all([loadConfig(), loadStats(), loadRecent(), loadCreators(), loadJobs()]);
+      const count = result.cleared.creators || 0;
+      toast(`Workspace cleared — ${count} creator${count === 1 ? '' : 's'} removed`);
+      routeTo('overview');
+    } catch (error) {
+      toast(error.message, 'error');
+    }
+  });
 }
 
 async function initialize() {

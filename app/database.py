@@ -12,7 +12,7 @@ from typing import Any, Iterable
 
 from youtube_creator_finder import clean_country
 
-from .config import DB_PATH, SEED_CACHE
+from .config import DB_PATH
 
 JSON_FIELDS = {"emails", "business_email", "niches", "socials", "raw"}
 STAGES = ("new", "shortlisted", "contacted", "replied", "partnered", "not_a_fit")
@@ -42,9 +42,8 @@ def _json(value: Any, fallback: Any) -> str:
 
 
 class Database:
-    def __init__(self, path: Path = DB_PATH, seed_cache: Path | None = SEED_CACHE) -> None:
+    def __init__(self, path: Path = DB_PATH) -> None:
         self.path = Path(path)
-        self.seed_cache = Path(seed_cache) if seed_cache is not None else None
         self.path.parent.mkdir(parents=True, exist_ok=True)
         self.initialize()
 
@@ -155,41 +154,7 @@ class Database:
             }
             if "regions" not in job_columns:
                 conn.execute("ALTER TABLE jobs ADD COLUMN regions TEXT NOT NULL DEFAULT '[]'")
-        self.import_seed_once()
         self.backfill_creator_regions()
-
-    def import_seed_once(self) -> None:
-        with self.connection() as conn:
-            migrated = conn.execute(
-                "SELECT value FROM metadata WHERE key='seed_imported'"
-            ).fetchone()
-        if migrated:
-            return
-
-        imported = 0
-        if self.seed_cache and self.seed_cache.exists():
-            try:
-                payload = json.loads(self.seed_cache.read_text(encoding="utf-8"))
-                creators_by_id = {
-                    item.get("channel_id"): item
-                    for item in payload.get("creators", [])
-                    if item.get("channel_id")
-                }
-                for channel_id in payload.get("processed_ids", []):
-                    source = creators_by_id.get(channel_id, {})
-                    self.mark_processed(channel_id, source.get("reason", "imported"))
-                for creator in payload.get("creators", []):
-                    if not creator.get("skipped") and creator.get("channel_id"):
-                        self.upsert_creator(creator)
-                        imported += 1
-            except (OSError, json.JSONDecodeError, TypeError, ValueError) as exc:
-                print(f"Seed migration skipped: {exc}")
-
-        with self.connection() as conn:
-            conn.execute(
-                "INSERT OR REPLACE INTO metadata(key, value) VALUES('seed_imported', ?)",
-                (json.dumps({"at": utcnow(), "creators": imported}),),
-            )
 
     def backfill_creator_regions(self) -> None:
         """Normalize legacy region strings into the creator-region join table."""
@@ -549,6 +514,24 @@ class Database:
                 [*values, utcnow(), *channel_ids],
             )
             return cursor.rowcount
+
+    def clear_workspace(self) -> dict[str, int]:
+        """Remove all creator, processed-channel, and discovery-history data.
+
+        Clearing processed IDs is deliberate: after a reset, channels from an
+        earlier run are eligible to be discovered again.
+        """
+        with self.connection() as conn:
+            creators = conn.execute("SELECT COUNT(*) FROM creators").fetchone()[0]
+            processed = conn.execute(
+                "SELECT COUNT(*) FROM processed_channels"
+            ).fetchone()[0]
+            jobs = conn.execute("SELECT COUNT(*) FROM jobs").fetchone()[0]
+            conn.execute("DELETE FROM creator_regions")
+            conn.execute("DELETE FROM creators")
+            conn.execute("DELETE FROM processed_channels")
+            conn.execute("DELETE FROM jobs")
+        return {"creators": creators, "processed_channels": processed, "jobs": jobs}
 
     def export_rows(self, channel_ids: Iterable[str] | None = None) -> list[dict[str, Any]]:
         ids = list(channel_ids or [])

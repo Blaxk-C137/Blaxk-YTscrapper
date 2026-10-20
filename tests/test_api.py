@@ -10,7 +10,7 @@ from app.scraper_service import JobManager
 
 def test_job_endpoint_schedules_on_running_event_loop(tmp_path: Path, monkeypatch):
     """Regression: a sync FastAPI route ran in a worker thread and create_task failed."""
-    database = Database(tmp_path / "api.db", seed_cache=None)
+    database = Database(tmp_path / "api.db")
     manager = JobManager(database)
     monkeypatch.setattr(main_module, "db", database)
     monkeypatch.setattr(main_module, "jobs", manager)
@@ -33,5 +33,10 @@ def test_job_endpoint_schedules_on_running_event_loop(tmp_path: Path, monkeypatc
             # the expected reason—not with "no running event loop".
             assert finished["status"] == "failed"
             assert finished["error"] == "YouTube session is not connected"
+
+            clear_response = await client.delete("/api/creators")
+            assert clear_response.status_code == 200
+            assert clear_response.json()["cleared"]["jobs"] == 1
+            assert database.list_creators()["total"] == 0
 
     asyncio.run(scenario())

@@ -11,13 +11,12 @@ DATA_DIR.mkdir(parents=True, exist_ok=True)
 
 DB_PATH = Path(os.getenv("CREATORSCOPE_DB_PATH", DATA_DIR / "creatorscope.db"))
 PROFILE_DIR = Path(os.getenv("CREATORSCOPE_PROFILE_DIR", ROOT_DIR / "browser_profile"))
-SEED_CACHE = Path(os.getenv("CREATORSCOPE_SEED_CACHE", ROOT_DIR / "creators.json"))
 STATIC_DIR = ROOT_DIR / "static"
 EXPORT_DIR = ROOT_DIR / "exports"
 EXPORT_DIR.mkdir(parents=True, exist_ok=True)
 
 APP_NAME = "CreatorScope"
-APP_VERSION = "1.1.0"
+APP_VERSION = "1.2.0"
 MAX_PAGE_SIZE = 100
 DEFAULT_PAGE_SIZE = 25
 

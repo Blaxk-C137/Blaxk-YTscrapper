@@ -16,8 +16,8 @@ usable relationship pipeline—not another raw CSV.
 - **Mini CRM** — favorites, private notes, and stages from New to Partnered.
 - **Useful analytics** — contact coverage, audience footprint, top markets, and
   partnership-pipeline health.
-- **Safe migration** — existing `creators.json` records are imported into
-  SQLite once on first launch.
+- **Clean by default** — every fresh install starts with an empty directory;
+  only creators found by your own discovery runs are stored.
 - **Conservative automation** — one discovery run at a time, restrained
   concurrency, no CAPTCHA bypass, and partial results survive interruption.
 - **Security cleanup** — browser auth is ignored by Git and all local runtime
@@ -39,8 +39,8 @@ uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 
 Open <http://localhost:8000>.
 
-The dashboard and imported data work immediately. Discovery additionally needs
-a local YouTube session:
+The dashboard starts empty. Connect a local YouTube session, then run your own
+discoveries to build the directory:
 
 ```bash
 python scripts/connect_youtube.py
@@ -97,7 +97,6 @@ scripts/
   connect_youtube.py    local interactive session setup
 
 youtube_creator_finder.py   original scraper engine and CLI
-creators.json                legacy seed data imported once
 ```
 
 Runtime data is stored in `.runtime/creatorscope.db` by default. The path can be
@@ -113,6 +112,7 @@ Interactive documentation is available at `/api/docs`.
 | `GET /api/creators` | Paginated/searchable creator directory |
 | `PATCH /api/creators/{id}` | Update stage, favorite, or private notes |
 | `POST /api/creators/bulk` | Bulk pipeline/favorite/archive actions |
+| `DELETE /api/creators` | Clear creators, processed IDs, and run history |
 | `POST /api/jobs` | Start a multi-market discovery run (`regions`, `niches`, `limit`) |
 | `GET /api/jobs` | Job history and progress |
 | `POST /api/jobs/{id}/cancel` | Stop after the current channel |

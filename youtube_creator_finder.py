@@ -42,8 +42,14 @@ from playwright.async_api import TimeoutError as PWTimeout
 # browser profile: it contains an authenticated session and is ignored by Git.
 ROOT_DIR     = os.path.dirname(os.path.abspath(__file__))
 PROFILE_DIR  = os.getenv("CREATORSCOPE_PROFILE_DIR", os.path.join(ROOT_DIR, "browser_profile"))
-CACHE_FILE   = os.getenv("CREATORSCOPE_SEED_CACHE", os.path.join(ROOT_DIR, "creators.json"))
-EXPORT_FILE  = os.getenv("CREATORSCOPE_EXPORT_FILE", os.path.join(ROOT_DIR, "creators_export.csv"))
+CACHE_FILE   = os.getenv(
+    "CREATORSCOPE_LEGACY_CACHE",
+    os.path.join(ROOT_DIR, ".runtime", "legacy_creators.json"),
+)
+EXPORT_FILE  = os.getenv(
+    "CREATORSCOPE_EXPORT_FILE",
+    os.path.join(ROOT_DIR, "exports", "creators_export.csv"),
+)
 BASE_URL     = "https://www.youtube.com"
 
 # Skip channels created on/after this year. DISABLED (None) by default: it was
@@ -455,6 +461,7 @@ def load_cache():
 
 
 def save_cache(cache):
+    os.makedirs(os.path.dirname(CACHE_FILE), exist_ok=True)
     with open(CACHE_FILE, 'w') as f:
         json.dump(cache, f, indent=2)
 
@@ -836,6 +843,7 @@ def flat(text, limit=None):
 
 
 def export_csv(cache):
+    os.makedirs(os.path.dirname(EXPORT_FILE), exist_ok=True)
     fields = [
         'channel_id', 'handle', 'title', 'account_year', 'joined', 'country',
         'subscriber_count', 'video_count', 'total_views',

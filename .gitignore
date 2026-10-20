@@ -17,6 +17,7 @@ playwright/.auth/
 *.db-wal
 .runtime/
 exports/
+creators.json
 creators_export*.csv
 
 # Logs and OS/editor files

@@ -148,6 +148,16 @@ def bulk_update(payload: BulkUpdate):
     return {"updated": updated}
 
 
+@app.delete("/api/creators")
+def clear_workspace():
+    if db.active_job_count():
+        raise HTTPException(
+            status_code=409,
+            detail="Stop the active discovery run before clearing the workspace",
+        )
+    return {"cleared": db.clear_workspace()}
+
+
 CSV_FIELDS = [
     "channel_id", "handle", "title", "account_year", "joined", "country",
     "subscriber_count", "video_count", "total_views", "business_email", "emails",

@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+
+# Secrets and local browser authentication
+browser_profile/
+playwright/.auth/
+*.storage-state.json
+.env
+
+# Runtime data
+*.db
+*.db-shm
+*.db-wal
+.runtime/
+exports/
+creators_export*.csv
+
+# Logs and OS/editor files
+*.log
+.DS_Store
+.vscode/
+.idea/

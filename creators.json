@@ -1,0 +1,3120 @@
+{
+  "processed_ids": [
+    "UC5WVOWOqrFVEDscIOmB8zQA",
+    "UCnZWFiZOtbKPWkRVSqhnJ8A",
+    "UCenlJVC54Hn4h5WsGH5t_IA",
+    "UCVLc84Xkn2IaCLmKNDFOvYQ",
+    "UCHxjqzF8Ut8-YubTNdtLl0A",
+    "UCJO_e4RNeSvSOhPa-MYIS7g",
+    "UCvFzH2bmtmNVYeH24Kh9c2A",
+    "UC-ufPBhSFrScmNqUu6pixlQ",
+    "UCJWsBzOEiJ6MnnVT8Cjnz4A",
+    "UCX2B5J5ndsZTlXccUnJCblw",
+    "UCoaVcvf7F9CBpw9g0ib1ANg",
+    "UCc2OTK1fOFlb5-srhJyfL8g",
+    "UCtbo77GKOAaCMCUrEhoY-9Q",
+    "UC_8TsPcQ3cTarjhYojvPVjA",
+    "UCvcQvyWfXqdp2iTFi77-LkA",
+    "UC--ykBEq6iG0DKfrOmK5qAg",
+    "UCOw3fbA2nD_g5U57BSAWWMg",
+    "UCtdA-aw9mKFluSFoIT92wWw",
+    "UCt4-1ksmj9hq-ap41MR_1yg",
+    "UCN4-Pv5r5Uik3kUbUXiy6GA",
+    "UCY2Ni2GFlbdDQ4_LD0J7mKg",
+    "UCAcFTiYOpmQdCh76YgfiWOw",
+    "UCSIf69tvkDzGDUpoy7hOEJw",
+    "UCDzjnzQjgyyu_8R_MuSYqzA",
+    "UCG1iYPPiDKAXvpLHHEq7QsA",
+    "UCxOQ_mWZWZz5MEnMI5hZAYw",
+    "UCAOM-tMQA8LHD947vZ8mvOA",
+    "UChbtuzj4aorDgcRIa1jzepQ",
+    "UCVzuCrhVoIYdklGjq4suBqw",
+    "UCt_KDu-DtBqvIw7X-V7mlmQ",
+    "UC14QjW0CSf_-P0m4-T_zAEQ",
+    "UCldEdX5My_I9dN_xj2CowaQ",
+    "UCrMFll_sQ3WwW9c8ntzDTYA",
+    "UCt3Gw0v8E_Y2lju_DE_qa_Q",
+    "UCj2IBZNYpt9-2mIfTU_epCg",
+    "UCrk5vJt8d6Glda6wCBxn_vw",
+    "UCCmr_pJ7az1JfWUiujsiHWg",
+    "UCEqidDpJYqrYOlG44aq68-A",
+    "UCemV7QL3iM-YEEFaXg32E6g",
+    "UCvQagFNHMrGgQpYunk4rHXg",
+    "UCzZiparM1drXqoWp7bhIpZw",
+    "UCAlOSF3Lb1mZTnHyrxGcHKQ",
+    "UCs4eUmf6EN8RfIRNLZ-MzuA",
+    "UCAwIKJ84zBsiuuy9DVR13mA",
+    "UC_8ioOYtSmkhr5jdUblI9gg",
+    "UC-kASoAaKMhUqBMO7cogVxg",
+    "UCbnbANjBfR4Ab6Z03SuS1kQ",
+    "UCKjH-gcehWiPCzmM3Cf6yhQ",
+    "UC1Iu0euH9VNJjCznloWkBlg",
+    "UCpSfFGF4jTBIHUyHALF375w",
+    "UCYaEHKGOzuLyuKKoVu47vGw",
+    "UCH_XMDSC8K696kE6I0x5D8Q",
+    "UCAzXqFoW1Y7KDqwZ1x5m9EA",
+    "UCLl-Zh36_GW1K-vyW0Qhdmg",
+    "UCFqoVdMCA3ZgR57XRzWsqfg",
+    "UChHp00OD-9vV_CCpo27Ei1Q",
+    "UCEPsNDUhUm-7yZhUjQQNqwQ",
+    "UCU6gxouTSUknj-Nqe0cYNgQ",
+    "UC2F_y-9S3qKAqgrM6P7q3QA",
+    "UCK9saDF-5hvkWN7zc2Y5IJA",
+    "UCHCywgKu_QQhKyRnlzUaJjA",
+    "UCeCAulVywiRNBLv-VgT6Ejw",
+    "UCEbMymWcvxm4d4G3SCXO5ug",
+    "UCNPO6LQj_3Px2RgbKjYYA-g",
+    "UCfd5xMoyaknmtlNUbd5sTKw",
+    "UCy88ZZBMMC24fbk8El0z8Ag",
+    "UCKR95wUzI9UPG_pLfm4ehYg",
+    "UCfT-6VFvgdC2wTkjITSTGyg",
+    "UCwfTfOPQw7Wszk_gOBr77YA",
+    "UCOps5_6IGFNcC4nY6t_2AoQ",
+    "UCNR06PEAvBj_siYZCBtk1hw",
+    "UC3D2R6is17xN5_NBpJrlv-A",
+    "UCOcIy273cXvYxY1ecakIqbQ",
+    "UChEh3KfCnULNbbNqjyetX0w",
+    "UCHvvw6dmXCYzKuc5nPF86WQ",
+    "UC64lU1RB1ROSyTD2ET7vAIA",
+    "UCOqnAEejGqVwzTBOVz9DhZA",
+    "UCccUOsMDVKadNgq2cQeR-Dw",
+    "UCGACyhKF6cqGsbwTZfjlH1Q",
+    "UCHEI9UfqpLk6u4xrh0efGNg",
+    "UCbqVxtjS0NVRcfBH27_GtEA",
+    "UCKCXjoAtFJ33Dawfp5kOu7Q",
+    "UC8E1G3rFdzqgu5V2txKr9Ew",
+    "UCMY9B75rHzv8MTIgrv2WJ8g",
+    "UCU-4n0wHbEhRH2aJfXsqM8A",
+    "UCW5p-tnyw8s8_n9uBLsGI_Q",
+    "UCl-ExzMH0h70FJhvPmP6DyQ",
+    "UCTCXcwXtG3TXXD07agJZY8g",
+    "UCDm4c3jQ4GeTgKpbIFtUd4Q",
+    "UClEpnvy5woy7_FvD15_vSdw",
+    "UCwczI0_-MmczhLPtzTKxOMA",
+    "UCZe0-J0sS-p-ZyubFgUvEeA",
+    "UCgnAeJvjVzZHM_ZVGjekrKg",
+    "UCtZyv37TtBU0MRDAFYnlCiw",
+    "UCZB_HoyO9HqS-H6oP44djSA",
+    "UCIsvomXQNyFRjpAP_GyWI-Q",
+    "UC5BeiLERySzIWe_aoozgACg",
+    "UCcWfIz4PlZ9c9ASaq7kjlYw",
+    "UC1eZ8lzgyG3wJ3DnETdHPQA",
+    "UCpzfaDo602B2yA8C3SERCKw",
+    "UCHDQOZjxuSm0-LgLQtMeCqw",
+    "UCr84p-YTbRTlIBrB7Z2_MZg",
+    "UCXpPYepjM-YMgoL462W43FA",
+    "UCQyJiQCFAUMtwf5VijlmwpQ",
+    "UCMEdSEpYHuxT-IH1Xonxmkg",
+    "UCfWgt-rw72jbdE0Z67Kd0ew",
+    "UCwxV-JOEoIVk4Azmp4TQrkw",
+    "UC_qCjgB_k8CR_J5l_T0JV0w",
+    "UCKvwlS24lJTxDEjbE-9A_BQ",
+    "UCwvHLdNXSLU-ZE8jzRKBrKw",
+    "UC53uDnt6rWrqmLHNLelWLPg",
+    "UC9tt_OBosMP3PTuwoGLY2CQ",
+    "UCVsYMJd8Gcv5UDO6xU60RLQ",
+    "UCTD-W5OLOsXYiRAdTHcIkow",
+    "UCJUXqfE6-Ru2qapWULLkM9g",
+    "UCIUqYxknD8COo_TX9cvGvmQ",
+    "UConnM5zwOP9vG_LPTYbRsAg",
+    "UCzvVc1Z7Wx9k9NcC0xxU2sA",
+    "UCas9Q067svtwSCCvfI80P9w",
+    "UC5QIXj79RH9gweneXaI7YTQ",
+    "UCTFMGAnyLQ64TnMJ8zh_cXw",
+    "UCv_v8ZDWBfFNp1vazyGDEsw",
+    "UCj-rTz8R4pOP-oQp0ChbCSg",
+    "UCQS4lUBJPmeY1Sh4QZLOdIQ",
+    "UCohhSYCJQjsDZhSyS20nXyg",
+    "UC95mqTX0s0n7QAMDQQbTgHA",
+    "UCWARqjmzHw4mx7Lvl6TuIxw",
+    "UCF-n4wbh7RNqBtj4_0iLZDg",
+    "UCxhHOARZrY12MQnUfYK3oiA",
+    "UCPC5uLbuJSJAR3YZBUM1cDw",
+    "UCCIcMMb1up1X-KOIzN2TK6w",
+    "UCRmk7IkQs9tKwKN-EBc5gpQ",
+    "UCUs4Uf5yrEx9ivzjn6iMSKQ",
+    "UC-Xdbggh3soS52GbhpgCk5A",
+    "UCti3-ioUcKxKa2FJBuuf7tQ",
+    "UCpIHEFtPsVJbPXqZIQKub5g",
+    "UC1RGVW4RpOWaliakbu5LFUA",
+    "UCzlRMg1i9-tHJuuIOTEFjcg",
+    "UC543A7ApjgOTW0RBofHoyKQ",
+    "UCZPBD56o1-zzINX6XYHTywg",
+    "UCAk91B6CMEjEKM158wh5mZA",
+    "UC_4BwsVjUvqV0ePboDTk6vg",
+    "UCr_DLOG2b8G9g6UOsuNImFg",
+    "UCGMjz3p7wHJbSq9XE--hlGw",
+    "UCU1G8anGNH8z8pzIuOuKb4w",
+    "UCoPBy4H04bx6oJo6MAXuTRQ",
+    "UCFtdVVfiZU_s3XZC2wSHCYA",
+    "UChI-cTok8fJePnryAd0mTvQ",
+    "UChIX_832DCEWUXXzlC-JmGw",
+    "UC8GRLDtr12b91BhGq-x92Zg",
+    "UCRzBNJTsBe2rq6pkyXeaj1A",
+    "UC4AeFMIWZ8iulMOe1GDz1LQ",
+    "UCJSHfhZHP8-iChAVCrXWTyA",
+    "UCeGa-vSdaxefW7sWtkV_K6A",
+    "UCVB78-e5DFsp0c-O6lyCSuA",
+    "UCoQuz1rXEDzIuwtfB51GVdg",
+    "UCXLF9TtiafYLPN9tW04Pe4g",
+    "UC3t2vokRYoLni0FLOGKFrbw",
+    "UCGiHKGDXJ27iQM33TtiUhqQ",
+    "UC4gDBTG2BMuiwJp_Fe2i_2w",
+    "UC5cXfhiMFgws1Yf9SpUeSjg",
+    "UCR1GuiIaEiaqaWp20PT5K8w",
+    "UCBHVFkw2RzNZ4oPLVxIzR-A",
+    "UCtT6_TBc6i0HSAr_OTcBOhw",
+    "UCreXCwemQaqhsNFOqJohMuw",
+    "UCpkmMlmTwDHvSETxED0U0gg",
+    "UC4ml45LbO7yctYCXWizR3zg",
+    "UC3wClbxi2_GDsIcyxj6kr-A",
+    "UCg8ofhdY0Ef6oQnxbgUzi1g",
+    "UCN-XRCpuo-wZ07UbMgwRkzQ",
+    "UCAEh1aERhPpBtM4MMnvPFGA",
+    "UCbYSabUYDdvoAuLKa_qD0qA",
+    "UCUnT7ORgS5kw0DBqWId9ETQ",
+    "UCCBWxYnnl6ILRkiGi3kmsTg",
+    "UCytYCbI94qjZDicBIjXiFEQ",
+    "UCHNWGVo2_Neeh9qAKAQX17g",
+    "UC1V85DmM_y68V5vyPyZnIbQ",
+    "UCSPIlcbvTok7_sNYCU5fmCg",
+    "UCFN3R1IUww7n0TKxUoxW2zA",
+    "UCgQL-2kYiIzrZFCkMbGwLsw",
+    "UCyh_yE2SlXsVl7bLFo8w59Q",
+    "UCNGvLinLywRRgp5iLuTvKTg",
+    "UCDee4S_kh5c5d4AkAuyghQA",
+    "UCg5v5vT399pEJPhp6PFXEvQ",
+    "UCNyS2jEYNo5zqqfuKgm9RRw",
+    "UCLe7RtOei4ubWWgFaZuR9Vg",
+    "UCoF1aKAD0KHKP8MXJEwAOTw",
+    "UCp7l6Z7v7UkTviSc5rQ1h8w",
+    "UCBEEFJl8e3fyIcP9prnvGyg",
+    "UCGz3dzA3WcUVygjbbJgPS9g",
+    "UCn7AHw2z_Yh1_NQc9_WydQA",
+    "UC182x8hcuIgKHilSZMbluuw",
+    "UCDy-nTuNZH0TYpjwjW0_LcQ",
+    "UC9fQuR3XRALjaIZtKGSNJcQ",
+    "UCBMbzQcFIQbifj3X7JeasSQ",
+    "UCaNRCUXzhbkDD6-ORlKY3SQ",
+    "UC3G9V-yBIlQUGaQSZo-bR3Q",
+    "UCz7S5kqGuC8mWmJ-Xd6V8jA",
+    "UCynCn_oNWcY4Fs-1ZoftcPg",
+    "UCOIHT9LOaOPdQ9BdhWYXfcw",
+    "UCU2PWHbAMoGNEHjLgj_nJLA",
+    "UCgcZdud2mZ3_t1rdgjMloOg",
+    "UCYqSqbDs8J7YK37aspNadSQ",
+    "UCxwpZe63q-PZ3smcJ08LmjA",
+    "UC1L2JoMpcY6MRLhFd3gg5Xg",
+    "UCExh058w31k9oQ9TDmxwxpw",
+    "UCKjU3KzdbJE1EFcHVqXC3_g",
+    "UCF4YcVKLysA56hyX4pgvzXQ",
+    "UCZppMljNbJZkvlNMFbc3qtQ",
+    "UCexm_I9iU12i9z6GuAcKQ9A",
+    "UCTuy4tk2rCoKixxdKWpg8xA",
+    "UCIQsEhgBoPDAcSMsC3Sl7jw",
+    "UClCPDCFWwHR3_eRN8Ytwj4A",
+    "UCpsf9B_9b08xi91XcSG2Tiw",
+    "UCLc_JaGSrM2Z9LBBmVKYdQg",
+    "UCNEaV4rH5eog3zsD7ycorSg",
+    "UCigcqAcJ3lx0_oeC8mEcd_g",
+    "UCd7Ts5bAA7vConNzJfOKzbA",
+    "UC-mnx3Gik-Fx_S0pXIMXBTw",
+    "UCFFImqk3FPSvKWBoturxJ7g",
+    "UCMFJeMVNFvcqX4S6ZXHQ9Nw",
+    "UCRkUVoCgsAsi8o5-bZJjAYA",
+    "UCGyT5aB62QfSEdOsyuhCzDg",
+    "UCS_cueVbhcRJ5Yypm-UgmqQ",
+    "UClSsMOCOLBM8aFr1Aty-jqw",
+    "UC-0CkA9L7_l1ORE5rUiQULA",
+    "UC41Yin9OIFMy0s1Z5jZVZKw",
+    "UCLFyZCJ25yCZwHAMpRUXE2g",
+    "UCEXaR0-_pMnNabfuJkhao1w",
+    "UCojzRct2tm7lmO_1eskKTuQ",
+    "UCkyrDWyJJixsSsKo78bTAlw",
+    "UC1gLU2KKFZ2qunPzDjLop9w",
+    "UC1SC0EAixPdfQZHGywNk4Qw",
+    "UCAUOyuAU3OjEr5YWzoH73eg",
+    "UCQnSiRFBJ5jPc-l4u4NsMyQ",
+    "UCu1Oe6KBGZFWLId5rp4CbJg",
+    "UC1mLC6Jof0CIAE56MIG7GJg",
+    "UCfwy-WP6bGFPknooLY3PPdw",
+    "UCNqZEfEGN7L7WbQYYs2wLMw",
+    "UCnyqSMLCS_PdX-UG_c6ozKg",
+    "UCvFuEge63LkDeTTf3lWrRUQ",
+    "UC8sEv1jQMESDP2XBJX8lzHQ",
+    "UCTxDDAs23ILKPWWdekCFjsg",
+    "UCjAmujBasc0rqjKLGsyS4iQ",
+    "UCZb7EIOJhqbYsSkohfmpmGA",
+    "UC4tfPlim4Enspq1nhCvmBjA",
+    "UCzAqm1z6-hIWxonMod1xULg",
+    "UCRWC72lLFuPcksZMB8nKOoQ",
+    "UCvdUKabPUkx6p-zYlrxmJJw",
+    "UC6TMyo18Gjh_eEuUNnA0I7g",
+    "UC1AKdP2AIxgaIYa0WkOK1QA",
+    "UCNmJbj5wAYWLPhB6575r3GQ",
+    "UCFqenOmqMrbEumiyuuJ5qLw",
+    "UCxu3d7SSmBrh7Er-9inPErQ",
+    "UCPVyJ6C3KHeYDhwakW-g8lw",
+    "UCIxwcmTDBLniq6m7T3p_30Q",
+    "UCYhSsCNPGHFxfGksEkuzHwA",
+    "UCuzBWcfr3LJtCZ6pxk7sgGQ",
+    "UCPkHJJOpWl2A3JQjxOu_hzA",
+    "UCyLRPBjeoXcYLXKu46boLLQ",
+    "UCcjxrYgcsZRLaqZIo2vkQaQ",
+    "UCfpjawtsvQLbUnuq1YfEA9Q",
+    "UC6MTMhJyxtzgi7A38pvGhTA",
+    "UCmOv6mUj7ubA4BIDHM1N1_Q",
+    "UCMCjKjb89bA2O2LnIxFZmGw",
+    "UCZRnZz4ef9WEIxz5_HRBetQ",
+    "UCGR6l1SeP8Ab1XaJUpZWAJg",
+    "UC5An_HHn65-_yozcfgAKN0g",
+    "UCTXfInyJOtkTnXfNd6Q23OA",
+    "UCz-WH5Ak0hRvm6C7s-mF7Eg",
+    "UCQ3P7AITXmp6_f4glySgmQQ",
+    "UCPerkStqpZiDDASCgziKwaA",
+    "UCoSiYM7MpRRPwxZJJ5NyamA",
+    "UCDowc4hFPSC2I83puJmBqkA",
+    "UCMjuLbb0hdUCHXbV3ximYeg",
+    "UCYUQlpihFgJba7gppz5MmFg",
+    "UCM4np2GdVlNcDAQsTidgOHw",
+    "UCr4aV4ACg7OLuvqz_GeG6lg",
+    "UCZzw6OGJ7a9zujN1FXpwNNA",
+    "UC03CNZIdtGSf6MoSIH3zvYg",
+    "UCOPzf8kf-FUDs32E7F2wGdg",
+    "UCJi1VkpMAtyYotL6KPitl-g",
+    "UCJZDx3z7sMvMU3Z68guQABw",
+    "UCBUsHkigU2wtSc7ilmPOaPA",
+    "UCpsCpKXIpz6KLaeh0sA8ouQ",
+    "UC78ZkeMTtWhTjbfkZLVdpbA",
+    "UCD2_oJvyIHIX31-IaBovkTQ",
+    "UCt5KXwokTnqbKvEBH9hpovQ",
+    "UCG1-qPalX4KHZNpzJza2f-A",
+    "UCUGxEafExSdzUBCrgxX9Lhw",
+    "UCM8wUy3VKjmYjxsoxSnj7GQ",
+    "UCqCSMxjxUnuwYtVpCmh4DMg",
+    "UCsmQ7n2faWbNmIdlYVrljbQ",
+    "UCMOeBhz-chzOzCVvAn35V6A",
+    "UCOFBoJAknUxJb4ER6iw3u6w",
+    "UCf57iGrvQFLxkE0_MO-fnwQ",
+    "UCIxmdvK-w_8d85KHTnaePAg",
+    "UCwIT9C5Hxnv9ZSqpHaN6q7w",
+    "UCV-iRncaYiUotAuZyU781tA",
+    "UC5qTR6u2Ao8JdIcy5rCFMEw",
+    "UCRWImrFsiqhgMiGN0oy0uhQ",
+    "UClJTWAPi3PBOv1vphsBMfMQ",
+    "UCY9AEaM4KCBMvlFJRBRGdmg",
+    "UCFiC4x6D8kkelYA6zy9WNWA",
+    "UCPgxApI7_YLajz1xF3HWNUA",
+    "UCMmNMSfdJa2cZ0a7OBO5gVg",
+    "UCTePi1UmBPOFf-NiwEH9jEA",
+    "UCIDwx9H5xHDenCjUCabJW8g",
+    "UC-dyj1LYez67gXCeFS1XIqQ",
+    "UCUwW6houCzdcaESFfg2r_-A"
+  ],
+  "creators": [
+    {
+      "channel_id": "UC5WVOWOqrFVEDscIOmB8zQA",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UCnZWFiZOtbKPWkRVSqhnJ8A",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCenlJVC54Hn4h5WsGH5t_IA",
+      "title": "Arthur Lifestyle",
+      "description": "The first African to create hunting content in Africa.\nI'm here to share my unique lifestyle and adventure with you. \n I do Street foods \ud83c\udf71 , cooking and eating different food, experience different cultures and traditions across the world \ud83c\udf0d Let's explore together. \n\nINSTAGRAM: @Arthurfm007\nTwitter: @Arthurfm007\nSnapchat: @Arthurfm007\nFacebook Page: @Arthurfm007\n\nFor support, business or sponsorships deals, you can email me at arthurfemi007@gmail.com\n\n",
+      "account_year": 2017,
+      "subscriber_count": "Unknown",
+      "business_email": [],
+      "emails": [
+        "arthurfemi007@gmail.com"
+      ],
+      "contact_source": "description",
+      "contact_status": "captcha",
+      "socials": {},
+      "region_searched": "United States",
+      "niches_matched": [
+        "Vlogs",
+        "Talking Head",
+        "Lifestyle"
+      ],
+      "found_at": "2026-09-24T19:39:44.985036"
+    },
+    {
+      "channel_id": "UCVLc84Xkn2IaCLmKNDFOvYQ",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UCHxjqzF8Ut8-YubTNdtLl0A",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCJO_e4RNeSvSOhPa-MYIS7g",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UCvFzH2bmtmNVYeH24Kh9c2A",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UC-ufPBhSFrScmNqUu6pixlQ",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UCJWsBzOEiJ6MnnVT8Cjnz4A",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UCX2B5J5ndsZTlXccUnJCblw",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UCoaVcvf7F9CBpw9g0ib1ANg",
+      "title": "Lamah\u2019s Lifestyle",
+      "description": "I make reviews about a lot of product for skincare brands. \nMy love for skincare is compared to non and I also would love you to join me in this . For collaborations, send a mail. \n\nEmail-shalomlamah@gmail.com\nInstagram-salaam_______\n",
+      "account_year": 2020,
+      "subscriber_count": "Unknown",
+      "business_email": [],
+      "emails": [
+        "email-shalomlamah@gmail.com"
+      ],
+      "contact_source": "description",
+      "contact_status": "captcha",
+      "socials": {},
+      "region_searched": "United States",
+      "niches_matched": [
+        "Vlogs",
+        "Talking Head",
+        "Lifestyle"
+      ],
+      "found_at": "2026-09-24T19:40:51.526720"
+    },
+    {
+      "channel_id": "UCc2OTK1fOFlb5-srhJyfL8g",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCtbo77GKOAaCMCUrEhoY-9Q",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UC_8TsPcQ3cTarjhYojvPVjA",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UCvcQvyWfXqdp2iTFi77-LkA",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UC--ykBEq6iG0DKfrOmK5qAg",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UCOw3fbA2nD_g5U57BSAWWMg",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UCtdA-aw9mKFluSFoIT92wWw",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UCt4-1ksmj9hq-ap41MR_1yg",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UCN4-Pv5r5Uik3kUbUXiy6GA",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCY2Ni2GFlbdDQ4_LD0J7mKg",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UCAcFTiYOpmQdCh76YgfiWOw",
+      "title": "Vlogs With Offy",
+      "description": "Welcome to my channel \u2014 your go-to hub for global job opportunities, visa sponsorship updates, and remote work you can do from anywhere, including Africa.\n\nOn this channel, I share:\n\t\u2022\tRemote jobs anyone can do from anywhere in the world\n\t\u2022\tHealthcare, caregiving, and support roles with visa sponsorship\n\t\u2022\tJob opportunities in the UK, Canada, Australia, Europe, and beyond\n\t\u2022\tImmigration and visa updates affecting global job seekers\n\t\u2022\tPractical tips on job applications, work visas, and relocatio",
+      "account_year": 2020,
+      "subscriber_count": "Unknown",
+      "business_email": [],
+      "emails": [
+        "inspiredbyoffy@gmail.com"
+      ],
+      "contact_source": "description",
+      "contact_status": "captcha",
+      "socials": {},
+      "region_searched": "United States",
+      "niches_matched": [
+        "Vlogs",
+        "Talking Head",
+        "Lifestyle"
+      ],
+      "found_at": "2026-09-24T19:42:11.244488"
+    },
+    {
+      "channel_id": "UCSIf69tvkDzGDUpoy7hOEJw",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCDzjnzQjgyyu_8R_MuSYqzA",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UCG1iYPPiDKAXvpLHHEq7QsA",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCxOQ_mWZWZz5MEnMI5hZAYw",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UCAOM-tMQA8LHD947vZ8mvOA",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UChbtuzj4aorDgcRIa1jzepQ",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UCVzuCrhVoIYdklGjq4suBqw",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCt_KDu-DtBqvIw7X-V7mlmQ",
+      "title": "Pari's Lifestyle",
+      "description": "Hello friends, I am Pari and this account is all about fun Masti and Entertainment Purposes. We have 12+ Million Subscribers on YouTube. Active in video creations on fun, Family drama, comedy, challenges, moral stories Brand Collaboration and much more.  \n\nIf you love YouTube Shorts videos, then you should check out Pari's Lifestyle Shorts on YouTube. Link in the below! Go Check it!\nhttps://www.youtube.com/channel/UCWBf_sbrlRFb0PgSPC3mXNA\n\nThanks a lot for showing so much love to our channel so ",
+      "account_year": 2018,
+      "subscriber_count": "Unknown",
+      "business_email": [],
+      "emails": [
+        "business@priss-ent.com"
+      ],
+      "contact_source": "description",
+      "contact_status": "captcha",
+      "socials": {
+        "instagram": [
+          "parislifstyle"
+        ]
+      },
+      "region_searched": "United States",
+      "niches_matched": [
+        "Vlogs",
+        "Talking Head",
+        "Lifestyle"
+      ],
+      "found_at": "2026-09-24T19:43:26.878305"
+    },
+    {
+      "channel_id": "UC14QjW0CSf_-P0m4-T_zAEQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCldEdX5My_I9dN_xj2CowaQ",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UCrMFll_sQ3WwW9c8ntzDTYA",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UCt3Gw0v8E_Y2lju_DE_qa_Q",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCj2IBZNYpt9-2mIfTU_epCg",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCrk5vJt8d6Glda6wCBxn_vw",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UCCmr_pJ7az1JfWUiujsiHWg",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCEqidDpJYqrYOlG44aq68-A",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UCemV7QL3iM-YEEFaXg32E6g",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UCvQagFNHMrGgQpYunk4rHXg",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCzZiparM1drXqoWp7bhIpZw",
+      "title": "Buddy Son Storytime",
+      "description": "It's story time! Reading new and classic popular kids books together, brought to life with cool graphics, sound effects, and music!\n\n\ud83d\udc3c Whether our kids are babies, toddlers, or those big enough for amusement park rides, reading time should never be boring!  \n\n\u2013 Add our book reading videos to your kids' playlists\n\u2013 Morning or bedtime, we have book readings for all moods\n\u2013 Some stories are fairy tale classics, while others have amazing messages, such as \"I Like Myself\"\n\u2013 Whatever the content, be a",
+      "account_year": 2020,
+      "subscriber_count": "Unknown",
+      "business_email": [],
+      "emails": [],
+      "contact_source": "none",
+      "contact_status": "captcha",
+      "socials": {
+        "instagram": [
+          "buddysonstorytime"
+        ]
+      },
+      "region_searched": "United States",
+      "niches_matched": [
+        "Vlogs",
+        "Talking Head",
+        "Lifestyle",
+        "Editorial/Commentary",
+        "Commentary",
+        "Storytime",
+        "Daily Vlogs"
+      ],
+      "found_at": "2026-09-24T19:47:45.359095"
+    },
+    {
+      "channel_id": "UCAlOSF3Lb1mZTnHyrxGcHKQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCs4eUmf6EN8RfIRNLZ-MzuA",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UCAwIKJ84zBsiuuy9DVR13mA",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UC_8ioOYtSmkhr5jdUblI9gg",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UC-kASoAaKMhUqBMO7cogVxg",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UCbnbANjBfR4Ab6Z03SuS1kQ",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UCKjH-gcehWiPCzmM3Cf6yhQ",
+      "title": "Editorial & Emmy's Family",
+      "description": "Hi my name is Edith am a married woman with adorable kids, we show our lifes and how we live in Nigeria.\n\nwe make lifestyle video product reviews HAIR REVIEW and other family related videos. we love and appreciate all our Subscribers.\nwe say thank you for watching us\n\nplease SUBSCRIBE to our channel\n\nfollow me on \ninstagram  @is-editorial\ntwitter         @editorialin\nfacebook    editorialmakeup\nsnapchat    editorial4\n\nfor Hair review contact me edithjude45@gmail.com\nInstagram @is_editorial ",
+      "account_year": 2013,
+      "subscriber_count": "Unknown",
+      "business_email": [],
+      "emails": [
+        "edithjude45@gmail.com"
+      ],
+      "contact_source": "description",
+      "contact_status": "captcha",
+      "socials": {},
+      "region_searched": "United States",
+      "niches_matched": [
+        "Vlogs",
+        "Talking Head",
+        "Lifestyle",
+        "Editorial/Commentary",
+        "Commentary",
+        "Storytime",
+        "Daily Vlogs"
+      ],
+      "found_at": "2026-09-24T19:48:50.586850"
+    },
+    {
+      "channel_id": "UC1Iu0euH9VNJjCznloWkBlg",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCpSfFGF4jTBIHUyHALF375w",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UCYaEHKGOzuLyuKKoVu47vGw",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UCH_XMDSC8K696kE6I0x5D8Q",
+      "title": "Fayssal Vlog",
+      "description": "Snapchat    : FayssalVlog\nPage FB      :  https://www.facebook.com/FayssalVlog/\nProfil FB      :  https://www.facebook.com/FayssalElouasli\nGroupe FB  :  https://www.facebook.com/groups/356858278021595/\nInstagrame :  https://www.instagram.com/fayssal_vlog/\nTwitter         :  https://twitter.com/Fayssal_Vlog\nGmail           : fayssalelouasli1@gmail.com\n\u0647\u0630\u0647 \u0627\u0644\u0642\u0646\u0627\u0629 \u062a\u0639\u0645\u0644 \u0639\u0644\u0649 \u062a\u0648\u0641\u064a\u0631 \u0623\u0641\u0636\u0644 \u0645\u0634\u0627\u0631\u0643\u0629 \u0644\u0644\u0641\u0644\u0648\u063a\u0627\u062a \u0648 \u0627\u0643\u062a\u0634\u0627\u0641 \u0623\u0645\u0627\u0643\u0646 \u062c\u062f\u064a\u062f\u0629 \u0648\u0627\u0644\u062a\u0635\u0648\u064a\u0631 \u0627\u0644\u0641\u0648\u062a\u0648\u063a\u0631\u0627\u0641\u064a\nThis channel is working to provide the best Vlogging and p",
+      "account_year": 2016,
+      "subscriber_count": "Unknown",
+      "business_email": [],
+      "emails": [
+        "fayssalelouasli1@gmail.com"
+      ],
+      "contact_source": "description",
+      "contact_status": "captcha",
+      "socials": {
+        "instagram": [
+          "fayssal_vlog"
+        ],
+        "twitter": [
+          "Fayssal_Vlog"
+        ]
+      },
+      "region_searched": "United States",
+      "niches_matched": [
+        "Vlogs",
+        "Talking Head",
+        "Lifestyle",
+        "Editorial/Commentary",
+        "Commentary",
+        "Storytime",
+        "Daily Vlogs"
+      ],
+      "found_at": "2026-09-24T19:50:06.630849"
+    },
+    {
+      "channel_id": "UCAzXqFoW1Y7KDqwZ1x5m9EA",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCLl-Zh36_GW1K-vyW0Qhdmg",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UCFqoVdMCA3ZgR57XRzWsqfg",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UChHp00OD-9vV_CCpo27Ei1Q",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UCEPsNDUhUm-7yZhUjQQNqwQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCU6gxouTSUknj-Nqe0cYNgQ",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UC2F_y-9S3qKAqgrM6P7q3QA",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UCK9saDF-5hvkWN7zc2Y5IJA",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCHCywgKu_QQhKyRnlzUaJjA",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UCeCAulVywiRNBLv-VgT6Ejw",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCEbMymWcvxm4d4G3SCXO5ug",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UCNPO6LQj_3Px2RgbKjYYA-g",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UCfd5xMoyaknmtlNUbd5sTKw",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UCy88ZZBMMC24fbk8El0z8Ag",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCKR95wUzI9UPG_pLfm4ehYg",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCfT-6VFvgdC2wTkjITSTGyg",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCwfTfOPQw7Wszk_gOBr77YA",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCOps5_6IGFNcC4nY6t_2AoQ",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UCNR06PEAvBj_siYZCBtk1hw",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UC3D2R6is17xN5_NBpJrlv-A",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UCOcIy273cXvYxY1ecakIqbQ",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UChEh3KfCnULNbbNqjyetX0w",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UCHvvw6dmXCYzKuc5nPF86WQ",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UC64lU1RB1ROSyTD2ET7vAIA",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UCOqnAEejGqVwzTBOVz9DhZA",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCccUOsMDVKadNgq2cQeR-Dw",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UCGACyhKF6cqGsbwTZfjlH1Q",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UCHEI9UfqpLk6u4xrh0efGNg",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UCbqVxtjS0NVRcfBH27_GtEA",
+      "title": "Editorial Natural Beauty556",
+      "description": "hey you are welcome to my channel. my name is Edith. i love natural beauty, when i was a little kid my grand mum has always taught me the important and application of natural things and the health benefit. so i have always loved and used them on my skin and body. and decided to share my knowledge with you. i hope you find my videos helpful and interesting.\n\nplease share my videos to your friends and family because you might never know when they would need them and it would or might also be very ",
+      "account_year": 2016,
+      "subscriber_count": "Unknown",
+      "business_email": [],
+      "emails": [
+        "edithjude45@gmail.com"
+      ],
+      "contact_source": "description",
+      "contact_status": "captcha",
+      "socials": {},
+      "region_searched": "United States",
+      "niches_matched": [
+        "Vlogs",
+        "Talking Head",
+        "Lifestyle",
+        "Editorial/Commentary",
+        "Commentary",
+        "Storytime",
+        "Daily Vlogs"
+      ],
+      "found_at": "2026-09-24T19:56:15.900821"
+    },
+    {
+      "channel_id": "UCKCXjoAtFJ33Dawfp5kOu7Q",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UC8E1G3rFdzqgu5V2txKr9Ew",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCMY9B75rHzv8MTIgrv2WJ8g",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCU-4n0wHbEhRH2aJfXsqM8A",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCW5p-tnyw8s8_n9uBLsGI_Q",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCl-ExzMH0h70FJhvPmP6DyQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCTCXcwXtG3TXXD07agJZY8g",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCDm4c3jQ4GeTgKpbIFtUd4Q",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UClEpnvy5woy7_FvD15_vSdw",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCwczI0_-MmczhLPtzTKxOMA",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UCZe0-J0sS-p-ZyubFgUvEeA",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCgnAeJvjVzZHM_ZVGjekrKg",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UCtZyv37TtBU0MRDAFYnlCiw",
+      "skipped": true,
+      "reason": "too_new"
+    },
+    {
+      "channel_id": "UCZB_HoyO9HqS-H6oP44djSA",
+      "handle": "@AsyDarlynVlogs",
+      "title": "AsyDarlyn Vlogs",
+      "description": "Hi Darlyns!! This is the vlog channel of Asy Darlyn. \nEnjoy\ud83d\ude0a\ud83d\ude0a\n\nBusiness/Partnerships: asydarlyn.abah@gmail.com",
+      "stats": {
+        "subscribers": "30.4k",
+        "videos": "275",
+        "views": "3,173,090",
+        "joined": "Joined 11 Jul 2022",
+        "account_year": 2022,
+        "handle": "@AsyDarlynVlogs",
+        "country": "Enjoy\ud83d\ude0a\ud83d\ude0a"
+      },
+      "business_email": [],
+      "emails": [
+        "asydarlyn.abah@gmail.com"
+      ],
+      "contact_source": "description",
+      "contact_status": "no_reveal_button",
+      "socials": {},
+      "region_searched": "United States",
+      "niches_matched": [
+        "Vlogs",
+        "Talking Head",
+        "Lifestyle",
+        "Editorial/Commentary",
+        "Commentary",
+        "Storytime",
+        "Daily Vlogs"
+      ],
+      "found_at": "2026-09-24T20:21:21.464728"
+    },
+    {
+      "channel_id": "UCIsvomXQNyFRjpAP_GyWI-Q",
+      "handle": "@TselmegVlog",
+      "title": "Tselmeg Vlog",
+      "description": "IG: @b_munkhtselmeg \ud83d\udc49https://www.instagram.com/b_munkhtselmeg?igsh=MTlxcWF1YW5pY255MA%3D%3D&utm_source=qr\n\nFB: \u041c\u04e9\u043d\u0445\u0446\u044d\u043b\u043c\u044d\u0433 \u0411\u0430\u044f\u0440\u0445\u04af\u04af \ud83d\udc49 https://www.facebook.com/profile.php?id=100006884325921\n\n\u0411\u04af\u0442\u044d\u043d \u0431\u0438\u0447\u043b\u044d\u0433\u044d\u044d \u043e\u0440\u0443\u0443\u043b\u0434\u0430\u0433 FB page: Tselmeg Vlog \ud83d\udc49 https://www.facebook.com/profile.php?id=61572033955791\n\nX twitter: @b_munkhtselmeg\n\n",
+      "stats": {
+        "subscribers": "293k",
+        "videos": "79",
+        "views": "39,339,914",
+        "joined": "Joined 13 Jan 2025",
+        "account_year": 2025,
+        "handle": "@TselmegVlog",
+        "country": "View email address"
+      },
+      "business_email": [],
+      "emails": [],
+      "contact_source": "none",
+      "contact_status": "no_email_shown",
+      "socials": {
+        "instagram": [
+          "b_munkhtselmeg"
+        ]
+      },
+      "region_searched": "United States",
+      "niches_matched": [
+        "Vlogs",
+        "Talking Head",
+        "Lifestyle",
+        "Editorial/Commentary",
+        "Commentary",
+        "Storytime",
+        "Daily Vlogs"
+      ],
+      "found_at": "2026-09-24T20:21:21.471122"
+    },
+    {
+      "channel_id": "UC5BeiLERySzIWe_aoozgACg",
+      "handle": "@sussycakesrecipes",
+      "title": "Sussy's Vlog",
+      "description": "Welcome to Sussy's Vlog!\n\nIf you're passionate about Web3, Remote jobs, Cryptocurrency, Airdrops, Online income, and No-fail commercial Recipes , you're in the right place.\n\nOn this channel, I share step-by-step tutorials, honest reviews, and beginner-friendly guides to help you discover legitimate earning opportunities in the digital economy. \n\nYou'll also find premium tutorials on no-fail commercial recipes, including beverages and food products you can turn into profitable businesses.\n\nWhat you'll find here:\n\u2022 Web3 & Crypto Tutorials \n\u2022 Airdrops & Testnets \n\u2022 Online Money-Making Opportunities \n\u2022 Remote Job Tips \n\u2022 Crypto Trading Basics \n\u2022 No-Fail Commercial Recipes \n\nNew videos are uploaded regularly, subscribe and let's grow, earn, and build together! \n\n===========\n\u25cb TWITTER - https://www.twitter.com/sussanapeh\n",
+      "stats": {
+        "subscribers": "25.3k",
+        "videos": "372",
+        "views": "965,766",
+        "joined": "Joined 28 Nov 2022",
+        "account_year": 2022,
+        "handle": "@sussycakesrecipes",
+        "country": "Nigeria"
+      },
+      "business_email": [],
+      "emails": [],
+      "contact_source": "none",
+      "contact_status": "captcha",
+      "socials": {
+        "twitter": [
+          "sussanapeh"
+        ]
+      },
+      "region_searched": "United States",
+      "niches_matched": [
+        "Vlogs",
+        "Talking Head",
+        "Lifestyle",
+        "Editorial/Commentary",
+        "Commentary",
+        "Storytime",
+        "Daily Vlogs"
+      ],
+      "found_at": "2026-09-24T20:21:43.627645"
+    },
+    {
+      "channel_id": "UCcWfIz4PlZ9c9ASaq7kjlYw",
+      "handle": "@theidowufamilyvlog",
+      "title": "The Idowu family Vlog",
+      "description": "Welcome to the wonderful world of Teewhy & Akin Idowu Family \n About us:\n We are a married couple with a blended family of four children, & documenting our  journey to finding our purpose in the will of God. While revealing the dynamics of Life,  We are sharing our struggles, successes, and failures through Vlogging with you guys. We hope you are blessed by our Life\u2019s events.\n & We Hope you enjoy, please don\u2019t be a stranger,  don\u2019t be Afraid to comment Like share & subscribe,\nAlso turn on your notification bell that way you get notified each time we post a video.\nThank you so much for stopping by \ud83d\ude0d\u2764\ufe0f\n\ninstagram \nhttps://instagram.com/deliteewhy?igshid=YmMyMTA2M2Y=\n",
+      "stats": {
+        "subscribers": "11.3k",
+        "videos": "453",
+        "views": "1,649,261",
+        "joined": "Joined 2 Aug 2019",
+        "account_year": 2019,
+        "handle": "@theidowufamilyvlog",
+        "country": "United States"
+      },
+      "business_email": [],
+      "emails": [],
+      "contact_source": "none",
+      "contact_status": "no_reveal_button",
+      "socials": {
+        "instagram": [
+          "deliteewhy"
+        ]
+      },
+      "region_searched": "United States",
+      "niches_matched": [
+        "Vlogs",
+        "Talking Head",
+        "Lifestyle",
+        "Editorial/Commentary",
+        "Commentary",
+        "Storytime",
+        "Daily Vlogs"
+      ],
+      "found_at": "2026-09-24T20:21:43.631440"
+    },
+    {
+      "channel_id": "UC1eZ8lzgyG3wJ3DnETdHPQA",
+      "handle": "@jefffamilyvlogindiatoNigeria",
+      "title": "Jeff Family Vlogs India to Nigeria ",
+      "description": "\ud83d\udccd Indian \u2708\ufe0f \ud83d\udccdNigeria \nhi everyone \nI'm anju jeff ki dulniya\ud83d\udc70 form India \ud83c\uddee\ud83c\uddf3 guys you watching every day my Vlogs kabhi Khushi \ud83d\ude06toh Kabhie Gham\ud83d\ude0c\nsametime happiness \ud83d\ude0a so sametime sadness \ud83d\ude22 vlogs\ud83d\udcf7, hope you guys enjoy my video \ud83d\udcf7\n\n\ud83c\udfe6account number:5075944707\nname: Jeff ese Richard \n USD account\ud83d\udcb5\nBank Swift code : ZEIBNGLA\nBank name : ZENITH BANK PLC\n\nName anju lal \nAccount =50100345252003\nIFSC code HDFC0004171\nHDFC bank \n \n\n\nFor Collaboration Mail \ud83d\udc8c for me \nrichardjeffese@gmail.com\n\nfollow me Instagram \ud83d\udc47\ud83c\udffc https://www.instagram.com/favou_r6719?igsh=Zzlob3R3bHA0dDI4\nFacebook \ud83d\udc47\ud83c\udffchttps://www.facebook.com/share/1A3F2bGcx5/\n\n26 4  2026 =4k \n30 8 2026  =5k",
+      "stats": {
+        "subscribers": "5.4k",
+        "videos": "687",
+        "views": "2,205,864",
+        "joined": "Joined 24 Jul 2024",
+        "account_year": 2024,
+        "handle": "@jefffamilyvlogindiatoNigeria",
+        "country": "View email address"
+      },
+      "business_email": [],
+      "emails": [
+        "richardjeffese@gmail.com"
+      ],
+      "contact_source": "description",
+      "contact_status": "captcha",
+      "socials": {
+        "instagram": [
+          "favou_r6719"
+        ]
+      },
+      "region_searched": "United States",
+      "niches_matched": [
+        "Vlogs",
+        "Talking Head",
+        "Lifestyle",
+        "Editorial/Commentary",
+        "Commentary",
+        "Storytime",
+        "Daily Vlogs"
+      ],
+      "found_at": "2026-09-24T20:22:08.554320"
+    },
+    {
+      "channel_id": "UCpzfaDo602B2yA8C3SERCKw",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCHDQOZjxuSm0-LgLQtMeCqw",
+      "handle": "@DimpleMalhanVlogs",
+      "title": "Dimple Malhan Vlogs",
+      "description": "dimplemalhan1969@gmail.com",
+      "stats": {
+        "subscribers": "6.97m",
+        "videos": "1,128",
+        "views": "2,518,317,795",
+        "joined": "Joined 9 Apr 2019",
+        "account_year": 2019,
+        "handle": "@DimpleMalhanVlogs",
+        "country": "View email address"
+      },
+      "business_email": [],
+      "emails": [
+        "dimplemalhan1969@gmail.com"
+      ],
+      "contact_source": "description",
+      "contact_status": "captcha",
+      "socials": {},
+      "region_searched": "United States",
+      "niches_matched": [
+        "Vlogs",
+        "Talking Head",
+        "Lifestyle",
+        "Editorial/Commentary",
+        "Commentary",
+        "Storytime",
+        "Daily Vlogs"
+      ],
+      "found_at": "2026-09-24T20:22:26.676518"
+    },
+    {
+      "channel_id": "UCr84p-YTbRTlIBrB7Z2_MZg",
+      "handle": "@SHARIKAVLOGS",
+      "title": "SHARIKA VLOGS",
+      "description": "HI IM SHARIKA,I STARTED A VLOG NAMED AS SHARIKA VLOGS SHARING MY TRAVEL EXPERIENCES AND ALSO DRESSES WHICH I DESINED MY OWN AND MAKE UP TIPS .ETC  TO STAY ON THIS JOURNEY I NEED ALL YOUR SUPPORT. PLEASE DO SUBSCRIBE MY CHANNEL\n\nFOLLOW ME ON  ; YOUTUBE,INSTAGRAM \nINSTAGRAM;https://www.instagram.com/sharika_vlogs\nDISCLAIMER ; INFORMATION PROVIDED IN THIS CHANNEL AND VIDEO IS FOR GENERAL PURPOSEONLY DONT TAKE IT AS PROFFESIONAL ADVICE. INFORMATION PROVIDED ON THIS CHANNEL IS OUR OWN CREATIVITY AND MY OWN PERSONAL EXPERIENCE.\n\nCOPYRIGHT; ALL THE CONTENT PUBLISHING ON THIS CHANNEL IS PROTECTED UNDER THE COPYRIGHT LAW AND SHOULD NOT BE USED /REPRODUCED IN FULL OR PART WITHOUT THE CREATORS PRIOR PERMISSION .\n\n\n\n\nJOINED ON OCTOBER 14 2020\n              ",
+      "stats": {
+        "subscribers": "136k",
+        "videos": "2,996",
+        "views": "69,591,220",
+        "joined": "Joined 14 Oct 2020",
+        "account_year": 2020,
+        "handle": "@SHARIKAVLOGS",
+        "country": "FOLLOW ME ON  ; YOUTUBE,INSTAGRAM"
+      },
+      "business_email": [],
+      "emails": [],
+      "contact_source": "none",
+      "contact_status": "no_reveal_button",
+      "socials": {
+        "instagram": [
+          "sharika_vlogs"
+        ]
+      },
+      "region_searched": "United States",
+      "niches_matched": [
+        "Vlogs",
+        "Talking Head",
+        "Lifestyle",
+        "Editorial/Commentary",
+        "Commentary",
+        "Storytime",
+        "Daily Vlogs"
+      ],
+      "found_at": "2026-09-24T20:22:26.681675"
+    },
+    {
+      "channel_id": "UCXpPYepjM-YMgoL462W43FA",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCQyJiQCFAUMtwf5VijlmwpQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCMEdSEpYHuxT-IH1Xonxmkg",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCfWgt-rw72jbdE0Z67Kd0ew",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCwxV-JOEoIVk4Azmp4TQrkw",
+      "handle": "@WeldonViraaVlogs",
+      "title": "Weldon Viraa Vlogs ",
+      "description": "\u0905\u092c \u0906 \u0939\u0940 \u0917\u092f\u0947\u200c \u0939\u094b\u200c \u0924\u094b \u0938\u092c\u094d\u0938\u0915\u094d\u0930\u093e\u0907\u092c \u092d\u0940 \u0915\u0930 \u0932\u094b \u092f\u093e\u0930 \u2764\ufe0f\n\nDOSTON MERA NAAM HAI AJAYVIRAA AUR IS CHANNEL ME AAPKO MERI LIFE SE RELATIVE CHIJE DEKHNE KO MILEGIb JAISE KI\nVlogs | Travel | Lifestyle | Daily Life\nTO CHANNEL KO SUBSCRIBE JARUR KAREN \n\nNew Videos Regularly \u2013 Stay Connected, Stay Real.\n\n\ud83d\udce9Business/Collaboration:{ajayiveerachawda@gmail.com}\n\n",
+      "stats": {
+        "subscribers": "5.14k",
+        "videos": "120",
+        "views": "758,083",
+        "joined": "Joined 14 Sept 2024",
+        "account_year": 2024,
+        "handle": "@WeldonViraaVlogs",
+        "country": "India"
+      },
+      "business_email": [],
+      "emails": [
+        "ajayiveerachawda@gmail.com"
+      ],
+      "contact_source": "description",
+      "contact_status": "no_reveal_button",
+      "socials": {},
+      "region_searched": "United States",
+      "niches_matched": [
+        "Vlogs",
+        "Talking Head",
+        "Lifestyle",
+        "Editorial/Commentary",
+        "Commentary",
+        "Storytime",
+        "Daily Vlogs"
+      ],
+      "found_at": "2026-09-24T20:23:16.496404"
+    },
+    {
+      "channel_id": "UC_qCjgB_k8CR_J5l_T0JV0w",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCKvwlS24lJTxDEjbE-9A_BQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCwvHLdNXSLU-ZE8jzRKBrKw",
+      "handle": "@SujitVlogs998",
+      "title": "Sujit Vlogs",
+      "description": "Welcome to Sujit Vlogs \u2764\ufe0f\n\n\nYahan aapko milenge Mini Vlogs, Daily Life Moments, Travel, Lifestyle aur Entertainment se jude interesting videos. \ud83c\udfa5\u2728\n\nHar video mein kuch naya, real aur entertaining dekhne ko milega.\n\n\nSubscribe karke journey ka hissa zaroor bane! \u2764\ufe0f\nMilestone - 1Million \ud83d\ude0d\n\nFor Business & Collaboration: DM \ud83d\udce9\nstatusjharkhand@gmail.com\n\n#SujitMahto #MahtoVlogsSujit #MiniVlog #SujitVlogs",
+      "stats": {
+        "subscribers": "765k",
+        "videos": "140",
+        "views": "1,417,538,030",
+        "joined": "Joined 3 Jul 2024",
+        "account_year": 2024,
+        "handle": "@SujitVlogs998",
+        "country": "India"
+      },
+      "business_email": [],
+      "emails": [
+        "statusjharkhand@gmail.com"
+      ],
+      "contact_source": "description",
+      "contact_status": "captcha",
+      "socials": {},
+      "region_searched": "United States",
+      "niches_matched": [
+        "Vlogs",
+        "Talking Head",
+        "Lifestyle",
+        "Editorial/Commentary",
+        "Commentary",
+        "Storytime",
+        "Daily Vlogs"
+      ],
+      "found_at": "2026-09-24T20:23:35.372520"
+    },
+    {
+      "channel_id": "UC53uDnt6rWrqmLHNLelWLPg",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UC9tt_OBosMP3PTuwoGLY2CQ",
+      "handle": "@DViajeTravelVlog",
+      "title": "DViaje Travel Vlog",
+      "description": "Hola Mi Gente, Hey Guys! If you're new to the Channel, this is your friend Danny Carranza. I enjoy sharing local culture and travel tips so you can get the best out of my hometown, Florida, and other cities worldwide. \n\nFor Business Inquiries: danny@dviajetravelvlog.com\n\n",
+      "stats": {
+        "subscribers": "913",
+        "videos": "98",
+        "views": "261,745",
+        "joined": "Joined 12 Oct 2020",
+        "account_year": 2020,
+        "handle": "@DViajeTravelVlog",
+        "country": "United States"
+      },
+      "business_email": [],
+      "emails": [
+        "danny@dviajetravelvlog.com"
+      ],
+      "contact_source": "description",
+      "contact_status": "captcha",
+      "socials": {},
+      "region_searched": "United States",
+      "niches_matched": [
+        "Vlogs",
+        "Talking Head",
+        "Lifestyle",
+        "Editorial/Commentary",
+        "Commentary",
+        "Storytime",
+        "Daily Vlogs"
+      ],
+      "found_at": "2026-09-24T20:23:53.662058"
+    },
+    {
+      "channel_id": "UCVsYMJd8Gcv5UDO6xU60RLQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCTD-W5OLOsXYiRAdTHcIkow",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCJUXqfE6-Ru2qapWULLkM9g",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCIUqYxknD8COo_TX9cvGvmQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UConnM5zwOP9vG_LPTYbRsAg",
+      "handle": "L%C3%A2mVlog",
+      "title": "L\u00e2m Vlog",
+      "description": "Nh\u1ea5n \u0110\u0103ng K\u00fd \u0111\u1ec3 nh\u1eadn th\u00f4ng b\u00e1o khi k\u00eanh ra video m\u1edbi nha \ud83c\udf89\n\n\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\u2014\n\nK\u00eanh c\u1ee7a m\u00ecnh chuy\u00ean l\u00e0m c\u00e1c video mang t\u00ednh gi\u1ea3i tr\u00ed nh\u01b0: Tr\u00f2 ch\u01a1i, du l\u1ecbch, review, \u0103n u\u1ed1ng, ch\u1ebf t\u1ea1o, tr\u1ea3i nghi\u1ec7m, th\u1eed nghi\u1ec7m, th\u1eed th\u00e1ch.\n\n\u2192 \u0110\u0103ng k\u00fd k\u00eanh \u0111\u1ec3 \u1ee7ng h\u1ed9 m\u00ecnh l\u00e0m th\u00eam nhi\u1ec1u video nh\u00e9: https://goo.gl/M1x1oB (Mi\u1ec5n ph\u00ed)\n\n\u2192 Facebook: https://www.facebook.com/vuhuy1990\n\n\u2192 Page Facebook: https://www.facebook.com/LamVlog\n\n\u2192 Tiktok: https://www.tiktok.com/@lamvlog\n\n\u2192 Li\u00ean h\u1ec7 Qu\u1ea3ng C\u00e1o:  ChauNguyen@LamVlog.com (Mrs. Ch\u00e2u)",
+      "stats": {
+        "subscribers": "11.3m",
+        "videos": "765",
+        "views": "4,713,836,199",
+        "joined": "Joined 12 Mar 2016",
+        "account_year": 2016,
+        "country": "Vietnam"
+      },
+      "business_email": [],
+      "emails": [
+        "chaunguyen@lamvlog.com"
+      ],
+      "contact_source": "description",
+      "contact_status": "captcha",
+      "socials": {
+        "tiktok": [
+          "lamvlog"
+        ]
+      },
+      "region_searched": "United States",
+      "niches_matched": [
+        "Vlogs",
+        "Talking Head",
+        "Lifestyle",
+        "Editorial/Commentary",
+        "Commentary",
+        "Storytime",
+        "Daily Vlogs"
+      ],
+      "found_at": "2026-09-24T20:24:51.510977"
+    },
+    {
+      "channel_id": "UCzvVc1Z7Wx9k9NcC0xxU2sA",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCas9Q067svtwSCCvfI80P9w",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UC5QIXj79RH9gweneXaI7YTQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCTFMGAnyLQ64TnMJ8zh_cXw",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCv_v8ZDWBfFNp1vazyGDEsw",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCj-rTz8R4pOP-oQp0ChbCSg",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCQS4lUBJPmeY1Sh4QZLOdIQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCohhSYCJQjsDZhSyS20nXyg",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UC95mqTX0s0n7QAMDQQbTgHA",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCWARqjmzHw4mx7Lvl6TuIxw",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCF-n4wbh7RNqBtj4_0iLZDg",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCxhHOARZrY12MQnUfYK3oiA",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCPC5uLbuJSJAR3YZBUM1cDw",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCCIcMMb1up1X-KOIzN2TK6w",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCRmk7IkQs9tKwKN-EBc5gpQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCUs4Uf5yrEx9ivzjn6iMSKQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UC-Xdbggh3soS52GbhpgCk5A",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCti3-ioUcKxKa2FJBuuf7tQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCpIHEFtPsVJbPXqZIQKub5g",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UC1RGVW4RpOWaliakbu5LFUA",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCzlRMg1i9-tHJuuIOTEFjcg",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UC543A7ApjgOTW0RBofHoyKQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCZPBD56o1-zzINX6XYHTywg",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCAk91B6CMEjEKM158wh5mZA",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UC_4BwsVjUvqV0ePboDTk6vg",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCr_DLOG2b8G9g6UOsuNImFg",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCGMjz3p7wHJbSq9XE--hlGw",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCU1G8anGNH8z8pzIuOuKb4w",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCoPBy4H04bx6oJo6MAXuTRQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCFtdVVfiZU_s3XZC2wSHCYA",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UChI-cTok8fJePnryAd0mTvQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UChIX_832DCEWUXXzlC-JmGw",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UC8GRLDtr12b91BhGq-x92Zg",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCRzBNJTsBe2rq6pkyXeaj1A",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UC4AeFMIWZ8iulMOe1GDz1LQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCJSHfhZHP8-iChAVCrXWTyA",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCeGa-vSdaxefW7sWtkV_K6A",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCVB78-e5DFsp0c-O6lyCSuA",
+      "handle": "@Ofurelifestlye",
+      "title": "Ofure lifestyle ",
+      "description": "\n\nWelcome to OfureLifestyle! \ud83d\ude0a\n\n\n       OfureLifestyle, explore the beautiful blend of lifestyle, food, fashion, beauty, and motivation \u2014 everything that makes life richer, tastier, and more inspiring. \ud83c\udf38\n\n      From delicious recipe videos \ud83c\udf73, food reviews \ud83c\udf54, and kitchen moments \ud83c\udf72 to style inspiration, personal growth, and everyday motivation \u2014 this \nchannel celebrates authentic living in every form.\n\n        I\u2019m open to brand collaborations, sponsorships, and partnerships with food, lifestyle, fashion, and beauty brands that align with my vision.\n\ud83d\udce9 For business inquiries, sponsorships, or collaborations:\nEmail: ogbejeleofure@gmail.com\n\ud83d\udcf1 WhatsApp / Call: 08178611393\n\u2728 Subscribe now and join the OfureLifestyle family \u2014 where good food, good vibes, and authentic living come together! \n\nCheers \ud83e\udd42 \n\u270d\ud83c\udffeUnderstanding Jobless Housewife\n\n",
+      "stats": {
+        "subscribers": "52.2k",
+        "videos": "1,839",
+        "views": "35,026,606",
+        "joined": "Joined 26 Jan 2022",
+        "account_year": 2022,
+        "handle": "@Ofurelifestlye",
+        "country": "Nigeria"
+      },
+      "business_email": [],
+      "emails": [
+        "ogbejeleofure@gmail.com"
+      ],
+      "contact_source": "description",
+      "contact_status": "captcha",
+      "socials": {},
+      "region_searched": "United States",
+      "niches_matched": [
+        "Vlogs",
+        "Talking Head",
+        "Lifestyle",
+        "Editorial/Commentary",
+        "Commentary",
+        "Storytime",
+        "Daily Vlogs"
+      ],
+      "found_at": "2026-09-24T20:30:19.594409"
+    },
+    {
+      "channel_id": "UCoQuz1rXEDzIuwtfB51GVdg",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCXLF9TtiafYLPN9tW04Pe4g",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UC3t2vokRYoLni0FLOGKFrbw",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCGiHKGDXJ27iQM33TtiUhqQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UC4gDBTG2BMuiwJp_Fe2i_2w",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UC5cXfhiMFgws1Yf9SpUeSjg",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCR1GuiIaEiaqaWp20PT5K8w",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCBHVFkw2RzNZ4oPLVxIzR-A",
+      "handle": "@Peculiars_Lifestyle0",
+      "title": "Peculiars Lifestyle",
+      "description": "\ud83c\udfac Heyy y\u2019all! Welcome to my channel!\nI\u2019m Peculiar, an upcoming YouTuber, and I\u2019m so excited to have you here! \ud83d\udc95\n\nHere, you\u2019ll find Lifestyle Vlogs, Wigs, GRWM, Travels, Fashion, Beauty, and so much more!\n\nFollow me on socials:\n\u2728 Instagram: @peculiars_lifestyle\n\u2728 TikTok: @peculiarslifestyle\n\u2728 Snapchat: @peculiar_0\n\nMake sure you smash that like button, turn on post notifications, and most importantly, SUBSCRIBE to my channel so you don\u2019t miss any fun content! \ud83e\udd79\ud83d\udc96\n\nFor sponsorships/ collaborations/ gifts:\nPeculiarslifestyle@gmail.com\n",
+      "stats": {
+        "subscribers": "150",
+        "videos": "36",
+        "views": "25,297",
+        "joined": "Joined 27 Jan 2026",
+        "account_year": 2026,
+        "handle": "@Peculiars_Lifestyle0",
+        "country": "For sponsorships/ collaborations/ gifts:"
+      },
+      "business_email": [],
+      "emails": [
+        "peculiarslifestyle@gmail.com"
+      ],
+      "contact_source": "description",
+      "contact_status": "no_reveal_button",
+      "socials": {},
+      "region_searched": "United States",
+      "niches_matched": [
+        "Vlogs",
+        "Talking Head",
+        "Lifestyle",
+        "Editorial/Commentary",
+        "Commentary",
+        "Storytime",
+        "Daily Vlogs"
+      ],
+      "found_at": "2026-09-24T20:31:31.157066"
+    },
+    {
+      "channel_id": "UCtT6_TBc6i0HSAr_OTcBOhw",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCreXCwemQaqhsNFOqJohMuw",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCpkmMlmTwDHvSETxED0U0gg",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UC4ml45LbO7yctYCXWizR3zg",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UC3wClbxi2_GDsIcyxj6kr-A",
+      "handle": "@vanessaelifestyle",
+      "title": "Vanessa Lifestyle",
+      "description": "Hii everyone I\u2019m Vanessa:) \n\nNew video!! every Sunday at 12pm\u2728\n\n\ud83d\udc8c vanessa@unitedtalentmgmt.com\n\n~ Just a girl who loves to create videos and have fun. Subscribe to join the family \ud83e\udd0d. \n\n* Snapchat : @vanessallife \n* TikTok: @vanessaelifestyle\n* Instagram: @vanessalifestylee\n\n~ Check out all my other social media and join the VanFam\ud83e\udd73",
+      "stats": {
+        "subscribers": "4.55k",
+        "videos": "1,802",
+        "views": "2,203,145",
+        "joined": "Joined 30 Jun 2023",
+        "account_year": 2023,
+        "handle": "@vanessaelifestyle",
+        "country": "United States"
+      },
+      "business_email": [
+        "vanessa@unitedtalentmgmt.com"
+      ],
+      "emails": [
+        "vanessa@unitedtalentmgmt.com"
+      ],
+      "contact_source": "revealed",
+      "contact_status": "revealed",
+      "socials": {},
+      "region_searched": "United States",
+      "niches_matched": [
+        "Vlogs",
+        "Talking Head",
+        "Lifestyle",
+        "Editorial/Commentary",
+        "Commentary",
+        "Storytime",
+        "Daily Vlogs"
+      ],
+      "found_at": "2026-09-24T20:32:17.624075"
+    },
+    {
+      "channel_id": "UCg8ofhdY0Ef6oQnxbgUzi1g",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCN-XRCpuo-wZ07UbMgwRkzQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCAEh1aERhPpBtM4MMnvPFGA",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCbYSabUYDdvoAuLKa_qD0qA",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCUnT7ORgS5kw0DBqWId9ETQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCCBWxYnnl6ILRkiGi3kmsTg",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCytYCbI94qjZDicBIjXiFEQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCHNWGVo2_Neeh9qAKAQX17g",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UC1V85DmM_y68V5vyPyZnIbQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCSPIlcbvTok7_sNYCU5fmCg",
+      "handle": "@EditorialNews24",
+      "title": "Editorial News24 Global",
+      "description": "In this channel, we upload the most surprising things in the world. So if you like these subscribe, stay tuned.\n\n\nJoin with us:\nFB : https://www.facebook.com/editorialnews24/\nInstagarm: https://www.instagram.com/editorialnews24/\nLinkedin : https://www.linkedin.com/company/editorialnews24/\nTwitter : https://www.twitter.com/editorialnews24/\n\n\n==================\n\nThis channel may use some copyrighted materials without specific authorization of the owner but the contents used here fall under the \u201cFair Use\u201d\nCopyright Disclaimer under Section 107 of the Copyright Act 1976, allowance is made for \"fair use\" for purposes such as criticism, comment, news reporting, teaching, scholarship, and research. Fair use is a use permitted by copyright statute that might otherwise be infringing. Non-profit, educational, or personal use tips the balance in favor of fair use.\n\n\nFor any copyright issue contact here: \neditorialnews24bd@gmail.com\n",
+      "stats": {
+        "subscribers": "3.04k",
+        "videos": "318",
+        "views": "88,203",
+        "joined": "Joined 3 Sept 2024",
+        "account_year": 2024,
+        "handle": "@EditorialNews24",
+        "country": "Bangladesh"
+      },
+      "business_email": [],
+      "emails": [
+        "editorialnews24bd@gmail.com"
+      ],
+      "contact_source": "description",
+      "contact_status": "captcha",
+      "socials": {
+        "instagram": [
+          "editorialnews24"
+        ],
+        "twitter": [
+          "editorialnews24"
+        ]
+      },
+      "region_searched": "United States",
+      "niches_matched": [
+        "Vlogs",
+        "Talking Head",
+        "Lifestyle",
+        "Editorial/Commentary",
+        "Commentary",
+        "Storytime",
+        "Daily Vlogs"
+      ],
+      "found_at": "2026-09-24T20:34:02.413893"
+    },
+    {
+      "channel_id": "UCFN3R1IUww7n0TKxUoxW2zA",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCgQL-2kYiIzrZFCkMbGwLsw",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCyh_yE2SlXsVl7bLFo8w59Q",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCNGvLinLywRRgp5iLuTvKTg",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCDee4S_kh5c5d4AkAuyghQA",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCg5v5vT399pEJPhp6PFXEvQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCNyS2jEYNo5zqqfuKgm9RRw",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCLe7RtOei4ubWWgFaZuR9Vg",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCoF1aKAD0KHKP8MXJEwAOTw",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCp7l6Z7v7UkTviSc5rQ1h8w",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCBEEFJl8e3fyIcP9prnvGyg",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCGz3dzA3WcUVygjbbJgPS9g",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCn7AHw2z_Yh1_NQc9_WydQA",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UC182x8hcuIgKHilSZMbluuw",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCDy-nTuNZH0TYpjwjW0_LcQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UC9fQuR3XRALjaIZtKGSNJcQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCBMbzQcFIQbifj3X7JeasSQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCaNRCUXzhbkDD6-ORlKY3SQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UC3G9V-yBIlQUGaQSZo-bR3Q",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCz7S5kqGuC8mWmJ-Xd6V8jA",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCynCn_oNWcY4Fs-1ZoftcPg",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCOIHT9LOaOPdQ9BdhWYXfcw",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCU2PWHbAMoGNEHjLgj_nJLA",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCgcZdud2mZ3_t1rdgjMloOg",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCYqSqbDs8J7YK37aspNadSQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCxwpZe63q-PZ3smcJ08LmjA",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UC1L2JoMpcY6MRLhFd3gg5Xg",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCExh058w31k9oQ9TDmxwxpw",
+      "handle": "@LegalEdgeTutorials",
+      "title": "LegalEdge CLAT Coaching by Toprankers",
+      "description": "If love could be measured, well - we are India's most loved CLAT prep family\u2764\ufe0fand it means more to us than you know!\n\nHere, toppers are raised with passion, ranks are chased with heart, and dreams quietly turn into NLUs.\n\nLegalEdge isn't just coaching. It's a promise we've kept for 14+ years - 1,00,000+ students mentored, 15,000+ now living their NLU dreams, and a family that's grown across 40+ cities in India.\n\n\ud83d\udcca CLAT 2026 - moments we're still smiling about:\n\ud83c\udf1f 7 in the Top 10 | 13 in the Top 20 | 29 in the Top 50 | 51 in the Top 100\n\ud83c\udfc5 9 State Toppers | \ud83c\udfc6 12 City Toppers \n     - and we're not done yet \ud83d\udc9b\n\n\u2696\ufe0f Whatever exam you're prepping for - CLAT, AILET, SLAT, MH CET, CUET Law, CULEE, LNAT, PUCET, NMIMS LAT - you've got a home here and everything that matters around your preparation.\n\nNo hype. No filters. Just people who genuinely want to see you win.\n\nCome, be part of the LEgacy. We'd love to have you. \n#CLATwithLE\n\n\ud83d\udcf2 6363286363 | \ud83d\udce7 support@toprankers.com - call us, we mean it.\ud83e\udd17\n",
+      "stats": {
+        "subscribers": "281k",
+        "videos": "7,801",
+        "views": "72,800,882",
+        "joined": "Joined 3 Jun 2017",
+        "account_year": 2017,
+        "handle": "@LegalEdgeTutorials",
+        "country": "India"
+      },
+      "business_email": [],
+      "emails": [
+        "support@toprankers.com"
+      ],
+      "contact_source": "description",
+      "contact_status": "no_reveal_button",
+      "socials": {},
+      "region_searched": "United States",
+      "niches_matched": [
+        "Vlogs",
+        "Talking Head",
+        "Lifestyle",
+        "Editorial/Commentary",
+        "Commentary",
+        "Storytime",
+        "Daily Vlogs"
+      ],
+      "found_at": "2026-09-24T20:38:11.527513"
+    },
+    {
+      "channel_id": "UCKjU3KzdbJE1EFcHVqXC3_g",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCF4YcVKLysA56hyX4pgvzXQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCZppMljNbJZkvlNMFbc3qtQ",
+      "handle": "@Hairbystargreat",
+      "title": "Hairbystargreat",
+      "description": "Hi guys welcome to my channy.\nI\u2019m star great by name.. I\u2019m a controversial hair artist based in Abuja nigeria\u2026. I\u2019m basically into editorial, avantgarde,bridal  and vogue hair styling.\n\n\nHere on my channel i creat hair content and vlogs.\n\n\nFor Business , collaborations and enquiries  Contact  ogomastargreat@gmail.com.\n\nPlease like, subscribe and turn on your notifications\u2026 tell a friend to tell a friend \ud83d\ude09\ud83d\ude0d",
+      "stats": {
+        "subscribers": "135",
+        "videos": "19",
+        "views": "50,061",
+        "joined": "Joined 24 May 2021",
+        "account_year": 2021,
+        "handle": "@Hairbystargreat",
+        "country": "Hi guys welcome to my channy."
+      },
+      "business_email": [],
+      "emails": [
+        "ogomastargreat@gmail.com"
+      ],
+      "contact_source": "description",
+      "contact_status": "no_reveal_button",
+      "socials": {},
+      "region_searched": "United States",
+      "niches_matched": [
+        "Vlogs",
+        "Talking Head",
+        "Lifestyle",
+        "Editorial/Commentary",
+        "Commentary",
+        "Storytime",
+        "Daily Vlogs"
+      ],
+      "found_at": "2026-09-24T20:38:46.714646"
+    },
+    {
+      "channel_id": "UCexm_I9iU12i9z6GuAcKQ9A",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCTuy4tk2rCoKixxdKWpg8xA",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCIQsEhgBoPDAcSMsC3Sl7jw",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UClCPDCFWwHR3_eRN8Ytwj4A",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCpsf9B_9b08xi91XcSG2Tiw",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCLc_JaGSrM2Z9LBBmVKYdQg",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCNEaV4rH5eog3zsD7ycorSg",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCigcqAcJ3lx0_oeC8mEcd_g",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCd7Ts5bAA7vConNzJfOKzbA",
+      "handle": "@digitalcommentary",
+      "title": "Digital Commentary",
+      "description": "India\u2019s Fastest Growing Entertainment, Sports & Business Content Channel\u2764\ufe0f\n\nFor collaborations and other queries please reach out to us at connect@kathaversse.com\n\n",
+      "stats": {
+        "subscribers": "963k",
+        "videos": "2,819",
+        "views": "1,257,112,010",
+        "joined": "Joined 2 Oct 2018",
+        "account_year": 2018,
+        "handle": "@digitalcommentary",
+        "country": "India"
+      },
+      "business_email": [],
+      "emails": [
+        "connect@kathaversse.com"
+      ],
+      "contact_source": "description",
+      "contact_status": "captcha",
+      "socials": {},
+      "region_searched": "United States",
+      "niches_matched": [
+        "Vlogs",
+        "Talking Head",
+        "Lifestyle",
+        "Editorial/Commentary",
+        "Commentary",
+        "Storytime",
+        "Daily Vlogs"
+      ],
+      "found_at": "2026-09-24T20:40:03.639679"
+    },
+    {
+      "channel_id": "UC-mnx3Gik-Fx_S0pXIMXBTw",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCFFImqk3FPSvKWBoturxJ7g",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCMFJeMVNFvcqX4S6ZXHQ9Nw",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCRkUVoCgsAsi8o5-bZJjAYA",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCGyT5aB62QfSEdOsyuhCzDg",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCS_cueVbhcRJ5Yypm-UgmqQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UClSsMOCOLBM8aFr1Aty-jqw",
+      "handle": "@yogiscommentary",
+      "title": "Yogi's commentary",
+      "description": "Yogiscommentry - Language should not be a burden to taste Hollywood cinemas and international movies. At least, watch English and other language movies story and review in Telugu to know more about what is happening in the cinema industry of the world. \n\n\nTo contact for copy right issues and Advertisement, Email to yyogi2506@gmail.com\n\nIf you would like to remove any movie clips i have used in my youtube channel, please send an email to yyogi2506@gmail.com and your clips will be removed immediately. We have invested lot of time and effort to raise this channel. Please don't give copyright strike, instead ask me to remove your movie clips or raise a copyright claim to get the advertisement revenue. I am happy to give the revenue to you.\n",
+      "stats": {
+        "subscribers": "12.1k",
+        "videos": "272",
+        "views": "2,561,415",
+        "joined": "Joined 16 Aug 2020",
+        "account_year": 2020,
+        "handle": "@yogiscommentary",
+        "country": "India"
+      },
+      "business_email": [],
+      "emails": [
+        "yyogi2506@gmail.com"
+      ],
+      "contact_source": "description",
+      "contact_status": "no_reveal_button",
+      "socials": {},
+      "region_searched": "United States",
+      "niches_matched": [
+        "Vlogs",
+        "Talking Head",
+        "Lifestyle",
+        "Editorial/Commentary",
+        "Commentary",
+        "Storytime",
+        "Daily Vlogs"
+      ],
+      "found_at": "2026-09-24T20:41:18.154502"
+    },
+    {
+      "channel_id": "UC-0CkA9L7_l1ORE5rUiQULA",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UC41Yin9OIFMy0s1Z5jZVZKw",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCLFyZCJ25yCZwHAMpRUXE2g",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCEXaR0-_pMnNabfuJkhao1w",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCojzRct2tm7lmO_1eskKTuQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCkyrDWyJJixsSsKo78bTAlw",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UC1gLU2KKFZ2qunPzDjLop9w",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UC1SC0EAixPdfQZHGywNk4Qw",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCAUOyuAU3OjEr5YWzoH73eg",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCQnSiRFBJ5jPc-l4u4NsMyQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCu1Oe6KBGZFWLId5rp4CbJg",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UC1mLC6Jof0CIAE56MIG7GJg",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCfwy-WP6bGFPknooLY3PPdw",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCNqZEfEGN7L7WbQYYs2wLMw",
+      "handle": "@ViiveeStorytime",
+      "title": "Viivee Storytime \ud83c\udf3a",
+      "description": "New episodes weekly \ud83c\udfac | Subscribe and don\u2019t forget to hit the notification bell so you never miss an upload.\ud83e\udd70\n\nEmail \ud83d\udce7 write2viivee@gmail.com \n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n",
+      "stats": {
+        "subscribers": "85.7k",
+        "videos": "120",
+        "views": "15,978,921",
+        "joined": "Joined 4 Dec 2023",
+        "account_year": 2023,
+        "handle": "@ViiveeStorytime",
+        "country": "Nigeria"
+      },
+      "business_email": [],
+      "emails": [
+        "write2viivee@gmail.com"
+      ],
+      "contact_source": "description",
+      "contact_status": "captcha",
+      "socials": {},
+      "region_searched": "United States",
+      "niches_matched": [
+        "Vlogs",
+        "Talking Head",
+        "Lifestyle",
+        "Editorial/Commentary",
+        "Commentary",
+        "Storytime",
+        "Daily Vlogs"
+      ],
+      "found_at": "2026-09-24T20:43:25.887342"
+    },
+    {
+      "channel_id": "UCnyqSMLCS_PdX-UG_c6ozKg",
+      "handle": "@DELIASTORYTIME",
+      "title": "DELIA STORY TIME",
+      "description": "Some stories entertain you. Some stay with you.\nDelia Story Time brings you good stories, unexpected twists, love, betrayal, mystery, and lessons you won\u2019t forget.\nCome for the story. Stay for the twist.\nNew story every week. \u2764\ufe0f\n\nFor inquiries, sponsorship, or collaborations, please email:\n\ud83d\udce9 Deliastorytime@gmail.com\n",
+      "stats": {
+        "subscribers": "44.1k",
+        "videos": "181",
+        "views": "4,068,959",
+        "joined": "Joined 5 Sept 2018",
+        "account_year": 2018,
+        "handle": "@DELIASTORYTIME",
+        "country": "Nigeria"
+      },
+      "business_email": [],
+      "emails": [
+        "deliastorytime@gmail.com"
+      ],
+      "contact_source": "description",
+      "contact_status": "captcha",
+      "socials": {},
+      "region_searched": "United States",
+      "niches_matched": [
+        "Vlogs",
+        "Talking Head",
+        "Lifestyle",
+        "Editorial/Commentary",
+        "Commentary",
+        "Storytime",
+        "Daily Vlogs"
+      ],
+      "found_at": "2026-09-24T20:43:25.897193"
+    },
+    {
+      "channel_id": "UCvFuEge63LkDeTTf3lWrRUQ",
+      "handle": "@valentinaslimeasmr424",
+      "title": "Creepypasta Storytime",
+      "description": "For questions of cooperation and advertising\ncreepyslimestory@gmail.com\n",
+      "stats": {
+        "subscribers": "233k",
+        "videos": "221",
+        "views": "5,647,640",
+        "joined": "Joined 8 Jun 2021",
+        "account_year": 2021,
+        "handle": "@valentinaslimeasmr424",
+        "country": "Montenegro"
+      },
+      "business_email": [],
+      "emails": [
+        "creepyslimestory@gmail.com"
+      ],
+      "contact_source": "description",
+      "contact_status": "captcha",
+      "socials": {},
+      "region_searched": "United States",
+      "niches_matched": [
+        "Vlogs",
+        "Talking Head",
+        "Lifestyle",
+        "Editorial/Commentary",
+        "Commentary",
+        "Storytime",
+        "Daily Vlogs"
+      ],
+      "found_at": "2026-09-24T20:43:45.387479"
+    },
+    {
+      "channel_id": "UC8sEv1jQMESDP2XBJX8lzHQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCTxDDAs23ILKPWWdekCFjsg",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCjAmujBasc0rqjKLGsyS4iQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCZb7EIOJhqbYsSkohfmpmGA",
+      "handle": "@storytimeplaytime",
+      "title": "StoryTime PlayTime - Children's Books Read Aloud",
+      "description": "Hey Lovelies, welcome to StoryTimePlayTime where children's books are read aloud! \ud83d\udcda\ud83d\udc44\ud83d\ude03\n\nI am passionate about reading to my kids, 5 and 3 year old which has allowed me to explore the world of children's literature from an entirely new perspective. My kids have learnt to love books as I read to them everyday since they were born and wanted to continue to share that experience with as many new readers as possible! I hope I can make you love to read too! \n\nJoin me as I read aloud some of my kids favorites - with funny voices and sound effects to help bring the stories to life.\n\nIf you would like to hear specific books read aloud, please send me an email to: storytimeplaytimeinfo@gmail.com\n\nDon't forget to SUBSCRIBE to my channel for a daily dose of adventure, inspiration, and laughter and make sure you like the videos so more of you can enjoy my stories! \n\nNow go put your feet up and allow me to transport your imagination... ",
+      "stats": {
+        "subscribers": "39.7k",
+        "videos": "141",
+        "views": "7,911,731",
+        "joined": "Joined 17 Oct 2022",
+        "account_year": 2022,
+        "handle": "@storytimeplaytime",
+        "country": "View email address"
+      },
+      "business_email": [],
+      "emails": [
+        "storytimeplaytimeinfo@gmail.com"
+      ],
+      "contact_source": "description",
+      "contact_status": "captcha",
+      "socials": {},
+      "region_searched": "United States",
+      "niches_matched": [
+        "Vlogs",
+        "Talking Head",
+        "Lifestyle",
+        "Editorial/Commentary",
+        "Commentary",
+        "Storytime",
+        "Daily Vlogs"
+      ],
+      "found_at": "2026-09-24T20:44:19.417286"
+    },
+    {
+      "channel_id": "UC4tfPlim4Enspq1nhCvmBjA",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCzAqm1z6-hIWxonMod1xULg",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCRWC72lLFuPcksZMB8nKOoQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCvdUKabPUkx6p-zYlrxmJJw",
+      "handle": "@storytimefamily",
+      "title": "StoryTimeFamily",
+      "description": "Welcome to The StoryTIme Family!\n\nFamily life is hectic! That\u2019s why it\u2019s more important than ever to take time out and settle down for some calming quiet time, to recalibrate and just be in moment. Reading with our boys has always been our nightly routine since they were babies and we hope to extend the joy of reading with you. We share stories we love and that are meaningful, moving, fun and reflect the values we hold close. Hope you enjoy them as much as we do and find the love of reading with your little ones. \n\nThank you so much for supporting our family. Wishing you much love.\n\nDisclaimer: StoryTimeFamily features original stories and books submitted directly by independent authors.\nBy sending us their books, authors grant permission for read-aloud adaptation and monetized YouTube distribution.\n\nWhat to share your story? contactstorytimefamily@gmail.com\n",
+      "stats": {
+        "subscribers": "259k",
+        "videos": "385",
+        "views": "34,461,806",
+        "joined": "Joined 30 Sept 2015",
+        "account_year": 2015,
+        "handle": "@storytimefamily",
+        "country": "United States"
+      },
+      "business_email": [],
+      "emails": [
+        "contactstorytimefamily@gmail.com"
+      ],
+      "contact_source": "description",
+      "contact_status": "captcha",
+      "socials": {},
+      "region_searched": "United States",
+      "niches_matched": [
+        "Vlogs",
+        "Talking Head",
+        "Lifestyle",
+        "Editorial/Commentary",
+        "Commentary",
+        "Storytime",
+        "Daily Vlogs"
+      ],
+      "found_at": "2026-09-24T20:44:56.160013"
+    },
+    {
+      "channel_id": "UC6TMyo18Gjh_eEuUNnA0I7g",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UC1AKdP2AIxgaIYa0WkOK1QA",
+      "handle": "@StoryTimeWithKody",
+      "title": "STORY TIME WITH KODY",
+      "description": "Story Time with Kody is a channel committed to premium content for everyone. The contents posted here are mostly Animated African stories and Folktales suitable for families.\n\nAll stories are created by Onu-Etim Cynthia Chikodi (Kody), @kodydkodynator on Instagram. In any rare case(s) where a story by different creator is published on this channel, due credit will be given in the video's description.\n\nNeed to contact us? Send email to twindovesconceptsng@gmail.com\nFollow on Instagram @kodydkodynator or @storytimewithkody\n",
+      "stats": {
+        "subscribers": "55.1k",
+        "videos": "46",
+        "views": "5,170,035",
+        "joined": "Joined 20 Feb 2015",
+        "account_year": 2015,
+        "handle": "@StoryTimeWithKody",
+        "country": "United Kingdom"
+      },
+      "business_email": [],
+      "emails": [
+        "twindovesconceptsng@gmail.com"
+      ],
+      "contact_source": "description",
+      "contact_status": "captcha",
+      "socials": {},
+      "region_searched": "United States",
+      "niches_matched": [
+        "Vlogs",
+        "Talking Head",
+        "Lifestyle",
+        "Editorial/Commentary",
+        "Commentary",
+        "Storytime",
+        "Daily Vlogs"
+      ],
+      "found_at": "2026-09-24T20:45:14.337450"
+    },
+    {
+      "channel_id": "UCNmJbj5wAYWLPhB6575r3GQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCFqenOmqMrbEumiyuuJ5qLw",
+      "handle": "@Teestorytime",
+      "title": "Tee story time",
+      "description": "Welcome to Tee Story Time \ud83d\udc41\ufe0f\nWhere African horror and suspense filled stories come alive.\n\nThis channel is dedicated to chilling, original African horror fiction inspired by culture, folklore, and the darkest corners of the human mind. Expect stories filled with suspense, mystery, fear, and shocking twists that will haunt you long after the video ends \ud83d\ude08\n\nEvery story, script, and concept on this channel is 100% written by me \u270d\ud83c\udffd and is the exclusive intellectual property of Tee Story Time. All videos are original creations.\n\n\ud83d\udcc5 New horror stories drop regularly\n\ud83d\udd14 Subscribe and turn on notifications\u2014if you dare.\n\n\u26a0\ufe0f All content is protected by copyright.\n\ud83d\udeab Do not copy, repost, or reuse without permission.\n\n\ud83d\udce9 Open to collaborations and brand partnerships.\n\nContact Email: teestorytime1@gmail.com\n",
+      "stats": {
+        "subscribers": "22.8k",
+        "videos": "33",
+        "views": "1,718,061",
+        "joined": "Joined 5 Jul 2024",
+        "account_year": 2024,
+        "handle": "@Teestorytime",
+        "country": "Nigeria"
+      },
+      "business_email": [],
+      "emails": [
+        "teestorytime1@gmail.com"
+      ],
+      "contact_source": "description",
+      "contact_status": "no_reveal_button",
+      "socials": {},
+      "region_searched": "United States",
+      "niches_matched": [
+        "Vlogs",
+        "Talking Head",
+        "Lifestyle",
+        "Editorial/Commentary",
+        "Commentary",
+        "Storytime",
+        "Daily Vlogs"
+      ],
+      "found_at": "2026-09-24T20:45:30.530570"
+    },
+    {
+      "channel_id": "UCxu3d7SSmBrh7Er-9inPErQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCPVyJ6C3KHeYDhwakW-g8lw",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCIxwcmTDBLniq6m7T3p_30Q",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCYhSsCNPGHFxfGksEkuzHwA",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCuzBWcfr3LJtCZ6pxk7sgGQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCPkHJJOpWl2A3JQjxOu_hzA",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCyLRPBjeoXcYLXKu46boLLQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCcjxrYgcsZRLaqZIo2vkQaQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCfpjawtsvQLbUnuq1YfEA9Q",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UC6MTMhJyxtzgi7A38pvGhTA",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCmOv6mUj7ubA4BIDHM1N1_Q",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCMCjKjb89bA2O2LnIxFZmGw",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCZRnZz4ef9WEIxz5_HRBetQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCGR6l1SeP8Ab1XaJUpZWAJg",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UC5An_HHn65-_yozcfgAKN0g",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCTXfInyJOtkTnXfNd6Q23OA",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCz-WH5Ak0hRvm6C7s-mF7Eg",
+      "handle": "@CircleofAfricanTales",
+      "title": "CIRCLE OF AFRICAN TALES BY MARVELLOUS",
+      "description": "Welcome to Circle of African Tales by Marvellous\nwhere every story has a lesson. \u2764\ufe0f\ud83c\udf0d\n\ud83c\udfac Original stories, personally edited and presented by Marvellous.\n\n\ud83c\udf93 AFRICAN FOLKTALE STORYTELLING MASTERCLASS;\nLearn how to create African folktale stories for YouTube. Click the link below to learn and enroll. \ud83d\udc47\ud83c\udffd\n\n\u2764\ufe0f FOR LOVE AND SUPPORT FOR MY CHANNEL;\nPlease click the link below. \ud83d\udc47\ud83c\udffd\n\n\ud83d\udce7 CONTACT ME:\ncircleofafricantalesofficial@gmail.com\n\n\ud83d\udd14 Subscribe and join the family!\n\n\ud83d\udea8 NEW STORY EVERY WEEK... \ud83d\udc4c\ud83d\udcaf",
+      "stats": {
+        "subscribers": "34.6k",
+        "videos": "75",
+        "views": "6,386,136",
+        "joined": "Joined 2 Oct 2025",
+        "account_year": 2025,
+        "handle": "@CircleofAfricanTales",
+        "country": "Nigeria"
+      },
+      "business_email": [
+        "circleofafricantalesofficial@gmail.com"
+      ],
+      "emails": [
+        "circleofafricantalesofficial@gmail.com"
+      ],
+      "contact_source": "revealed",
+      "contact_status": "revealed",
+      "socials": {},
+      "region_searched": "United States",
+      "niches_matched": [
+        "Vlogs",
+        "Talking Head",
+        "Lifestyle",
+        "Editorial/Commentary",
+        "Commentary",
+        "Storytime",
+        "Daily Vlogs"
+      ],
+      "found_at": "2026-09-24T20:48:26.751841"
+    },
+    {
+      "channel_id": "UCQ3P7AITXmp6_f4glySgmQQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCPerkStqpZiDDASCgziKwaA",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCoSiYM7MpRRPwxZJJ5NyamA",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCDowc4hFPSC2I83puJmBqkA",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCMjuLbb0hdUCHXbV3ximYeg",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCYUQlpihFgJba7gppz5MmFg",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCM4np2GdVlNcDAQsTidgOHw",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCr4aV4ACg7OLuvqz_GeG6lg",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCZzw6OGJ7a9zujN1FXpwNNA",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UC03CNZIdtGSf6MoSIH3zvYg",
+      "handle": "@Aspenfinallyrichh",
+      "title": "AspenFinallyRichh",
+      "description": "AspenKartierbookings@gmail.com",
+      "stats": {
+        "subscribers": "98.2k",
+        "videos": "147",
+        "views": "6,391,148",
+        "joined": "Joined 2 Mar 2025",
+        "account_year": 2025,
+        "handle": "@Aspenfinallyrichh"
+      },
+      "business_email": [],
+      "emails": [
+        "aspenkartierbookings@gmail.com"
+      ],
+      "contact_source": "description",
+      "contact_status": "no_reveal_button",
+      "socials": {},
+      "region_searched": "United States",
+      "niches_matched": [
+        "Vlogs",
+        "Talking Head",
+        "Lifestyle",
+        "Editorial/Commentary",
+        "Commentary",
+        "Storytime",
+        "Daily Vlogs"
+      ],
+      "found_at": "2026-09-24T20:50:09.325908"
+    },
+    {
+      "channel_id": "UCOPzf8kf-FUDs32E7F2wGdg",
+      "handle": "@FairyTales.English",
+      "title": "Fairy Tales and Stories for Kids",
+      "description": "Welcome to English Fairy Tales and Stories! \u2728\n\nDiscover a magical world of classic fairy tales and bedtime stories, brought to life with stunning 3D animation and 4K Ultra HD quality.\n\nOur channel offers safe, fun, and educational videos that kids love and parents trust. Perfect for bedtime or family viewing!\n\n\ud83c\udf1f Subscribe and ring the bell \ud83d\udd14 to join our magical adventures!\n\nFor all inquiries regarding artists and music releases: music@adisebaba.com\n\n",
+      "stats": {
+        "subscribers": "3.15m",
+        "videos": "1,085",
+        "views": "1,451,480,323",
+        "joined": "Joined 30 Jan 2014",
+        "account_year": 2014,
+        "handle": "@FairyTales.English",
+        "country": "United States"
+      },
+      "business_email": [
+        "music@adisebaba.com"
+      ],
+      "emails": [
+        "music@adisebaba.com"
+      ],
+      "contact_source": "revealed",
+      "contact_status": "revealed",
+      "socials": {},
+      "region_searched": "United States",
+      "niches_matched": [
+        "Vlogs",
+        "Talking Head",
+        "Lifestyle",
+        "Editorial/Commentary",
+        "Commentary",
+        "Storytime",
+        "Daily Vlogs"
+      ],
+      "found_at": "2026-09-24T20:50:34.850144"
+    },
+    {
+      "channel_id": "UCJi1VkpMAtyYotL6KPitl-g",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCJZDx3z7sMvMU3Z68guQABw",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCBUsHkigU2wtSc7ilmPOaPA",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCpsCpKXIpz6KLaeh0sA8ouQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UC78ZkeMTtWhTjbfkZLVdpbA",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCD2_oJvyIHIX31-IaBovkTQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCt5KXwokTnqbKvEBH9hpovQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCG1-qPalX4KHZNpzJza2f-A",
+      "handle": "@dailyvlogbyfathima",
+      "title": "Daily Vlog By Fathima",
+      "description": "Hi Friends \nWelcome to my World. I am a mother of two kids and the wife. My videos mostly revolve around my Life as a home-maker, my family, cooking, baking, kitchen organizing tips & gardening, home decor, cleaning and organising ideas, a lot of food and recipes. Please come along in our journey and lets do it together. I have put my Heart in making these videos and really hope you like it as much I love doing them.\n\nFOLLOW ME HERE..\nEmail : dailyvlogbyfathima@gmil.com\n\nThank you dears\ud83d\udc9c\n",
+      "stats": {
+        "subscribers": "25.7k",
+        "videos": "276",
+        "views": "9,251,744",
+        "joined": "Joined 27 Sept 2023",
+        "account_year": 2023,
+        "handle": "@dailyvlogbyfathima",
+        "country": "India"
+      },
+      "business_email": [],
+      "emails": [
+        "dailyvlogbyfathima@gmil.com"
+      ],
+      "contact_source": "description",
+      "contact_status": "captcha",
+      "socials": {},
+      "region_searched": "United States",
+      "niches_matched": [
+        "Vlogs",
+        "Talking Head",
+        "Lifestyle",
+        "Editorial/Commentary",
+        "Commentary",
+        "Storytime",
+        "Daily Vlogs"
+      ],
+      "found_at": "2026-09-24T20:52:09.758438"
+    },
+    {
+      "channel_id": "UCUGxEafExSdzUBCrgxX9Lhw",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCM8wUy3VKjmYjxsoxSnj7GQ",
+      "handle": "@AshiDailyVlogs",
+      "title": "Ashi Daily Vlogs",
+      "description": "follow me on...\nTikTok: Ashi Daily Vlogs\nYoutube: https://www.youtube.com/channel/UCM8wUy3VKjmYjxsoxSnj7GQ\nInstagram: @ashidailyvlogs\nFacebook: https://www.facebook.com/ashidailyvlog/\nTwitter: @ashidaily\nEmail: ashidailyvlogsfansclub@gmail.com\n\nGear i use:\nSony A6400\nDJI Mavic pro Drone\nGopro Hero 6\nIphone 7\n\nAshi Daily Vlogs...\n",
+      "stats": {
+        "subscribers": "185k",
+        "videos": "1,400",
+        "views": "84,386,177",
+        "joined": "Joined 23 May 2019",
+        "account_year": 2019,
+        "handle": "@AshiDailyVlogs",
+        "country": "Pakistan"
+      },
+      "business_email": [],
+      "emails": [
+        "ashidailyvlogsfansclub@gmail.com"
+      ],
+      "contact_source": "description",
+      "contact_status": "captcha",
+      "socials": {},
+      "region_searched": "United States",
+      "niches_matched": [
+        "Vlogs",
+        "Talking Head",
+        "Lifestyle",
+        "Editorial/Commentary",
+        "Commentary",
+        "Storytime",
+        "Daily Vlogs"
+      ],
+      "found_at": "2026-09-24T20:52:38.698911"
+    },
+    {
+      "channel_id": "UCqCSMxjxUnuwYtVpCmh4DMg",
+      "handle": "@jenetvlog",
+      "title": "Jenet\u2019s Daily Life Vlog",
+      "description": "Welcome to Jenet Vlog! \ud83c\udf0d\u2728\n\nJoin me as I travel, explore new places, experience different cultures, and capture the beautiful moments of everyday life. Every vlog is a story, a memory, and a way to share the journey with people around the world.\n\nI believe life is about creating experiences, discovering new adventures, meeting amazing people, and enjoying every little moment along the way. Through my daily life vlogs, I want to inspire others to explore, dream, and appreciate the beauty of the world.\n\nCome with me as we travel, discover, and create unforgettable memories together.\n\n\u2764\ufe0f Subscribe and join my journey.\n\ud83c\udf0e Let\u2019s explore the world one story at a time.\n\nYouTube: https://www.youtube.com/@jenetvlog\nFacebook: https://www.facebook.com/missesponillajannet\nInstagram: @iamjannetesponilla\nEmail: jenetesponilla09@gmail.com\n",
+      "stats": {
+        "subscribers": "62.9k",
+        "videos": "1,073",
+        "views": "919,184",
+        "joined": "Joined 17 Apr 2016",
+        "account_year": 2016,
+        "handle": "@jenetvlog",
+        "country": "Philippines"
+      },
+      "business_email": [],
+      "emails": [
+        "jenetesponilla09@gmail.com"
+      ],
+      "contact_source": "description",
+      "contact_status": "no_reveal_button",
+      "socials": {},
+      "region_searched": "United States",
+      "niches_matched": [
+        "Vlogs",
+        "Talking Head",
+        "Lifestyle",
+        "Editorial/Commentary",
+        "Commentary",
+        "Storytime",
+        "Daily Vlogs"
+      ],
+      "found_at": "2026-09-24T20:53:05.568413"
+    },
+    {
+      "channel_id": "UCsmQ7n2faWbNmIdlYVrljbQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCMOeBhz-chzOzCVvAn35V6A",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCOFBoJAknUxJb4ER6iw3u6w",
+      "handle": "@DailyVloggerDorababu",
+      "title": "Daily Vlogger Dorababu ",
+      "description": "Welcome to Dorababu | Digital Creator! \ud83c\udfa5\n\nHi, I'm Dorababu. On this channel, you'll find Daily Vlogs, DJ Vlogs, Village Lifestyle, and real-life experiences captured through my camera. I share behind-the-scenes moments, travel, events, and my journey as a digital creator.\n\nIf you enjoy authentic content, village life, DJ-related videos, and entertaining vlogs, you're in the right place.\n\n\ud83d\udc49 Subscribe and join the Dorababu family for new videos and exciting adventures.\n\nThank you for your love and support! \u2764\ufe0f\n\n\ud83d\udce9 For Business & Collaborations: DM\ndorababukantamreddy1431@gmail.com",
+      "stats": {
+        "subscribers": "24.5k",
+        "videos": "337",
+        "views": "7,054,231",
+        "joined": "Joined 16 Sept 2022",
+        "account_year": 2022,
+        "handle": "@DailyVloggerDorababu",
+        "country": "India"
+      },
+      "business_email": [
+        "dorababukantamreddy1431@gmail.com"
+      ],
+      "emails": [
+        "dorababukantamreddy1431@gmail.com"
+      ],
+      "contact_source": "revealed",
+      "contact_status": "revealed",
+      "socials": {},
+      "region_searched": "United States",
+      "niches_matched": [
+        "Vlogs",
+        "Talking Head",
+        "Lifestyle",
+        "Editorial/Commentary",
+        "Commentary",
+        "Storytime",
+        "Daily Vlogs"
+      ],
+      "found_at": "2026-09-24T20:53:30.699209"
+    },
+    {
+      "channel_id": "UCf57iGrvQFLxkE0_MO-fnwQ",
+      "handle": "@Yoursdailyvlog",
+      "title": "Yours daily vlog",
+      "description": "Your search for entertainment ends here. Welcome to my channel Yours Daily vlogs. If you are looking for shopping videos like furniture, markets, wholesale furniture markets, home decor markets and much more, #market #wholesalemarketdelhi #delhistreetfood #shoppingvlogs #homedecoration #homedecorideas #sadarbazardelhi #sadarbazar #chandnichowk #marketsindelhi #banjaramarket #homedecormarket\nFor Collabration\nEmail - sharma.anand0090@gmail.com\nInsta - Yours Daily vlog\nInsta - Myfashionillusion ",
+      "stats": {
+        "subscribers": "75.2k",
+        "videos": "2,526",
+        "views": "40,336,386",
+        "joined": "Joined 13 Feb 2019",
+        "account_year": 2019,
+        "handle": "@Yoursdailyvlog",
+        "country": "India"
+      },
+      "business_email": [
+        "sharma.anand0090@gmail.com"
+      ],
+      "emails": [
+        "sharma.anand0090@gmail.com"
+      ],
+      "contact_source": "revealed",
+      "contact_status": "revealed",
+      "socials": {},
+      "region_searched": "United States",
+      "niches_matched": [
+        "Vlogs",
+        "Talking Head",
+        "Lifestyle",
+        "Editorial/Commentary",
+        "Commentary",
+        "Storytime",
+        "Daily Vlogs"
+      ],
+      "found_at": "2026-09-24T20:53:53.721743"
+    },
+    {
+      "channel_id": "UCIxmdvK-w_8d85KHTnaePAg",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCwIT9C5Hxnv9ZSqpHaN6q7w",
+      "handle": "@DailyVlog2.0-k4r",
+      "title": "Daily Vlog 2.0",
+      "description": "What's up Viral People! This is SK Sabbir Yt Welcome to Daily Vlog 2.0\n\n\u2022I love to create Funny Vlog, Daily Vlog, Comedy Video, Entertainment etc.\n\n\u2192 For Business & General Queries contact us:samiyakhatun258021@gmail.com\n\nThank You",
+      "stats": {
+        "subscribers": "39.5k",
+        "videos": "128",
+        "views": "15,131,311",
+        "joined": "Joined 21 May 2026",
+        "account_year": 2026,
+        "handle": "@DailyVlog2.0-k4r",
+        "country": "Bangladesh"
+      },
+      "business_email": [],
+      "emails": [
+        "samiyakhatun258021@gmail.com"
+      ],
+      "contact_source": "description",
+      "contact_status": "no_reveal_button",
+      "socials": {},
+      "region_searched": "United States",
+      "niches_matched": [
+        "Vlogs",
+        "Talking Head",
+        "Lifestyle",
+        "Editorial/Commentary",
+        "Commentary",
+        "Storytime",
+        "Daily Vlogs"
+      ],
+      "found_at": "2026-09-24T20:54:17.896073"
+    },
+    {
+      "channel_id": "UCV-iRncaYiUotAuZyU781tA",
+      "handle": "@DailyDaysVlog",
+      "title": "Daily Days Vlog",
+      "description": "\nHi All,\n\nThis is Asha\ud83c\udf80\n\nYou can watch interesting videos of fitness details ,workouts ,Nutrition diet, daily using unique product for maintain the hygiene ,Dermatologist suggested product which double ticked by them which I\u2019m using too - Sometime some day care, Shopping, Working style ,House hold \n\n80% Diet (Healthy Food and proper sleep) + 20% workout = Healthy weight or weight loss + Clear and healthy Skin \n\nMail ID : ashaachu2025@gmail.com\n\nInstagram ID : dailydaysvlog \n\nThanks you!!\n\n",
+      "stats": {
+        "subscribers": "119k",
+        "videos": "195",
+        "views": "38,252,324",
+        "joined": "Joined 22 Jun 2022",
+        "account_year": 2022,
+        "handle": "@DailyDaysVlog",
+        "country": "India"
+      },
+      "business_email": [
+        "ashaachu2025@gmail.com"
+      ],
+      "emails": [
+        "ashaachu2025@gmail.com"
+      ],
+      "contact_source": "revealed",
+      "contact_status": "revealed",
+      "socials": {},
+      "region_searched": "United States",
+      "niches_matched": [
+        "Vlogs",
+        "Talking Head",
+        "Lifestyle",
+        "Editorial/Commentary",
+        "Commentary",
+        "Storytime",
+        "Daily Vlogs"
+      ],
+      "found_at": "2026-09-24T20:54:17.909852"
+    },
+    {
+      "channel_id": "UC5qTR6u2Ao8JdIcy5rCFMEw",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCRWImrFsiqhgMiGN0oy0uhQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UClJTWAPi3PBOv1vphsBMfMQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCY9AEaM4KCBMvlFJRBRGdmg",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCFiC4x6D8kkelYA6zy9WNWA",
+      "handle": "@vikasdailyvlogs",
+      "title": "Vikas Daily Vlogs",
+      "description": "Hey Everyone \nWelcome To My YouTube Channel \nI Am Vikas Kharwar\nMumbai \u27b0 Varanasi \ud83d\udccd \n\ud83d\udce9 enquiry :- vikasvlogs41@gmail.com \n\nPlease Friends Support this Channel \nAll Indian  Celebrity House Tour And Most Popular Place Explore Vlog , Oldest Place Visit Vlog Please Subscribe This Channel And Kepp Waching Video ' \n\nFacebook :- Vikas Daily vlogs \nInstagram :- Vikasdailyvlogs \n\nTHANK YOU VISIT THIS CHANNEL \ud83d\ude4f",
+      "stats": {
+        "subscribers": "1.13m",
+        "videos": "2,193",
+        "views": "1,525,613,574",
+        "joined": "Joined 9 Apr 2021",
+        "account_year": 2021,
+        "handle": "@vikasdailyvlogs",
+        "country": "India"
+      },
+      "business_email": [],
+      "emails": [
+        "vikasvlogs41@gmail.com"
+      ],
+      "contact_source": "description",
+      "contact_status": "no_reveal_button",
+      "socials": {},
+      "region_searched": "United States",
+      "niches_matched": [
+        "Vlogs",
+        "Talking Head",
+        "Lifestyle",
+        "Editorial/Commentary",
+        "Commentary",
+        "Storytime",
+        "Daily Vlogs"
+      ],
+      "found_at": "2026-09-24T20:55:17.663437"
+    },
+    {
+      "channel_id": "UCPgxApI7_YLajz1xF3HWNUA",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCMmNMSfdJa2cZ0a7OBO5gVg",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCTePi1UmBPOFf-NiwEH9jEA",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCIDwx9H5xHDenCjUCabJW8g",
+      "handle": "@dailyvlogswithvedesh",
+      "title": "Daily Vlogs With Vedesh",
+      "description": "Welcome to Daily Vlogs with Vedesh. It might not be as exciting as my main channel, Trini Life With Vedesh, but some people might appreciate seeing what I do on a day to day basis. Cooking for the kids , daily errands, picking up the wife from work, home maintenance... just my regular life. Email: vedeshram123@gmail.com",
+      "stats": {
+        "subscribers": "8.23k",
+        "videos": "316",
+        "views": "3,286,675",
+        "joined": "Joined 4 Dec 2022",
+        "account_year": 2022,
+        "handle": "@dailyvlogswithvedesh",
+        "country": "Canada"
+      },
+      "business_email": [],
+      "emails": [
+        "vedeshram123@gmail.com"
+      ],
+      "contact_source": "description",
+      "contact_status": "no_reveal_button",
+      "socials": {},
+      "region_searched": "United States",
+      "niches_matched": [
+        "Vlogs",
+        "Talking Head",
+        "Lifestyle",
+        "Editorial/Commentary",
+        "Commentary",
+        "Storytime",
+        "Daily Vlogs"
+      ],
+      "found_at": "2026-09-24T20:56:04.350524"
+    },
+    {
+      "channel_id": "UC-dyj1LYez67gXCeFS1XIqQ",
+      "skipped": true,
+      "reason": "no_contact_info"
+    },
+    {
+      "channel_id": "UCUwW6houCzdcaESFfg2r_-A",
+      "skipped": true,
+      "reason": "no_contact_info"
+    }
+  ]
+}

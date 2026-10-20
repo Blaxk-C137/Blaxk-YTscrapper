@@ -1,0 +1,15 @@
+services:
+  creatorscope:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      CREATORSCOPE_DATA_DIR: /data
+      CREATORSCOPE_PROFILE_DIR: /profile
+    volumes:
+      - creatorscope-data:/data
+      - ./browser_profile:/profile
+    restart: unless-stopped
+
+volumes:
+  creatorscope-data:

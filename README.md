@@ -1,0 +1,146 @@
+# CreatorScope
+
+A private, polished creator-discovery workspace built from the original
+YouTube Creator Finder script.
+
+CreatorScope searches YouTube by market and niche, reviews channel About pages,
+collects creator-published business contact points, and turns the results into a
+usable relationship pipeline—not another raw CSV.
+
+## What changed
+
+- **Complete web interface** — responsive overview, creator directory,
+  discovery studio, settings, and creator detail drawer.
+- **Real backend** — FastAPI API with SQLite persistence, pagination, filters,
+  sorting, exports, job history, and background discovery runs.
+- **Mini CRM** — favorites, private notes, and stages from New to Partnered.
+- **Useful analytics** — contact coverage, audience footprint, top markets, and
+  partnership-pipeline health.
+- **Safe migration** — existing `creators.json` records are imported into
+  SQLite once on first launch.
+- **Conservative automation** — one discovery run at a time, restrained
+  concurrency, no CAPTCHA bypass, and partial results survive interruption.
+- **Security cleanup** — browser auth is ignored by Git and all local runtime
+  state lives outside source control.
+
+## Quick start
+
+Requirements: Python 3.10+ and a machine capable of running Chromium.
+
+```bash
+python -m venv .venv
+source .venv/bin/activate          # Windows: .venv\\Scripts\\activate
+pip install -r requirements.txt
+playwright install chromium
+
+# Start the dashboard
+uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+```
+
+Open <http://localhost:8000>.
+
+The dashboard and imported data work immediately. Discovery additionally needs
+a local YouTube session:
+
+```bash
+python scripts/connect_youtube.py
+```
+
+A Chromium window opens. Sign in directly on YouTube, return to the terminal,
+and press Enter. Credentials are never entered into CreatorScope; Chromium
+stores only the local browser session in `browser_profile/`.
+
+> **Security notice:** the original repository committed a browser profile.
+> Deleting it from the current tree is not enough. Follow [SECURITY.md](SECURITY.md)
+> to revoke the old session and purge it from Git history.
+
+## Using the app
+
+### Overview
+
+Track the size and reach of the creator directory, contact coverage, leading
+markets, and partnership stages. The recent-creator list opens full profiles.
+
+### Creators
+
+Search names, handles, emails, and descriptions. Filter by market, niche,
+contact type, or stage. Use bulk actions to shortlist, favorite, or export a
+selection. Each creator profile includes contacts, stats, description, notes,
+and the direct YouTube link.
+
+### Discovery
+
+Choose a market, select one or more creator niches, and set a save target. Runs
+continue in the background, show honest progress, can be stopped safely, and
+keep every result saved before interruption.
+
+### Export
+
+Download all creators—or just a selection—as UTF-8 CSV. A structured JSON
+export is available in Settings.
+
+## Architecture
+
+```text
+app/
+  main.py              FastAPI routes and static app host
+  database.py          SQLite schema, migration, filters, CRM, analytics
+  scraper_service.py   background job orchestration
+  schemas.py           validated API request models
+static/
+  index.html            dependency-free responsive SPA
+  styles.css            design system and layouts
+  app.js                dashboard state and API integration
+scripts/
+  connect_youtube.py    local interactive session setup
+
+youtube_creator_finder.py   original scraper engine and CLI
+creators.json                legacy seed data imported once
+```
+
+Runtime data is stored in `.runtime/creatorscope.db` by default. The path can be
+changed with `CREATORSCOPE_DATA_DIR` or `CREATORSCOPE_DB_PATH`.
+
+## API
+
+Interactive documentation is available at `/api/docs`.
+
+| Endpoint | Purpose |
+|---|---|
+| `GET /api/stats` | Dashboard analytics |
+| `GET /api/creators` | Paginated/searchable creator directory |
+| `PATCH /api/creators/{id}` | Update stage, favorite, or private notes |
+| `POST /api/creators/bulk` | Bulk pipeline/favorite/archive actions |
+| `POST /api/jobs` | Start a discovery run |
+| `GET /api/jobs` | Job history and progress |
+| `POST /api/jobs/{id}/cancel` | Stop after the current channel |
+| `GET /api/export.csv` | Spreadsheet-ready export |
+| `GET /api/export.json` | Structured backup |
+
+## Tests
+
+```bash
+pip install -r requirements-dev.txt
+pytest
+```
+
+The original parser tests remain intact. New tests cover metric normalization,
+SQLite persistence, querying, analytics, CRM updates, bulk actions, and the job
+lifecycle.
+
+## Docker
+
+```bash
+docker compose up --build
+```
+
+The dashboard is available on port 8000 and database state persists in a named
+volume. Interactive session setup is easiest on the host; mount the generated
+`browser_profile/` only into a trusted local container.
+
+## Responsible use
+
+Use creator-provided business details only for relevant, personalized outreach.
+Honor opt-outs, avoid bulk unsolicited messages, follow applicable privacy and
+anti-spam law, and comply with YouTube's terms. CreatorScope does not solve or
+bypass CAPTCHAs.

@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f5f3ed">
+  <meta name="description" content="CreatorScope — a focused workspace for creator discovery and outreach.">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <title>CreatorScope</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <svg class="svg-sprite" aria-hidden="true">
+    <symbol id="i-grid" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+    <symbol id="i-radar" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/><path d="m12 12 7-7"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.88l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.88-.34 1.7 1.7 0 0 0-1 1.55V21a2 2 0 1 1-4 0v-.09A1.7 1.7 0 0 0 9 19.37a1.7 1.7 0 0 0-1.88.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.7 1.7 0 0 0 4.63 15a1.7 1.7 0 0 0-1.55-1H3a2 2 0 1 1 0-4h.09A1.7 1.7 0 0 0 4.63 9a1.7 1.7 0 0 0-.34-1.88l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.7 1.7 0 0 0 9 4.63h.01A1.7 1.7 0 0 0 10 3.08V3a2 2 0 1 1 4 0v.09a1.7 1.7 0 0 0 1 1.54 1.7 1.7 0 0 0 1.88-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.7 1.7 0 0 0 19.37 9v.01A1.7 1.7 0 0 0 20.92 10H21a2 2 0 1 1 0 4h-.09a1.7 1.7 0 0 0-1.54 1z"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-trend" viewBox="0 0 24 24"><path d="m3 17 6-6 4 4 8-8"/><path d="M15 7h6v6"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1.1L12 21l7.8-7.5 1.1-1.1a5.5 5.5 0 0 0-.1-7.8z"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12M7 10l5 5 5-5M4 21h16"/></symbol>
+    <symbol id="i-filter" viewBox="0 0 24 24"><path d="M4 5h16M7 12h10M10 19h4"/></symbol>
+    <symbol id="i-more" viewBox="0 0 24 24"><circle cx="5" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="i-chevron" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+    <symbol id="i-play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7z"/></symbol>
+    <symbol id="i-stop" viewBox="0 0 24 24"><rect x="6" y="6" width="12" height="12" rx="2"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="i-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="11" height="11" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></symbol>
+    <symbol id="i-external" viewBox="0 0 24 24"><path d="M14 4h6v6M20 4l-9 9"/><path d="M20 13v6a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1h6"/></symbol>
+    <symbol id="i-note" viewBox="0 0 24 24"><path d="M14 3H6a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><path d="M14 3v6h6M8 13h8M8 17h5"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></symbol>
+  </svg>
+
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#overview" data-route="overview" aria-label="CreatorScope overview">
+        <span class="brand-mark"><span></span><span></span><span></span></span>
+        <span>Creator<span>Scope</span></span>
+      </a>
+
+      <nav class="side-nav" aria-label="Primary navigation">
+        <p class="nav-label">Workspace</p>
+        <button class="nav-item active" data-route="overview"><svg><use href="#i-grid"/></svg><span>Overview</span></button>
+        <button class="nav-item" data-route="creators"><svg><use href="#i-users"/></svg><span>Creators</span><b id="navCreatorCount">—</b></button>
+        <button class="nav-item" data-route="discovery"><svg><use href="#i-radar"/></svg><span>Discovery</span><i id="jobPulse" hidden></i></button>
+        <p class="nav-label nav-label-spaced">System</p>
+        <button class="nav-item" data-route="settings"><svg><use href="#i-settings"/></svg><span>Settings</span></button>
+      </nav>
+
+      <div class="side-spacer"></div>
+      <div class="session-card" id="sessionCard">
+        <div class="session-icon"><svg><use href="#i-lock"/></svg></div>
+        <div><strong>Checking session…</strong><span>Please wait</span></div>
+        <i></i>
+      </div>
+      <div class="profile-card">
+        <div class="avatar avatar-dark">BC</div>
+        <div><strong>Blaxk Creator Lab</strong><span>Private workspace</span></div>
+        <svg><use href="#i-more"/></svg>
+      </div>
+    </aside>
+
+    <div class="mobile-bar">
+      <button class="icon-btn" id="menuBtn" aria-label="Open menu"><svg><use href="#i-menu"/></svg></button>
+      <a class="brand" href="#overview"><span class="brand-mark"><span></span><span></span><span></span></span><span>Creator<span>Scope</span></span></a>
+      <button class="icon-btn" data-action="new-discovery" aria-label="New discovery"><svg><use href="#i-plus"/></svg></button>
+    </div>
+
+    <main class="main">
+      <section class="page active" id="page-overview" data-page="overview">
+        <header class="page-header hero-header">
+          <div>
+            <p class="eyebrow"><span></span> Creator intelligence workspace</p>
+            <h1>Find the right creators.<br><em>Keep the relationship.</em></h1>
+            <p class="subtitle">Discover, qualify, and organize creator partnerships in one focused workspace.</p>
+          </div>
+          <button class="btn btn-primary btn-lg" data-action="new-discovery"><svg><use href="#i-plus"/></svg> New discovery</button>
+        </header>
+
+        <div class="metric-grid" id="metricGrid">
+          <article class="metric-card"><div class="metric-top"><span class="metric-icon blue"><svg><use href="#i-users"/></svg></span><span class="metric-delta">Live</span></div><strong data-stat="total">—</strong><p>Total creators</p><small><span data-stat="added_30d">—</span> added in 30 days</small></article>
+          <article class="metric-card"><div class="metric-top"><span class="metric-icon coral"><svg><use href="#i-mail"/></svg></span><span class="metric-delta" data-stat-suffix="contact_rate">—</span></div><strong data-stat="with_email">—</strong><p>Direct contacts</p><small>Ready for thoughtful outreach</small></article>
+          <article class="metric-card"><div class="metric-top"><span class="metric-icon lime"><svg><use href="#i-globe"/></svg></span><span class="metric-delta">Markets</span></div><strong data-stat="countries">—</strong><p>Countries reached</p><small>Across your creator network</small></article>
+          <article class="metric-card"><div class="metric-top"><span class="metric-icon amber"><svg><use href="#i-trend"/></svg></span><span class="metric-delta">Combined</span></div><strong data-stat="audience">—</strong><p>Audience footprint</p><small>Potential subscriber reach</small></article>
+        </div>
+
+        <div class="overview-grid">
+          <article class="panel reach-panel">
+            <div class="panel-header"><div><p class="section-kicker">Market signal</p><h2>Where your creators are</h2></div><button class="text-btn" data-route="creators">View creators <svg><use href="#i-arrow"/></svg></button></div>
+            <div class="bar-chart" id="regionChart"><div class="loading-block tall"></div></div>
+          </article>
+          <article class="panel pipeline-panel">
+            <div class="panel-header"><div><p class="section-kicker">Relationship health</p><h2>Partnership pipeline</h2></div><span class="panel-badge">Live</span></div>
+            <div class="pipeline-ring-row">
+              <div class="ring" id="pipelineRing"><div><strong>—</strong><span>active</span></div></div>
+              <div class="pipeline-legend" id="pipelineLegend"></div>
+            </div>
+          </article>
+        </div>
+
+        <article class="panel recent-panel">
+          <div class="panel-header"><div><p class="section-kicker">Recently discovered</p><h2>Creators worth a closer look</h2></div><div class="panel-actions"><button class="btn btn-quiet" data-action="export-all"><svg><use href="#i-download"/></svg> Export</button><button class="text-btn" data-route="creators">See all <svg><use href="#i-arrow"/></svg></button></div></div>
+          <div class="mini-list" id="recentCreators"><div class="loading-row"></div><div class="loading-row"></div><div class="loading-row"></div></div>
+        </article>
+      </section>
+
+      <section class="page" id="page-creators" data-page="creators">
+        <header class="page-header compact-header">
+          <div><p class="eyebrow"><span></span> Relationship directory</p><h1>Your creators</h1><p class="subtitle">One clean view of every lead, contact, and partnership.</p></div>
+          <div class="header-actions"><button class="btn btn-quiet" data-action="export-all"><svg><use href="#i-download"/></svg> Export all</button><button class="btn btn-primary" data-action="new-discovery"><svg><use href="#i-plus"/></svg> Find creators</button></div>
+        </header>
+
+        <div class="directory-toolbar">
+          <label class="search-field"><svg><use href="#i-search"/></svg><input id="creatorSearch" type="search" placeholder="Search creators, emails, or handles…" autocomplete="off"><kbd>⌘ K</kbd></label>
+          <div class="filter-row">
+            <label class="select-wrap"><span>Region</span><select id="regionFilter"><option value="">All regions</option></select></label>
+            <label class="select-wrap"><span>Niche</span><select id="nicheFilter"><option value="">All niches</option></select></label>
+            <label class="select-wrap"><span>Contact</span><select id="contactFilter"><option value="">Any contact</option><option value="email">Has email</option><option value="social">Has social</option></select></label>
+            <label class="select-wrap"><span>Stage</span><select id="stageFilter"><option value="">All stages</option><option value="new">New</option><option value="shortlisted">Shortlisted</option><option value="contacted">Contacted</option><option value="replied">Replied</option><option value="partnered">Partnered</option><option value="not_a_fit">Not a fit</option></select></label>
+            <button class="icon-btn filter-clear" id="clearFilters" aria-label="Clear filters" title="Clear filters"><svg><use href="#i-x"/></svg></button>
+          </div>
+        </div>
+
+        <div class="bulk-bar" id="bulkBar" hidden>
+          <strong><span id="selectedCount">0</span> selected</strong>
+          <button data-bulk="favorite"><svg><use href="#i-heart"/></svg> Favorite</button>
+          <button data-bulk="set_stage" data-stage="shortlisted"><svg><use href="#i-check"/></svg> Shortlist</button>
+          <button data-action="export-selected"><svg><use href="#i-download"/></svg> Export</button>
+          <button class="bulk-clear" id="clearSelection">Clear</button>
+        </div>
+
+        <article class="table-card">
+          <div class="table-meta"><p><strong id="creatorResultCount">—</strong> creators</p><label>Sort by <select id="sortCreators"><option value="found_at:desc">Newest first</option><option value="subscribers:desc">Largest audience</option><option value="title:asc">Name A–Z</option><option value="country:asc">Country A–Z</option></select></label></div>
+          <div class="table-scroll">
+            <table class="creator-table">
+              <thead><tr><th class="check-col"><input type="checkbox" id="selectAll" aria-label="Select all visible creators"></th><th>Creator</th><th>Audience</th><th>Market</th><th>Contact</th><th>Stage</th><th class="action-col"></th></tr></thead>
+              <tbody id="creatorTableBody"></tbody>
+            </table>
+          </div>
+          <div class="table-empty" id="tableEmpty" hidden><span><svg><use href="#i-search"/></svg></span><h3>No creators found</h3><p>Try clearing a filter or launch a new discovery.</p><button class="btn btn-primary" data-action="new-discovery">Start discovery</button></div>
+          <footer class="pagination"><p id="paginationLabel">—</p><div><button class="icon-btn" id="prevPage" aria-label="Previous page"><svg class="flip"><use href="#i-chevron"/></svg></button><span id="pageIndicator">—</span><button class="icon-btn" id="nextPage" aria-label="Next page"><svg><use href="#i-chevron"/></svg></button></div></footer>
+        </article>
+      </section>
+
+      <section class="page" id="page-discovery" data-page="discovery">
+        <header class="page-header compact-header">
+          <div><p class="eyebrow"><span></span> Focused search</p><h1>Discovery studio</h1><p class="subtitle">Set your brief. CreatorScope handles the careful research.</p></div>
+          <div class="privacy-note"><svg><use href="#i-lock"/></svg><span><strong>Private by design</strong>Your session stays on this machine.</span></div>
+        </header>
+
+        <div class="discovery-layout">
+          <form class="panel discovery-form" id="discoveryForm">
+            <div class="form-heading"><span>01</span><div><h2>Build a search brief</h2><p>Choose one market and the creator styles that fit.</p></div></div>
+            <div class="form-group"><label for="discoveryRegion">Target market</label><div class="select-large"><svg><use href="#i-globe"/></svg><select id="discoveryRegion" required><option value="">Choose a market</option></select><svg><use href="#i-chevron"/></svg></div></div>
+            <div class="form-group"><label>Creator niches <small>Select one or more</small></label><div class="niche-grid" id="nicheGrid"></div></div>
+            <div class="form-group"><div class="label-row"><label for="discoveryLimit">Creators to save</label><output id="limitOutput">25</output></div><input id="discoveryLimit" class="range" type="range" min="5" max="100" value="25" step="5"><div class="range-labels"><span>Focused · 5</span><span>Broad · 100</span></div></div>
+            <div class="responsible-note"><svg><use href="#i-heart"/></svg><p><strong>Built for responsible outreach</strong>Only public channel details and creator-provided business contacts are collected. CAPTCHAs are never bypassed.</p></div>
+            <button class="btn btn-primary btn-block btn-lg" type="submit" id="startDiscovery"><svg><use href="#i-radar"/></svg> Start discovery</button>
+          </form>
+
+          <div class="discovery-side">
+            <article class="panel active-run" id="activeRunCard">
+              <div class="active-empty" id="activeRunEmpty"><span class="radar-visual"><i></i><i></i><b></b></span><h2>Ready when you are</h2><p>Your live run will appear here with clear, honest progress.</p></div>
+              <div id="activeRunContent" hidden></div>
+            </article>
+            <article class="panel history-card">
+              <div class="panel-header"><div><p class="section-kicker">Activity</p><h2>Recent runs</h2></div><button class="icon-btn" id="refreshJobs" aria-label="Refresh runs"><svg><use href="#i-clock"/></svg></button></div>
+              <div id="jobHistory"><div class="loading-row"></div><div class="loading-row"></div></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="page" id="page-settings" data-page="settings">
+        <header class="page-header compact-header"><div><p class="eyebrow"><span></span> Workspace controls</p><h1>Settings</h1><p class="subtitle">Keep your data local and your discovery account secure.</p></div></header>
+        <div class="settings-grid">
+          <article class="panel settings-card"><div class="settings-icon"><svg><use href="#i-lock"/></svg></div><div><p class="section-kicker">YouTube access</p><h2>Browser session</h2><p>CreatorScope uses a local, encrypted Chromium profile for About-page access. It never uploads your Google credentials.</p><div class="connection-status" id="settingsSession"><i></i><span>Checking…</span></div><pre><code>python scripts/connect_youtube.py</code><button data-action="copy-command" aria-label="Copy command"><svg><use href="#i-copy"/></svg></button></pre></div></article>
+          <article class="panel settings-card"><div class="settings-icon coral"><svg><use href="#i-download"/></svg></div><div><p class="section-kicker">Data ownership</p><h2>Export your workspace</h2><p>Download your complete creator directory at any time. CSV is spreadsheet-ready; JSON preserves structured fields.</p><div class="settings-actions"><button class="btn btn-dark" data-export="csv">Download CSV</button><button class="btn btn-quiet" data-export="json">Download JSON</button></div></div></article>
+          <article class="panel settings-card wide"><div class="settings-icon lime"><svg><use href="#i-heart"/></svg></div><div><p class="section-kicker">Usage principles</p><h2>Respect creators. Send better outreach.</h2><p>Use business contact details only for relevant, personalized partnership proposals. Honor opt-outs, follow local privacy law, and avoid bulk unsolicited messaging. CreatorScope deliberately stops when YouTube presents a challenge.</p></div></article>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="drawer-backdrop" id="drawerBackdrop" hidden></div>
+  <aside class="creator-drawer" id="creatorDrawer" aria-hidden="true" aria-label="Creator details">
+    <div class="drawer-head"><p>Creator profile</p><button class="icon-btn" id="closeDrawer" aria-label="Close details"><svg><use href="#i-x"/></svg></button></div>
+    <div class="drawer-body" id="drawerBody"></div>
+  </aside>
+
+  <div class="toast-region" id="toastRegion" aria-live="polite"></div>
+  <div class="scrim" id="mobileScrim" hidden></div>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>

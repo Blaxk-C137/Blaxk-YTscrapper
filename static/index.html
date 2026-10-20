@@ -157,8 +157,8 @@
 
         <div class="discovery-layout">
           <form class="panel discovery-form" id="discoveryForm">
-            <div class="form-heading"><span>01</span><div><h2>Build a search brief</h2><p>Choose one market and the creator styles that fit.</p></div></div>
-            <div class="form-group"><label for="discoveryRegion">Target market</label><div class="select-large"><svg><use href="#i-globe"/></svg><select id="discoveryRegion" required><option value="">Choose a market</option></select><svg><use href="#i-chevron"/></svg></div></div>
+            <div class="form-heading"><span>01</span><div><h2>Build a search brief</h2><p>Choose your markets and the creator styles that fit.</p></div></div>
+            <div class="form-group"><label>Target markets <small>Select up to 10</small></label><div class="market-picker" id="marketPicker"><button class="market-picker-button" id="marketPickerButton" type="button" aria-expanded="false"><svg><use href="#i-globe"/></svg><span id="marketPickerLabel">Choose one or more markets</span><b id="marketPickerCount" hidden>0</b><svg><use href="#i-chevron"/></svg></button><div class="market-menu" id="marketMenu" hidden><div class="market-menu-head"><span>Available markets</span><button type="button" id="clearMarkets">Clear all</button></div><div class="market-grid" id="regionGrid"></div></div></div></div>
             <div class="form-group"><label>Creator niches <small>Select one or more</small></label><div class="niche-grid" id="nicheGrid"></div></div>
             <div class="form-group"><div class="label-row"><label for="discoveryLimit">Creators to save</label><output id="limitOutput">25</output></div><input id="discoveryLimit" class="range" type="range" min="5" max="100" value="25" step="5"><div class="range-labels"><span>Focused · 5</span><span>Broad · 100</span></div></div>
             <div class="responsible-note"><svg><use href="#i-heart"/></svg><p><strong>Built for responsible outreach</strong>Only public channel details and creator-provided business contacts are collected. CAPTCHAs are never bypassed.</p></div>

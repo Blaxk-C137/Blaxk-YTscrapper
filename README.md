@@ -70,9 +70,11 @@ and the direct YouTube link.
 
 ### Discovery
 
-Choose a market, select one or more creator niches, and set a save target. Runs
-continue in the background, show honest progress, can be stopped safely, and
-keep every result saved before interruption.
+Choose up to 10 markets in one run, select one or more creator niches, and set
+a save target. CreatorScope searches every market/niche combination, deduplicates
+channels across countries, records every market match, and keeps every result
+saved before interruption. Runs continue in the background, show honest progress,
+and can be stopped safely.
 
 ### Export
 
@@ -111,7 +113,7 @@ Interactive documentation is available at `/api/docs`.
 | `GET /api/creators` | Paginated/searchable creator directory |
 | `PATCH /api/creators/{id}` | Update stage, favorite, or private notes |
 | `POST /api/creators/bulk` | Bulk pipeline/favorite/archive actions |
-| `POST /api/jobs` | Start a discovery run |
+| `POST /api/jobs` | Start a multi-market discovery run (`regions`, `niches`, `limit`) |
 | `GET /api/jobs` | Job history and progress |
 | `POST /api/jobs/{id}/cancel` | Stop after the current channel |
 | `GET /api/export.csv` | Spreadsheet-ready export |

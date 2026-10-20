@@ -205,9 +205,11 @@ def get_job(job_id: str):
 
 
 @app.post("/api/jobs", status_code=202)
-def start_job(payload: DiscoveryRequest):
+async def start_job(payload: DiscoveryRequest):
+    # This endpoint must stay async: JobManager schedules the long-running
+    # discovery coroutine on FastAPI's active event loop.
     try:
-        return jobs.create(payload.region, payload.niches, payload.limit)
+        return jobs.create(payload.regions, payload.niches, payload.limit)
     except RuntimeError as exc:
         raise HTTPException(status_code=409, detail=str(exc)) from exc
 

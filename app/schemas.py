@@ -8,14 +8,15 @@ from pydantic import BaseModel, Field, field_validator
 
 
 class DiscoveryRequest(BaseModel):
-    region: str = Field(min_length=2, max_length=2)
+    regions: list[str] = Field(min_length=1, max_length=10)
     niches: list[str] = Field(min_length=1, max_length=7)
     limit: int = Field(default=25, ge=1, le=200)
 
-    @field_validator("region")
+    @field_validator("regions")
     @classmethod
-    def uppercase_region(cls, value: str) -> str:
-        return value.upper().strip()
+    def uppercase_regions(cls, values: list[str]) -> list[str]:
+        cleaned = [value.upper().strip() for value in values if value.strip()]
+        return list(dict.fromkeys(cleaned))
 
     @field_validator("niches")
     @classmethod

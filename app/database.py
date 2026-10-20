@@ -108,11 +108,19 @@ class Database:
                     processed_at TEXT NOT NULL
                 );
 
+                CREATE TABLE IF NOT EXISTS creator_regions (
+                    channel_id TEXT NOT NULL,
+                    region TEXT NOT NULL,
+                    PRIMARY KEY(channel_id, region),
+                    FOREIGN KEY(channel_id) REFERENCES creators(channel_id) ON DELETE CASCADE
+                );
+
                 CREATE TABLE IF NOT EXISTS jobs (
                     id TEXT PRIMARY KEY,
                     status TEXT NOT NULL,
                     region_code TEXT NOT NULL,
                     region_name TEXT NOT NULL,
+                    regions TEXT NOT NULL DEFAULT '[]',
                     niches TEXT NOT NULL,
                     target INTEGER NOT NULL,
                     discovered INTEGER NOT NULL DEFAULT 0,
@@ -136,10 +144,19 @@ class Database:
                 CREATE INDEX IF NOT EXISTS idx_creators_region ON creators(region_searched);
                 CREATE INDEX IF NOT EXISTS idx_creators_country ON creators(country);
                 CREATE INDEX IF NOT EXISTS idx_creators_stage ON creators(pipeline_stage);
+                CREATE INDEX IF NOT EXISTS idx_creator_regions_region ON creator_regions(region);
                 CREATE INDEX IF NOT EXISTS idx_jobs_created ON jobs(created_at DESC);
                 """
             )
+            # Forward-compatible migration for databases created before
+            # multi-market discovery was introduced.
+            job_columns = {
+                row[1] for row in conn.execute("PRAGMA table_info(jobs)").fetchall()
+            }
+            if "regions" not in job_columns:
+                conn.execute("ALTER TABLE jobs ADD COLUMN regions TEXT NOT NULL DEFAULT '[]'")
         self.import_seed_once()
+        self.backfill_creator_regions()
 
     def import_seed_once(self) -> None:
         with self.connection() as conn:
@@ -174,6 +191,23 @@ class Database:
                 (json.dumps({"at": utcnow(), "creators": imported}),),
             )
 
+    def backfill_creator_regions(self) -> None:
+        """Normalize legacy region strings into the creator-region join table."""
+        with self.connection() as conn:
+            rows = conn.execute(
+                "SELECT channel_id, region_searched FROM creators WHERE region_searched != ''"
+            ).fetchall()
+            for row in rows:
+                regions = [
+                    value.strip()
+                    for value in re.split(r"\s*;\s*", row["region_searched"])
+                    if value.strip()
+                ]
+                conn.executemany(
+                    "INSERT OR IGNORE INTO creator_regions(channel_id, region) VALUES(?, ?)",
+                    [(row["channel_id"], region) for region in regions],
+                )
+
     def mark_processed(self, channel_id: str, reason: str = "processed") -> None:
         with self.connection() as conn:
             conn.execute(
@@ -190,12 +224,46 @@ class Database:
                 "SELECT 1 FROM processed_channels WHERE channel_id=?", (channel_id,)
             ).fetchone() is not None
 
+    def add_creator_regions(self, channel_id: str, regions: Iterable[str]) -> bool:
+        """Attach additional search-market matches to an existing creator."""
+        clean = list(dict.fromkeys(region.strip() for region in regions if region.strip()))
+        if not clean:
+            return False
+        with self.connection() as conn:
+            exists = conn.execute(
+                "SELECT 1 FROM creators WHERE channel_id=?", (channel_id,)
+            ).fetchone()
+            if not exists:
+                return False
+            conn.executemany(
+                "INSERT OR IGNORE INTO creator_regions(channel_id, region) VALUES(?, ?)",
+                [(channel_id, region) for region in clean],
+            )
+            all_regions = [
+                row[0]
+                for row in conn.execute(
+                    "SELECT region FROM creator_regions WHERE channel_id=? ORDER BY region",
+                    (channel_id,),
+                )
+            ]
+            conn.execute(
+                "UPDATE creators SET region_searched=?, updated_at=? WHERE channel_id=?",
+                ("; ".join(all_regions), utcnow(), channel_id),
+            )
+        return True
+
     def upsert_creator(self, creator: dict[str, Any]) -> None:
         stats = creator.get("stats") or {}
         socials = creator.get("socials") or {}
         emails = creator.get("emails") or []
         business_email = creator.get("business_email") or []
         niches = creator.get("niches_matched") or creator.get("niches") or []
+        regions = creator.get("regions_searched") or creator.get("region_searched") or []
+        if isinstance(regions, str):
+            regions = [
+                value.strip() for value in re.split(r"\s*;\s*", regions) if value.strip()
+            ]
+        regions = list(dict.fromkeys(regions))
         now = utcnow()
         found_at = creator.get("found_at") or now
         values = {
@@ -221,7 +289,7 @@ class Database:
             "tiktok": "; ".join(socials.get("tiktok", [])),
             "linkedin": "; ".join(socials.get("linkedin", [])),
             "socials": _json(socials, {}),
-            "region_searched": creator.get("region_searched") or "",
+            "region_searched": "; ".join(regions),
             "niches": _json(niches, []),
             "found_at": found_at,
             "description": creator.get("description") or "",
@@ -248,6 +316,10 @@ class Database:
                 f"""INSERT INTO creators({', '.join(columns)}) VALUES({placeholders})
                     ON CONFLICT(channel_id) DO UPDATE SET {updates}""",
                 values,
+            )
+            conn.executemany(
+                "INSERT OR IGNORE INTO creator_regions(channel_id, region) VALUES(?, ?)",
+                [(creator["channel_id"], region) for region in regions],
             )
         self.mark_processed(creator["channel_id"], "creator_saved")
 
@@ -304,7 +376,10 @@ class Database:
             )
             params.extend([like] * 7)
         if region:
-            clauses.append("region_searched = ?")
+            clauses.append(
+                "EXISTS (SELECT 1 FROM creator_regions cr "
+                "WHERE cr.channel_id=creators.channel_id AND cr.region=?)"
+            )
             params.append(region)
         if country:
             clauses.append("country = ?")
@@ -359,7 +434,9 @@ class Database:
             regions = [
                 row[0]
                 for row in conn.execute(
-                    "SELECT DISTINCT region_searched FROM creators WHERE archived=0 AND region_searched!='' ORDER BY 1"
+                    """SELECT DISTINCT cr.region FROM creator_regions cr
+                       JOIN creators c ON c.channel_id=cr.channel_id
+                       WHERE c.archived=0 ORDER BY 1"""
                 )
             ]
             countries = [
@@ -400,9 +477,10 @@ class Database:
                 "SELECT pipeline_stage, COUNT(*) count FROM creators WHERE archived=0 GROUP BY pipeline_stage"
             ).fetchall()
             regions = conn.execute(
-                """SELECT region_searched label, COUNT(*) value FROM creators
-                   WHERE archived=0 AND region_searched!=''
-                   GROUP BY region_searched ORDER BY value DESC, label LIMIT 6"""
+                """SELECT cr.region label, COUNT(*) value FROM creator_regions cr
+                   JOIN creators c ON c.channel_id=cr.channel_id
+                   WHERE c.archived=0
+                   GROUP BY cr.region ORDER BY value DESC, label LIMIT 6"""
             ).fetchall()
             countries = conn.execute(
                 """SELECT country label, COUNT(*) value FROM creators
@@ -491,11 +569,12 @@ class Database:
         with self.connection() as conn:
             conn.execute(
                 """INSERT INTO jobs(
-                    id,status,region_code,region_name,niches,target,message,created_at
-                   ) VALUES(?,?,?,?,?,?,?,?)""",
+                    id,status,region_code,region_name,regions,niches,target,message,created_at
+                   ) VALUES(?,?,?,?,?,?,?,?,?)""",
                 (
                     job["id"], "queued", job["region_code"], job["region_name"],
-                    _json(job["niches"], []), job["target"], "Waiting to start", utcnow(),
+                    _json(job.get("regions", []), []), _json(job["niches"], []),
+                    job["target"], "Waiting to start", utcnow(),
                 ),
             )
 
@@ -520,6 +599,14 @@ class Database:
             return None
         job = dict(row)
         job["niches"] = json.loads(job.get("niches") or "[]")
+        try:
+            job["regions"] = json.loads(job.get("regions") or "[]")
+        except (TypeError, json.JSONDecodeError):
+            job["regions"] = []
+        if not job["regions"]:
+            job["regions"] = [
+                {"code": job.get("region_code", ""), "name": job.get("region_name", "")}
+            ]
         job["cancel_requested"] = bool(job.get("cancel_requested"))
         target = max(job.get("target") or 0, 1)
         job["progress"] = min(100, round((job.get("found", 0) / target) * 100))

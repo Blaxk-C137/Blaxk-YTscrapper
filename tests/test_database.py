@@ -37,7 +37,9 @@ def test_metric_number_parses_youtube_abbreviations():
 
 def test_upsert_query_stats_and_update(tmp_path: Path):
     db = Database(tmp_path / "test.db", seed_cache=None)
-    db.upsert_creator(creator())
+    sample = creator()
+    sample["regions_searched"] = ["Nigeria", "Canada"]
+    db.upsert_creator(sample)
 
     result = db.list_creators(q="Ada", region="Nigeria", niche="Lifestyle")
     assert result["total"] == 1
@@ -45,6 +47,12 @@ def test_upsert_query_stats_and_update(tmp_path: Path):
     assert item["subscribers_num"] == 12_400
     assert item["emails"] == ["hello@ada.example"]
     assert item["youtube_url"].endswith("/@adacreates")
+    assert item["region_searched"] == "Nigeria; Canada"
+    assert db.list_creators(region="Canada")["total"] == 1
+    assert db.facet_values()["regions"] == ["Canada", "Nigeria"]
+    assert db.add_creator_regions(item["channel_id"], ["Germany", "Canada"])
+    assert db.list_creators(region="Germany")["total"] == 1
+    assert db.get_creator(item["channel_id"])["region_searched"] == "Canada; Germany; Nigeria"
 
     stats = db.stats()
     assert stats["total"] == 1
@@ -76,7 +84,11 @@ def test_bulk_update_and_processed_tracking(tmp_path: Path):
 def test_job_lifecycle(tmp_path: Path):
     db = Database(tmp_path / "test.db", seed_cache=None)
     db.create_job({
-        "id": "job123", "region_code": "NG", "region_name": "Nigeria",
+        "id": "job123", "region_code": "NG", "region_name": "Nigeria, Canada",
+        "regions": [
+            {"code": "NG", "name": "Nigeria"},
+            {"code": "CA", "name": "Canada"},
+        ],
         "niches": [{"query": "vlog", "label": "Vlogs"}], "target": 10,
     })
     assert db.active_job_count() == 1
@@ -84,3 +96,4 @@ def test_job_lifecycle(tmp_path: Path):
     job = db.get_job("job123")
     assert job["progress"] == 40
     assert job["niches"][0]["label"] == "Vlogs"
+    assert [region["code"] for region in job["regions"]] == ["NG", "CA"]

@@ -51,6 +51,11 @@ function stageLabel(stage = 'new') {
   return stage.replaceAll('_', ' ').replace(/\b\w/g, char => char.toUpperCase());
 }
 
+function jobMarketLabel(job) {
+  const names = (job.regions || []).map(region => region.name).filter(Boolean);
+  return names.length ? names.join(', ') : (job.region_name || 'Unknown market');
+}
+
 function socialCount(creator) {
   const socials = creator.socials || {};
   return Object.values(socials).reduce((total, entries) => total + (entries?.length || 0), 0);
@@ -126,7 +131,11 @@ function closeMobileMenu() {
 async function loadConfig() {
   state.config = await api('/api/config');
   const { regions, niches, facets, session } = state.config;
-  $('#discoveryRegion').innerHTML = '<option value="">Choose a market</option>' + regions.map(item => `<option value="${escapeHtml(item.code)}">${escapeHtml(item.name)}</option>`).join('');
+  $('#regionGrid').innerHTML = regions.map(item => `
+    <label class="market-option">
+      <input type="checkbox" name="region" value="${escapeHtml(item.code)}" data-name="${escapeHtml(item.name)}">
+      <span>${escapeHtml(item.name)}</span>
+    </label>`).join('');
   $('#regionFilter').innerHTML = '<option value="">All regions</option>' + facets.regions.map(item => `<option value="${escapeHtml(item)}">${escapeHtml(item)}</option>`).join('');
   $('#nicheFilter').innerHTML = '<option value="">All niches</option>' + facets.niches.map(item => `<option value="${escapeHtml(item)}">${escapeHtml(item)}</option>`).join('');
   $('#nicheGrid').innerHTML = niches.map((item, index) => `
@@ -420,7 +429,41 @@ async function copyText(text, message) {
   catch (_) { toast('Could not access the clipboard', 'error'); }
 }
 
+function updateMarketPicker() {
+  const inputs = $$('input[name="region"]', $('#regionGrid'));
+  const selected = inputs.filter(input => input.checked);
+  inputs.forEach(input => { input.disabled = selected.length >= 10 && !input.checked; });
+  const names = selected.map(input => input.dataset.name);
+  $('#marketPickerLabel').textContent = !names.length
+    ? 'Choose one or more markets'
+    : names.length <= 2 ? names.join(' + ') : `${names.length} markets selected`;
+  $('#marketPickerCount').hidden = !selected.length;
+  $('#marketPickerCount').textContent = selected.length;
+}
+
 function setupDiscovery() {
+  const picker = $('#marketPicker');
+  const pickerButton = $('#marketPickerButton');
+  const marketMenu = $('#marketMenu');
+  pickerButton.addEventListener('click', () => {
+    const opening = marketMenu.hidden;
+    marketMenu.hidden = !opening;
+    picker.classList.toggle('open', opening);
+    pickerButton.setAttribute('aria-expanded', String(opening));
+  });
+  $('#regionGrid').addEventListener('change', updateMarketPicker);
+  $('#clearMarkets').addEventListener('click', () => {
+    $$('input[name="region"]', $('#regionGrid')).forEach(input => { input.checked = false; });
+    updateMarketPicker();
+  });
+  document.addEventListener('click', event => {
+    if (!picker.contains(event.target)) {
+      marketMenu.hidden = true;
+      picker.classList.remove('open');
+      pickerButton.setAttribute('aria-expanded', 'false');
+    }
+  });
+
   const range = $('#discoveryLimit');
   const updateRange = () => {
     $('#limitOutput').value = range.value;
@@ -446,15 +489,15 @@ async function startDiscovery(event) {
     routeTo('settings');
     return;
   }
-  const region = $('#discoveryRegion').value;
+  const regions = $$('input[name="region"]:checked').map(input => input.value);
   const niches = $$('input[name="niche"]:checked').map(input => input.value);
-  if (!region) return toast('Choose a target market', 'error');
+  if (!regions.length) return toast('Choose at least one target market', 'error');
   if (!niches.length) return toast('Choose at least one niche', 'error');
   const button = $('#startDiscovery');
   button.disabled = true;
   button.innerHTML = `${icon('clock')} Starting…`;
   try {
-    await api('/api/jobs', { method: 'POST', body: JSON.stringify({ region, niches, limit: Number($('#discoveryLimit').value) }) });
+    await api('/api/jobs', { method: 'POST', body: JSON.stringify({ regions, niches, limit: Number($('#discoveryLimit').value) }) });
     toast('Discovery started');
     await loadJobs();
     scheduleJobPoll();
@@ -490,7 +533,7 @@ function renderJobs() {
   history.innerHTML = state.jobs.length ? state.jobs.slice(0, 5).map(job => `
     <div class="job-row ${escapeHtml(job.status)}">
       <span>${icon(job.status === 'completed' ? 'check' : job.status === 'running' ? 'radar' : job.status === 'failed' ? 'x' : 'clock')}</span>
-      <div><strong>${escapeHtml(job.region_name)} · ${job.niches.map(item => item.label).join(', ')}</strong><small>${stageLabel(job.status)} · ${formatDate(job.created_at, true)}</small></div>
+      <div><strong>${escapeHtml(jobMarketLabel(job))} · ${job.niches.map(item => item.label).join(', ')}</strong><small>${stageLabel(job.status)} · ${formatDate(job.created_at, true)}</small></div>
       <b>${job.found}/${job.target}</b>
     </div>`).join('') : '<p class="run-message">No discovery runs yet.</p>';
 }
@@ -500,8 +543,8 @@ function renderActiveJob(job) {
   const percent = Math.max(0, Math.min(100, job.progress || 0));
   $('#activeRunContent').innerHTML = `
     <div class="run-top"><span class="run-status ${escapeHtml(job.status)}"><i></i>${escapeHtml(stageLabel(job.status))}</span><small>${formatDate(job.created_at, true)}</small></div>
-    <h2 class="run-title">${escapeHtml(job.region_name)} creator search</h2>
-    <p class="run-subtitle">${job.niches.map(item => escapeHtml(item.label)).join(' · ')}</p>
+    <h2 class="run-title">${job.regions?.length > 1 ? `${job.regions.length}-market` : escapeHtml(jobMarketLabel(job))} creator search</h2>
+    <p class="run-subtitle">${escapeHtml(jobMarketLabel(job))} · ${job.niches.map(item => escapeHtml(item.label)).join(' · ')}</p>
     <div class="progress-track"><i style="width:${percent}%"></i></div>
     <div class="progress-meta"><span>${percent}% of save target</span><span>${job.found} / ${job.target} saved</span></div>
     <div class="run-counters"><div class="run-counter"><strong>${job.discovered}</strong><span>Discovered</span></div><div class="run-counter"><strong>${job.processed}</strong><span>Reviewed</span></div><div class="run-counter"><strong>${job.skipped}</strong><span>Skipped</span></div></div>

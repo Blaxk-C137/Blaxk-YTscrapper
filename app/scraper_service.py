@@ -69,20 +69,28 @@ class JobManager:
         self.db = db
         self.tasks: dict[str, asyncio.Task] = {}
 
-    def create(self, region_code: str, niche_queries: list[str], target: int) -> dict[str, Any]:
+    def create(self, region_codes: list[str], niche_queries: list[str], target: int) -> dict[str, Any]:
         if self.db.active_job_count() >= MAX_ACTIVE_JOBS:
             raise RuntimeError("A discovery run is already active")
-        if region_code not in REGIONS_BY_CODE:
-            raise ValueError("Unsupported region")
+        if not region_codes:
+            raise ValueError("Select at least one region")
+        invalid_regions = [code for code in region_codes if code not in REGIONS_BY_CODE]
+        if invalid_regions:
+            raise ValueError(f"Unsupported region: {invalid_regions[0]}")
         invalid = [query for query in niche_queries if query not in NICHES_BY_QUERY]
         if invalid:
             raise ValueError(f"Unsupported niche: {invalid[0]}")
 
+        regions = [
+            {"code": code, "name": REGIONS_BY_CODE[code]} for code in region_codes
+        ]
         job_id = uuid.uuid4().hex[:12]
         job = {
             "id": job_id,
-            "region_code": region_code,
-            "region_name": REGIONS_BY_CODE[region_code],
+            # Keep the legacy singular fields for old clients and job records.
+            "region_code": regions[0]["code"],
+            "region_name": ", ".join(region["name"] for region in regions),
+            "regions": regions,
             "niches": [
                 {"query": query, "label": NICHES_BY_QUERY[query]}
                 for query in niche_queries
@@ -161,26 +169,52 @@ class JobManager:
                     api_sem = asyncio.Semaphore(min(API_CONCURRENCY, 6))
                     page_sem = asyncio.Semaphore(min(PAGE_CONCURRENCY, 4))
                     all_ids: list[str] = []
-                    for niche in job["niches"]:
+                    matched_regions: dict[str, list[str]] = {}
+                    matched_niches: dict[str, list[str]] = {}
+                    combinations = max(1, len(job["regions"]) * len(job["niches"]))
+                    per_search = max(
+                        10, min(50, ((job["target"] + combinations - 1) // combinations) * 3)
+                    )
+                    for region in job["regions"]:
                         if self._cancelled(job_id):
                             break
-                        self.db.update_job(
-                            job_id,
-                            message=f"Searching {niche['label']} channels in {job['region_name']}…",
-                        )
-                        ids = await search_channels(
-                            context.request,
-                            niche["query"],
-                            job["region_code"],
-                            max(job["target"], 20),
-                            api_sem,
-                        )
-                        for channel_id in ids:
-                            if channel_id not in all_ids:
-                                all_ids.append(channel_id)
-                        counts["discovered"] = len(all_ids)
-                        self.db.update_job(job_id, discovered=counts["discovered"])
+                        for niche in job["niches"]:
+                            if self._cancelled(job_id):
+                                break
+                            self.db.update_job(
+                                job_id,
+                                message=(
+                                    f"Searching {niche['label']} channels in "
+                                    f"{region['name']}…"
+                                ),
+                            )
+                            ids = await search_channels(
+                                context.request,
+                                niche["query"],
+                                region["code"],
+                                per_search,
+                                api_sem,
+                            )
+                            for channel_id in ids:
+                                if channel_id not in all_ids:
+                                    all_ids.append(channel_id)
+                                region_hits = matched_regions.setdefault(channel_id, [])
+                                if region["name"] not in region_hits:
+                                    region_hits.append(region["name"])
+                                niche_hits = matched_niches.setdefault(channel_id, [])
+                                if niche["label"] not in niche_hits:
+                                    niche_hits.append(niche["label"])
+                            counts["discovered"] = len(all_ids)
+                            self.db.update_job(job_id, discovered=counts["discovered"])
 
+                    # A creator can surface in several country searches. Even
+                    # when already processed, retain the newly observed market
+                    # matches instead of silently discarding that signal.
+                    for channel_id in all_ids:
+                        if self.db.is_processed(channel_id):
+                            self.db.add_creator_regions(
+                                channel_id, matched_regions.get(channel_id, [])
+                            )
                     candidates = [
                         channel_id
                         for channel_id in all_ids
@@ -246,8 +280,13 @@ class JobManager:
                                 "contact_source": contact_source,
                                 "contact_status": details["reveal_status"],
                                 "socials": socials,
-                                "region_searched": job["region_name"],
-                                "niches_matched": [n["label"] for n in job["niches"]],
+                                "regions_searched": matched_regions.get(
+                                    channel_id,
+                                    [region["name"] for region in job["regions"]],
+                                ),
+                                "niches_matched": matched_niches.get(
+                                    channel_id, [n["label"] for n in job["niches"]]
+                                ),
                                 "found_at": utcnow(),
                             }
                             self.db.upsert_creator(creator)

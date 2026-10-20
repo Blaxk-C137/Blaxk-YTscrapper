@@ -540,16 +540,25 @@ async function loadJobs() {
     renderJobs();
     const active = state.jobs.some(job => ['queued', 'running'].includes(job.status));
     $('#jobPulse').hidden = !active;
-    if (active) scheduleJobPoll(); else clearInterval(state.jobTimer);
+    if (active) {
+      scheduleJobPoll();
+    } else if (state.jobTimer) {
+      clearInterval(state.jobTimer);
+      state.jobTimer = null;
+      await Promise.all([loadStats(), loadRecent()]);
+    }
   } catch (error) { toast(error.message, 'error'); }
 }
 
 function scheduleJobPoll() {
-  if (state.jobTimer) clearInterval(state.jobTimer);
+  if (state.jobTimer) return;
+  let ticks = 0;
   state.jobTimer = setInterval(async () => {
+    ticks += 1;
     await loadJobs();
-    await Promise.all([loadStats(), loadRecent()]);
-  }, 2800);
+    // Creator cards do not need to refresh as often as the live job counters.
+    if (ticks % 5 === 0) await Promise.all([loadStats(), loadRecent()]);
+  }, 1200);
 }
 
 function renderJobs() {

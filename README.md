@@ -23,6 +23,8 @@ usable relationship pipeline—not another raw CSV.
   saved, search results are exhausted, or the documented safety ceiling is hit.
 - **Creator preferences** — qualify by subscriber range, upload count, channel
   age, and required contact type before a result counts toward the target.
+- **Live progress** — the fresh-pool count updates after every search page and
+  the dashboard refreshes active-run counters about once per second.
 - **Conservative automation** — one discovery run at a time, bounded
   concurrency, no CAPTCHA bypass, and partial results survive interruption.
 - **Security cleanup** — browser auth is ignored by Git and all local runtime

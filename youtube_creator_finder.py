@@ -496,7 +496,13 @@ async def innertube(request, endpoint, payload):
 
 
 async def search_channels(
-    request, query, region_code, limit, semaphore, exclude_ids=None
+    request,
+    query,
+    region_code,
+    limit,
+    semaphore,
+    exclude_ids=None,
+    on_progress=None,
 ):
     """Search channels deeply enough to return ``limit`` *eligible* IDs.
 
@@ -534,6 +540,9 @@ async def search_channels(
                 ids.append(channel_id)
                 if len(ids) >= limit:
                     break
+
+        if on_progress:
+            on_progress(ids[:])
 
         cont = find_key(data, "continuationCommand")
         next_token = cont.get("token") if isinstance(cont, dict) else None

@@ -16,7 +16,7 @@ EXPORT_DIR = ROOT_DIR / "exports"
 EXPORT_DIR.mkdir(parents=True, exist_ok=True)
 
 APP_NAME = "CreatorScope"
-APP_VERSION = "1.3.0"
+APP_VERSION = "1.3.1"
 MAX_PAGE_SIZE = 100
 DEFAULT_PAGE_SIZE = 25
 

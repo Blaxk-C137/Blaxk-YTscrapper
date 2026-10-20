@@ -327,6 +327,23 @@ class JobManager:
                                     excluded = (
                                         globally_processed | seen_this_job | set(wave_ids)
                                     )
+
+                                    def report_pool(query_ids):
+                                        counts["discovered"] = len(
+                                            seen_this_job
+                                            | set(wave_ids)
+                                            | set(query_ids)
+                                        )
+                                        self.db.update_job(
+                                            job_id,
+                                            discovered=counts["discovered"],
+                                            message=(
+                                                f"Fresh pool: {counts['discovered']} · "
+                                                f"expanding {niche['label']} in "
+                                                f"{region['name']}…"
+                                            ),
+                                        )
+
                                     ids = await search_channels(
                                         context.request,
                                         query,
@@ -334,6 +351,7 @@ class JobManager:
                                         per_search,
                                         api_sem,
                                         exclude_ids=excluded,
+                                        on_progress=report_pool,
                                     )
                                     if len(ids) >= per_search:
                                         every_search_exhausted = False
@@ -346,6 +364,22 @@ class JobManager:
                                         matched_niches.setdefault(
                                             channel_id, []
                                         ).append(niche["label"])
+
+                                    # Publish the growing pool after every query
+                                    # variation instead of waiting for the entire
+                                    # market/niche search phase to finish.
+                                    counts["discovered"] = len(
+                                        seen_this_job | set(wave_ids)
+                                    )
+                                    self.db.update_job(
+                                        job_id,
+                                        discovered=counts["discovered"],
+                                        message=(
+                                            f"Fresh pool: {counts['discovered']} · "
+                                            f"expanding {niche['label']} in "
+                                            f"{region['name']}…"
+                                        ),
+                                    )
 
                         if not wave_ids:
                             search_exhausted = True

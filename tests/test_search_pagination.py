@@ -37,6 +37,7 @@ def test_search_paginates_past_excluded_processed_channels(monkeypatch):
         },
         {"items": [{"browseId": value} for value in second]},
     ])
+    live_counts = []
 
     async def no_sleep(*_args, **_kwargs):
         return None
@@ -51,7 +52,9 @@ def test_search_paginates_past_excluded_processed_channels(monkeypatch):
             2,
             asyncio.Semaphore(1),
             exclude_ids=set(first),
+            on_progress=lambda ids: live_counts.append(len(ids)),
         )
 
     assert asyncio.run(scenario()) == second
     assert request.calls == 2
+    assert live_counts == [0, 2]

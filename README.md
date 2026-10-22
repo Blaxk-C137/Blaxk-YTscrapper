@@ -11,8 +11,8 @@ usable relationship pipeline—not another raw CSV.
 
 - **Complete web interface** — responsive overview, creator directory,
   discovery studio, settings, and creator detail drawer.
-- **Real backend** — FastAPI API with SQLite persistence, pagination, filters,
-  sorting, exports, job history, and background discovery runs.
+- **Real backend** — FastAPI API with local SQLite or hosted PostgreSQL,
+  pagination, filters, sorting, exports, job history, and background runs.
 - **Mini CRM** — favorites, private notes, and stages from New to Partnered.
 - **Useful analytics** — contact coverage, audience footprint, top markets, and
   partnership-pipeline health.
@@ -27,6 +27,9 @@ usable relationship pipeline—not another raw CSV.
   the dashboard refreshes active-run counters about once per second.
 - **Conservative automation** — one discovery run at a time, bounded
   concurrency, no CAPTCHA bypass, and partial results survive interruption.
+- **Deployable for free** — Vercel static frontend, Render Free backend, Neon
+  PostgreSQL persistence, environment-backed YouTube session, CORS, and a
+  browser-entered workspace key.
 - **Security cleanup** — browser auth is ignored by Git and all local runtime
   state lives outside source control.
 
@@ -54,8 +57,10 @@ python scripts/connect_youtube.py
 ```
 
 A Chromium window opens. Sign in directly on YouTube, return to the terminal,
-and press Enter. Credentials are never entered into CreatorScope; Chromium
-stores only the local browser session in `browser_profile/`.
+and press Enter. Credentials are never entered into CreatorScope. Chromium
+stores the local profile in `browser_profile/`; the helper also writes ignored
+storage-state exports under `.runtime/` for an optional hosted deployment. Treat
+all of those files as account-access secrets.
 
 > **Security notice:** the original repository committed a browser profile.
 > Deleting it from the current tree is not enough. Follow [SECURITY.md](SECURITY.md)
@@ -97,22 +102,33 @@ export is available in Settings.
 
 ```text
 app/
-  main.py              FastAPI routes and static app host
-  database.py          SQLite schema, migration, filters, CRM, analytics
-  scraper_service.py   background job orchestration
+  main.py              FastAPI routes, CORS/auth, and static app host
+  database.py          SQLite/PostgreSQL schema, filters, CRM, analytics
+  scraper_service.py   background jobs and local/hosted browser sessions
   schemas.py           validated API request models
 static/
   index.html            dependency-free responsive SPA
   styles.css            design system and layouts
-  app.js                dashboard state and API integration
+  app.js                remote/local API and dashboard state
 scripts/
-  connect_youtube.py    local interactive session setup
+  connect_youtube.py    interactive session setup and hosted export
+  build_frontend.mjs    Vercel static build
 
-youtube_creator_finder.py   original scraper engine and CLI
+render.yaml             Render Free Blueprint
+vercel.json             Vercel build configuration
+youtube_creator_finder.py   scraper engine and CLI
 ```
 
 Runtime data is stored in `.runtime/creatorscope.db` by default. The path can be
-changed with `CREATORSCOPE_DATA_DIR` or `CREATORSCOPE_DB_PATH`.
+changed with `CREATORSCOPE_DATA_DIR` or `CREATORSCOPE_DB_PATH`. Supplying a
+PostgreSQL `DATABASE_URL` switches persistence to PostgreSQL with a small
+connection pool.
+
+## Free hosted deployment
+
+Use [DEPLOYMENT.md](DEPLOYMENT.md) for the complete Vercel + Render Free + Neon
+walkthrough, including the private workspace key, exact CORS setup, hosted
+YouTube session export, verification, and free-tier throughput guidance.
 
 ## API
 
@@ -155,9 +171,9 @@ pip install -r requirements-dev.txt
 pytest
 ```
 
-The original parser tests remain intact. New tests cover metric normalization,
-SQLite persistence, querying, analytics, CRM updates, bulk actions, and the job
-lifecycle.
+The original parser tests remain intact. The suite covers metric normalization,
+persistence/querying, analytics, CRM updates, API auth/CORS, portable SQL,
+creator preferences, search pagination, and the job lifecycle.
 
 ## Docker
 

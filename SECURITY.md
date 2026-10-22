@@ -27,12 +27,26 @@ If this repository was ever public, do all of the following immediately:
 Chrome protects some values with OS-level encryption, but a checked-in browser
 profile must still be treated as compromised.
 
+## Session exports
+
+`browser_profile/`, `.runtime/youtube-storage-state.json`, and
+`.runtime/youtube-storage-state.b64` can grant access to the connected account.
+They are ignored by Git, but must still be stored only on trusted devices and in
+Render's secret environment-variable store. Never put them in Vercel variables,
+frontend code, logs, screenshots, support messages, or repository files. Rotate
+the Google session immediately if one leaks.
+
 ## Deployment boundary
 
-CreatorScope is a private/local workspace and does not include user
-authentication. Do not expose port 8000 directly to the public internet. For a
-shared deployment, put it behind an authenticated HTTPS reverse proxy or add an
-identity layer first.
+Hosted CreatorScope is a private, single-workspace application—not a multi-user
+identity system. Set a long random `CREATORSCOPE_API_KEY`; the Vercel frontend
+asks each authorized user to enter it in their own browser. Keep CORS restricted
+to exact trusted frontend origins and use HTTPS. Health and API documentation
+remain public, but creator data and job routes require the key.
+
+For a team or public-facing service, place the Render backend behind a proper
+identity-aware proxy instead of sharing one workspace key. See
+[DEPLOYMENT.md](DEPLOYMENT.md) for the supported private deployment.
 
 ## Reporting
 

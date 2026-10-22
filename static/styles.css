@@ -369,6 +369,10 @@ kbd { padding: 4px 6px; color: var(--muted-2); background: #eeece6; border: 1px 
 .settings-card pre button { position: absolute; top: 7px; right: 7px; display: grid; width: 28px; height: 28px; place-items: center; color: #aeb2bb; background: rgba(255,255,255,.07); border-radius: 7px; }
 .settings-card pre svg { width: 13px; }
 .settings-actions { margin-top: 24px; }
+.key-form { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; margin-top: 20px; }
+.key-form input { min-width: 0; height: 40px; padding: 0 12px; color: var(--ink); background: #f4f2ec; border: 1px solid var(--line); border-radius: 9px; outline: 0; font-size: 10px; }
+.key-form input:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(45,91,240,.1); }
+.endpoint-label { display: block; margin-top: 9px; overflow-wrap: anywhere; color: var(--muted); font-size: 8px; line-height: 1.5; }
 
 .drawer-backdrop { position: fixed; z-index: 80; inset: 0; background: rgba(20,21,18,.35); backdrop-filter: blur(2px); animation: fadeIn .2s; }
 .creator-drawer { position: fixed; z-index: 90; top: 0; right: 0; bottom: 0; width: min(470px, 95vw); overflow: auto; background: var(--surface); box-shadow: -20px 0 60px rgba(0,0,0,.15); transform: translateX(105%); transition: transform .28s cubic-bezier(.4,0,.2,1); }

@@ -8,6 +8,8 @@ search results, reaches a documented safety ceiling, or the user stops the run.
 from __future__ import annotations
 
 import asyncio
+import base64
+import json
 import uuid
 from datetime import datetime, timezone
 from pathlib import Path
@@ -29,7 +31,13 @@ from youtube_creator_finder import (
     search_channels,
 )
 
-from .config import MAX_ACTIVE_JOBS, PROFILE_DIR
+from .config import (
+    API_CONCURRENCY_LIMIT,
+    MAX_ACTIVE_JOBS,
+    PROFILE_DIR,
+    REVIEW_CONCURRENCY,
+    YOUTUBE_STORAGE_STATE_B64,
+)
 from .database import Database, metric_number, utcnow
 
 REGIONS_BY_CODE = {code: name for code, name in REGIONS.values()}
@@ -114,22 +122,40 @@ def matches_preferences(
 
 def session_status(profile_dir: Path = PROFILE_DIR) -> dict[str, Any]:
     cookies = profile_dir / "Default" / "Cookies"
-    configured = profile_dir.exists() and cookies.exists()
+    env_session = bool(YOUTUBE_STORAGE_STATE_B64)
+    local_session = profile_dir.exists() and cookies.exists()
+    configured = env_session or local_session
     updated_at = None
-    if configured:
+    if local_session:
         updated_at = datetime.fromtimestamp(
             cookies.stat().st_mtime, tz=timezone.utc
         ).isoformat()
     return {
         "configured": configured,
         "updated_at": updated_at,
-        "profile_path": str(profile_dir),
+        "mode": "environment" if env_session else "local_profile",
         "message": (
-            "Browser session found"
-            if configured
-            else "Connect a YouTube account locally before starting discovery"
+            "Hosted YouTube session ready"
+            if env_session
+            else "Local browser session ready"
+            if local_session
+            else "Connect YouTube locally, then add the exported session to Render"
         ),
     }
+
+
+def hosted_storage_state() -> dict[str, Any] | None:
+    """Decode a Playwright storage-state JSON document supplied by the host."""
+    if not YOUTUBE_STORAGE_STATE_B64:
+        return None
+    try:
+        decoded = base64.b64decode(YOUTUBE_STORAGE_STATE_B64, validate=True)
+        value = json.loads(decoded.decode("utf-8"))
+        if not isinstance(value, dict) or not isinstance(value.get("cookies"), list):
+            raise ValueError("storage state must contain a cookies list")
+        return value
+    except (ValueError, UnicodeDecodeError, json.JSONDecodeError) as exc:
+        raise RuntimeError("YOUTUBE_STORAGE_STATE_B64 is not valid storage state") from exc
 
 
 async def _block_assets(route) -> None:
@@ -202,19 +228,37 @@ class JobManager:
         return bool(job and job["cancel_requested"])
 
     async def _launch_context(self, pw):
-        kwargs = dict(
-            user_data_dir=str(PROFILE_DIR),
-            headless=True,
-            locale="en-US",
-            viewport={"width": 1440, "height": 900},
-            args=["--disable-blink-features=AutomationControlled"],
-        )
-        try:
-            context = await pw.chromium.launch_persistent_context(
-                channel="chromium", **kwargs
+        launch_args = [
+            "--disable-blink-features=AutomationControlled",
+            "--disable-dev-shm-usage",
+            "--no-sandbox",
+        ]
+        storage_state = hosted_storage_state()
+        if storage_state:
+            launch_kwargs = {"headless": True, "args": launch_args}
+            try:
+                browser = await pw.chromium.launch(channel="chromium", **launch_kwargs)
+            except Exception:
+                browser = await pw.chromium.launch(**launch_kwargs)
+            context = await browser.new_context(
+                storage_state=storage_state,
+                locale="en-US",
+                viewport={"width": 1440, "height": 900},
             )
-        except Exception:
-            context = await pw.chromium.launch_persistent_context(**kwargs)
+        else:
+            kwargs = dict(
+                user_data_dir=str(PROFILE_DIR),
+                headless=True,
+                locale="en-US",
+                viewport={"width": 1440, "height": 900},
+                args=launch_args,
+            )
+            try:
+                context = await pw.chromium.launch_persistent_context(
+                    channel="chromium", **kwargs
+                )
+            except Exception:
+                context = await pw.chromium.launch_persistent_context(**kwargs)
         await context.route("**/*", _block_assets)
         return context
 
@@ -252,7 +296,7 @@ class JobManager:
                 job_id,
                 status="failed",
                 error="YouTube session is not connected",
-                message="Run `python scripts/connect_youtube.py` on this machine, then try again.",
+                message="Run `python scripts/connect_youtube.py`, then configure the exported session.",
                 finished_at=utcnow(),
             )
             return
@@ -271,8 +315,10 @@ class JobManager:
                             "The saved YouTube session has expired. Reconnect it locally."
                         )
 
-                    api_sem = asyncio.Semaphore(min(API_CONCURRENCY, 8))
-                    page_concurrency = min(PAGE_CONCURRENCY, 6)
+                    api_sem = asyncio.Semaphore(
+                        min(API_CONCURRENCY, API_CONCURRENCY_LIMIT)
+                    )
+                    page_concurrency = min(PAGE_CONCURRENCY, REVIEW_CONCURRENCY)
                     page_sem = asyncio.Semaphore(page_concurrency)
                     combinations = max(
                         1,

@@ -19,6 +19,7 @@ playwright/.auth/
 exports/
 creators.json
 creators_export*.csv
+public/
 
 # Logs and OS/editor files
 *.log

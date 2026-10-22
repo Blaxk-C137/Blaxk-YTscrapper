@@ -1,0 +1,27 @@
+services:
+  - type: web
+    name: creatorscope-api
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/health
+    autoDeploy: true
+    envVars:
+      - key: CREATORSCOPE_DEPLOYMENT_MODE
+        value: render-free
+      - key: CREATORSCOPE_MAX_ACTIVE_JOBS
+        value: "1"
+      - key: CREATORSCOPE_REVIEW_CONCURRENCY
+        value: "2"
+      - key: CREATORSCOPE_API_CONCURRENCY
+        value: "4"
+      - key: CREATORSCOPE_DB_POOL_SIZE
+        value: "4"
+      - key: DATABASE_URL
+        sync: false
+      - key: CREATORSCOPE_API_KEY
+        sync: false
+      - key: CORS_ORIGINS
+        sync: false
+      - key: YOUTUBE_STORAGE_STATE_B64
+        sync: false

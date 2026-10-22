@@ -53,3 +53,40 @@ def test_job_endpoint_schedules_on_running_event_loop(tmp_path: Path, monkeypatc
             assert database.list_creators()["total"] == 0
 
     asyncio.run(scenario())
+
+
+def test_workspace_key_protects_api_but_not_health(tmp_path: Path, monkeypatch):
+    database = Database(tmp_path / "protected.db")
+    monkeypatch.setattr(main_module, "db", database)
+    monkeypatch.setattr(main_module, "API_KEY", "correct-horse-battery-staple")
+
+    async def scenario():
+        transport = httpx.ASGITransport(app=main_module.app)
+        async with httpx.AsyncClient(transport=transport, base_url="http://test") as client:
+            health = await client.get("/api/health")
+            assert health.status_code == 200
+
+            denied = await client.get(
+                "/api/stats", headers={"Origin": "http://localhost:3000"}
+            )
+            assert denied.status_code == 401
+            assert denied.headers["access-control-allow-origin"] == "http://localhost:3000"
+
+            allowed = await client.get(
+                "/api/stats",
+                headers={"X-Creator-Key": "correct-horse-battery-staple"},
+            )
+            assert allowed.status_code == 200
+
+            preflight = await client.options(
+                "/api/stats",
+                headers={
+                    "Origin": "http://localhost:3000",
+                    "Access-Control-Request-Method": "GET",
+                    "Access-Control-Request-Headers": "X-Creator-Key",
+                },
+            )
+            assert preflight.status_code == 200
+            assert preflight.headers["access-control-allow-origin"] == "http://localhost:3000"
+
+    asyncio.run(scenario())

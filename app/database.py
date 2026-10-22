@@ -1,4 +1,4 @@
-"""SQLite persistence, cache migration, querying, and dashboard analytics."""
+"""Portable persistence for local SQLite and hosted PostgreSQL deployments."""
 
 from __future__ import annotations
 
@@ -12,7 +12,7 @@ from typing import Any, Iterable
 
 from youtube_creator_finder import clean_country
 
-from .config import DB_PATH
+from .config import DATABASE_URL, DB_PATH, DB_POOL_SIZE, IS_RENDER_FREE
 
 JSON_FIELDS = {"emails", "business_email", "niches", "socials", "raw"}
 STAGES = ("new", "shortlisted", "contacted", "replied", "partnered", "not_a_fit")
@@ -41,26 +41,131 @@ def _json(value: Any, fallback: Any) -> str:
     return json.dumps(value if value is not None else fallback, ensure_ascii=False)
 
 
+class CompatRow(dict):
+    """Mapping row that also supports the integer indexing used by sqlite3.Row."""
+
+    def __getitem__(self, key):
+        if isinstance(key, int):
+            return list(self.values())[key]
+        return super().__getitem__(key)
+
+
+class _PostgresCursor:
+    def __init__(self, cursor) -> None:
+        self.cursor = cursor
+
+    @property
+    def rowcount(self) -> int:
+        return self.cursor.rowcount
+
+    @staticmethod
+    def _row(value):
+        return CompatRow(value) if isinstance(value, dict) else value
+
+    def fetchone(self):
+        return self._row(self.cursor.fetchone())
+
+    def fetchall(self):
+        return [self._row(row) for row in self.cursor.fetchall()]
+
+
+class _PostgresCompat:
+    """Small qmark/named-parameter compatibility layer over psycopg."""
+
+    def __init__(self, connection) -> None:
+        self.connection = connection
+
+    @staticmethod
+    def _sql(sql: str) -> str:
+        statement = sql.strip()
+        ignore_conflicts = bool(re.match(r"INSERT\s+OR\s+IGNORE", statement, re.I))
+        statement = re.sub(
+            r"INSERT\s+OR\s+IGNORE\s+INTO", "INSERT INTO", statement, flags=re.I
+        )
+        statement = statement.replace(" COLLATE NOCASE", "")
+        statement = re.sub(r"\bLIKE\b", "ILIKE", statement, flags=re.I)
+        statement = re.sub(r":([A-Za-z_][A-Za-z0-9_]*)", r"%(\1)s", statement)
+        statement = statement.replace("?", "%s")
+        if ignore_conflicts and "ON CONFLICT" not in statement.upper():
+            statement += " ON CONFLICT DO NOTHING"
+        return statement
+
+    def execute(self, sql: str, params=None):
+        cursor = self.connection.execute(self._sql(sql), params or ())
+        return _PostgresCursor(cursor)
+
+    def executemany(self, sql: str, params):
+        cursor = self.connection.cursor()
+        cursor.executemany(self._sql(sql), params)
+        return _PostgresCursor(cursor)
+
+    def executescript(self, script: str) -> None:
+        for statement in script.split(";"):
+            if statement.strip():
+                self.connection.execute(self._sql(statement))
+
+
 class Database:
-    def __init__(self, path: Path = DB_PATH) -> None:
+    def __init__(self, path: Path = DB_PATH, database_url: str = DATABASE_URL) -> None:
         self.path = Path(path)
-        self.path.parent.mkdir(parents=True, exist_ok=True)
+        self.database_url = database_url
+        self.is_postgres = database_url.startswith(("postgres://", "postgresql://"))
+        if IS_RENDER_FREE and not self.is_postgres:
+            raise RuntimeError(
+                "Render deployment requires a persistent PostgreSQL DATABASE_URL"
+            )
+        self.pool = None
+        if self.is_postgres:
+            try:
+                from psycopg.rows import dict_row
+                from psycopg_pool import ConnectionPool
+            except ImportError as exc:
+                raise RuntimeError(
+                    "PostgreSQL requires psycopg. Install requirements.txt."
+                ) from exc
+            self.pool = ConnectionPool(
+                conninfo=self.database_url,
+                min_size=0,
+                max_size=DB_POOL_SIZE,
+                kwargs={"row_factory": dict_row},
+                check=ConnectionPool.check_connection,
+                open=False,
+            )
+            self.pool.open()
+        else:
+            self.path.parent.mkdir(parents=True, exist_ok=True)
         self.initialize()
 
     @contextmanager
     def connection(self):
-        conn = sqlite3.connect(self.path, timeout=30)
-        conn.row_factory = sqlite3.Row
-        conn.execute("PRAGMA foreign_keys = ON")
-        conn.execute("PRAGMA journal_mode = WAL")
+        if self.is_postgres:
+            with self.pool.connection() as pooled:
+                conn = _PostgresCompat(pooled)
+                try:
+                    yield conn
+                    pooled.commit()
+                except Exception:
+                    pooled.rollback()
+                    raise
+            return
+        else:
+            raw = sqlite3.connect(self.path, timeout=30)
+            raw.row_factory = sqlite3.Row
+            raw.execute("PRAGMA foreign_keys = ON")
+            raw.execute("PRAGMA journal_mode = WAL")
+            conn = raw
         try:
             yield conn
-            conn.commit()
+            raw.commit()
         except Exception:
-            conn.rollback()
+            raw.rollback()
             raise
         finally:
-            conn.close()
+            raw.close()
+
+    def close(self) -> None:
+        if self.pool is not None:
+            self.pool.close()
 
     def initialize(self) -> None:
         with self.connection() as conn:
@@ -151,9 +256,18 @@ class Database:
             )
             # Forward-compatible migration for databases created before
             # multi-market discovery was introduced.
-            job_columns = {
-                row[1] for row in conn.execute("PRAGMA table_info(jobs)").fetchall()
-            }
+            if self.is_postgres:
+                job_columns = {
+                    row["column_name"]
+                    for row in conn.execute(
+                        """SELECT column_name FROM information_schema.columns
+                           WHERE table_schema='public' AND table_name='jobs'"""
+                    ).fetchall()
+                }
+            else:
+                job_columns = {
+                    row[1] for row in conn.execute("PRAGMA table_info(jobs)").fetchall()
+                }
             migrations = {
                 "regions": "TEXT NOT NULL DEFAULT '[]'",
                 "preferences": "TEXT NOT NULL DEFAULT '{}'",

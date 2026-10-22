@@ -152,7 +152,7 @@
       <section class="page" id="page-discovery" data-page="discovery">
         <header class="page-header compact-header">
           <div><p class="eyebrow"><span></span> Focused search</p><h1>Discovery studio</h1><p class="subtitle">Set your brief. CreatorScope handles the careful research.</p></div>
-          <div class="privacy-note"><svg><use href="#i-lock"/></svg><span><strong>Private by design</strong>Your session stays on this machine.</span></div>
+          <div class="privacy-note"><svg><use href="#i-lock"/></svg><span><strong>Private by design</strong>Your session stays in your configured backend.</span></div>
         </header>
 
         <div class="discovery-layout">
@@ -185,9 +185,10 @@
       </section>
 
       <section class="page" id="page-settings" data-page="settings">
-        <header class="page-header compact-header"><div><p class="eyebrow"><span></span> Workspace controls</p><h1>Settings</h1><p class="subtitle">Keep your data local and your discovery account secure.</p></div></header>
+        <header class="page-header compact-header"><div><p class="eyebrow"><span></span> Workspace controls</p><h1>Settings</h1><p class="subtitle">Keep your discovery account and hosted workspace secure.</p></div></header>
         <div class="settings-grid">
-          <article class="panel settings-card"><div class="settings-icon"><svg><use href="#i-lock"/></svg></div><div><p class="section-kicker">YouTube access</p><h2>Browser session</h2><p>CreatorScope uses a local, encrypted Chromium profile for About-page access. It never uploads your Google credentials.</p><div class="connection-status" id="settingsSession"><i></i><span>Checking…</span></div><pre><code>python scripts/connect_youtube.py</code><button data-action="copy-command" aria-label="Copy command"><svg><use href="#i-copy"/></svg></button></pre></div></article>
+          <article class="panel settings-card"><div class="settings-icon"><svg><use href="#i-lock"/></svg></div><div><p class="section-kicker">Workspace access</p><h2>Private API key</h2><p>Enter the same private key configured on Render. It stays in this browser and is never included in the Vercel build.</p><div class="key-form"><input type="password" id="workspaceKey" autocomplete="current-password" placeholder="Your workspace key"><button class="btn btn-dark" id="saveWorkspaceKey">Save key</button></div><small class="endpoint-label" id="apiEndpoint"></small></div></article>
+          <article class="panel settings-card"><div class="settings-icon"><svg><use href="#i-lock"/></svg></div><div><p class="section-kicker">YouTube access</p><h2>Browser session</h2><p>CreatorScope uses an exported Playwright session for hosted About-page access. Your Google password is never stored by the app.</p><div class="connection-status" id="settingsSession"><i></i><span>Checking…</span></div><pre><code>python scripts/connect_youtube.py</code><button data-action="copy-command" aria-label="Copy command"><svg><use href="#i-copy"/></svg></button></pre></div></article>
           <article class="panel settings-card"><div class="settings-icon coral"><svg><use href="#i-download"/></svg></div><div><p class="section-kicker">Data ownership</p><h2>Export your workspace</h2><p>Download your complete creator directory at any time. CSV is spreadsheet-ready; JSON preserves structured fields.</p><div class="settings-actions"><button class="btn btn-dark" data-export="csv">Download CSV</button><button class="btn btn-quiet" data-export="json">Download JSON</button></div></div></article>
           <article class="panel settings-card wide"><div class="settings-icon lime"><svg><use href="#i-heart"/></svg></div><div><p class="section-kicker">Usage principles</p><h2>Respect creators. Send better outreach.</h2><p>Use business contact details only for relevant, personalized partnership proposals. Honor opt-outs, follow local privacy law, and avoid bulk unsolicited messaging. CreatorScope deliberately stops when YouTube presents a challenge.</p></div></article>
           <article class="panel settings-card wide danger-card"><div class="settings-icon danger"><svg><use href="#i-x"/></svg></div><div><p class="section-kicker">Danger zone</p><h2>Clear creator workspace</h2><p>Delete every saved creator, processed channel ID, and discovery run. The directory returns to zero and previously seen channels become eligible for discovery again.</p><button class="btn btn-danger" id="clearWorkspace">Clear all creator data</button></div></article>
@@ -205,6 +206,7 @@
   <div class="toast-region" id="toastRegion" aria-live="polite"></div>
   <div class="scrim" id="mobileScrim" hidden></div>
 
+  <script src="/runtime-config.js"></script>
   <script src="/app.js" defer></script>
 </body>
 </html>

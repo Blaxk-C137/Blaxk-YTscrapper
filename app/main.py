@@ -2,28 +2,37 @@
 
 from __future__ import annotations
 
+import asyncio
 import csv
+import hmac
 import io
 import json
 from contextlib import asynccontextmanager
 from typing import Annotated
 
 from fastapi import FastAPI, HTTPException, Query, Request
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse, Response, StreamingResponse
 from fastapi.staticfiles import StaticFiles
 
 from youtube_creator_finder import NICHES, REGIONS
 
 from .config import (
+    API_KEY,
     APP_NAME,
     APP_VERSION,
+    CORS_ORIGINS,
     DEFAULT_PAGE_SIZE,
+    IS_RENDER_FREE,
     MAX_PAGE_SIZE,
     STATIC_DIR,
 )
-from .database import Database
+from .database import Database, utcnow
 from .schemas import BulkUpdate, CreatorUpdate, DiscoveryRequest
 from .scraper_service import JobManager, session_status
+
+if IS_RENDER_FREE and not API_KEY:
+    raise RuntimeError("Render deployment requires CREATORSCOPE_API_KEY")
 
 
 db = Database()
@@ -37,11 +46,17 @@ async def lifespan(_: FastAPI):
         conn.execute(
             """UPDATE jobs SET status='failed', error='Server restarted',
                message='The server restarted before this discovery run completed.',
-               finished_at=datetime('now') WHERE status IN ('queued','running')"""
+               finished_at=? WHERE status IN ('queued','running')""",
+            (utcnow(),),
         )
     yield
-    for task in list(jobs.tasks.values()):
+    active_tasks = list(jobs.tasks.values())
+    for task in active_tasks:
         task.cancel()
+    if active_tasks:
+        await asyncio.gather(*active_tasks, return_exceptions=True)
+    if hasattr(db, "close"):
+        db.close()
 
 
 app = FastAPI(
@@ -52,6 +67,36 @@ app = FastAPI(
     redoc_url=None,
     lifespan=lifespan,
 )
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=CORS_ORIGINS or [],
+    allow_credentials=False,
+    allow_methods=["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
+    allow_headers=["Content-Type", "X-Creator-Key"],
+)
+
+
+@app.middleware("http")
+async def workspace_auth(request: Request, call_next):
+    public_paths = {"/api/health", "/api/docs", "/api/openapi.json", "/openapi.json"}
+    if (
+        API_KEY
+        and request.method != "OPTIONS"
+        and request.url.path.startswith("/api/")
+        and request.url.path not in public_paths
+    ):
+        provided = request.headers.get("X-Creator-Key", "")
+        if not hmac.compare_digest(provided, API_KEY):
+            response = JSONResponse(
+                status_code=401,
+                content={"detail": "Enter your CreatorScope workspace key"},
+            )
+            origin = request.headers.get("Origin", "").rstrip("/")
+            if origin and (origin in CORS_ORIGINS or "*" in CORS_ORIGINS):
+                response.headers["Access-Control-Allow-Origin"] = origin
+            return response
+    return await call_next(request)
 
 
 @app.middleware("http")
@@ -73,7 +118,13 @@ async def value_error_handler(_: Request, exc: ValueError):
 
 @app.get("/api/health")
 def health():
-    return {"status": "ok", "app": APP_NAME, "version": APP_VERSION}
+    return {
+        "status": "ok",
+        "app": APP_NAME,
+        "version": APP_VERSION,
+        "database": "postgresql" if db.is_postgres else "sqlite",
+        "deployment": "render-free" if IS_RENDER_FREE else "local",
+    }
 
 
 @app.get("/api/config")

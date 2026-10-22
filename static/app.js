@@ -1,3 +1,7 @@
+const runtimeConfig = window.CREATOR_SCOPE_CONFIG || {};
+const API_BASE = String(runtimeConfig.apiBase || '').replace(/\/$/, '');
+let workspaceKey = localStorage.getItem('creatorscope_workspace_key') || '';
+
 const state = {
   route: 'overview',
   config: null,
@@ -73,17 +77,48 @@ function socialCount(creator) {
   return Object.values(socials).reduce((total, entries) => total + (entries?.length || 0), 0);
 }
 
+function apiUrl(path) {
+  return `${API_BASE}${path}`;
+}
+
+function apiHeaders(extra = {}) {
+  return {
+    'Content-Type': 'application/json',
+    ...(workspaceKey ? { 'X-Creator-Key': workspaceKey } : {}),
+    ...extra,
+  };
+}
+
 async function api(path, options = {}) {
-  const response = await fetch(path, {
-    headers: { 'Content-Type': 'application/json', ...(options.headers || {}) },
+  const response = await fetch(apiUrl(path), {
     ...options,
+    headers: apiHeaders(options.headers || {}),
   });
   if (!response.ok) {
     let detail = `Request failed (${response.status})`;
     try { detail = (await response.json()).detail || detail; } catch (_) { /* no-op */ }
+    if (response.status === 401) detail = 'Workspace key required. Add it in Settings.';
     throw new Error(detail);
   }
   return response.status === 204 ? null : response.json();
+}
+
+async function downloadExport(path, filename) {
+  const response = await fetch(apiUrl(path), {
+    headers: workspaceKey ? { 'X-Creator-Key': workspaceKey } : {},
+  });
+  if (!response.ok) {
+    if (response.status === 401) throw new Error('Workspace key required. Add it in Settings.');
+    throw new Error(`Export failed (${response.status})`);
+  }
+  const url = URL.createObjectURL(await response.blob());
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = filename;
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
 function toast(message, type = 'success') {
@@ -121,7 +156,7 @@ function setupNavigation() {
     const action = event.target.closest('[data-action]')?.dataset.action;
     if (!action) return;
     if (action === 'new-discovery') routeTo('discovery');
-    if (action === 'export-all') window.location.assign('/api/export.csv');
+    if (action === 'export-all') downloadExport('/api/export.csv', 'creatorscope-creators.csv').catch(error => toast(error.message, 'error'));
     if (action === 'export-selected') exportSelected();
     if (action === 'copy-command') copyText('python scripts/connect_youtube.py', 'Setup command copied');
   });
@@ -163,7 +198,7 @@ function renderSession(session) {
   card.classList.toggle('connected', session.configured);
   card.innerHTML = `
     <div class="session-icon">${icon('lock')}</div>
-    <div><strong>${session.configured ? 'YouTube connected' : 'Session not connected'}</strong><span>${session.configured ? 'Local profile ready' : 'Setup required'}</span></div><i></i>`;
+    <div><strong>${session.configured ? 'YouTube connected' : 'Session not connected'}</strong><span>${session.configured ? (session.mode === 'environment' ? 'Hosted session ready' : 'Local profile ready') : 'Setup required'}</span></div><i></i>`;
   const settings = $('#settingsSession');
   settings.classList.toggle('connected', session.configured);
   settings.innerHTML = `<i></i><span>${session.configured ? `Connected${session.updated_at ? ` · ${formatDate(session.updated_at, true)}` : ''}` : 'Not connected · run the command below'}</span>`;
@@ -381,7 +416,10 @@ async function bulkAction(action, stage = null) {
 
 function exportSelected() {
   if (!state.selected.size) return toast('Select at least one creator', 'error');
-  window.location.assign(`/api/export.csv?ids=${encodeURIComponent([...state.selected].join(','))}`);
+  downloadExport(
+    `/api/export.csv?ids=${encodeURIComponent([...state.selected].join(','))}`,
+    'creatorscope-selected.csv'
+  ).catch(error => toast(error.message, 'error'));
 }
 
 async function openCreator(id) {
@@ -497,7 +535,7 @@ function setupDiscovery() {
 async function startDiscovery(event) {
   event.preventDefault();
   if (!state.config?.session?.configured) {
-    toast('Connect a local YouTube session before starting discovery', 'error');
+    toast('Connect and configure a YouTube session before starting discovery', 'error');
     routeTo('settings');
     return;
   }
@@ -547,7 +585,14 @@ async function loadJobs() {
       state.jobTimer = null;
       await Promise.all([loadStats(), loadRecent()]);
     }
-  } catch (error) { toast(error.message, 'error'); }
+  } catch (error) {
+    if (String(error.message).includes('Workspace key') && state.jobTimer) {
+      clearInterval(state.jobTimer);
+      state.jobTimer = null;
+      routeTo('settings');
+    }
+    toast(error.message, 'error');
+  }
 }
 
 function scheduleJobPoll() {
@@ -591,8 +636,34 @@ function renderActiveJob(job) {
     ${active ? `<div class="run-actions"><button class="btn btn-quiet" data-cancel-job="${escapeHtml(job.id)}">${icon('stop')} Stop safely</button></div>` : ''}`;
 }
 
+function setupWorkspaceAccess() {
+  const input = $('#workspaceKey');
+  input.value = workspaceKey;
+  $('#apiEndpoint').textContent = API_BASE ? `Backend: ${API_BASE}` : 'Backend: same origin (local mode)';
+  $('#saveWorkspaceKey').addEventListener('click', async () => {
+    workspaceKey = input.value.trim();
+    if (workspaceKey) localStorage.setItem('creatorscope_workspace_key', workspaceKey);
+    else localStorage.removeItem('creatorscope_workspace_key');
+    try {
+      await loadConfig();
+      await Promise.all([loadStats(), loadRecent(), loadCreators(), loadJobs()]);
+      toast(workspaceKey ? 'Workspace key saved in this browser' : 'Workspace key removed');
+      routeTo('overview');
+    } catch (error) {
+      toast(error.message, 'error');
+    }
+  });
+  input.addEventListener('keydown', event => {
+    if (event.key === 'Enter') $('#saveWorkspaceKey').click();
+  });
+}
+
 function setupExports() {
-  $$('[data-export]').forEach(button => button.addEventListener('click', () => window.location.assign(`/api/export.${button.dataset.export}`)));
+  $$('[data-export]').forEach(button => button.addEventListener('click', () => {
+    const format = button.dataset.export;
+    downloadExport(`/api/export.${format}`, `creatorscope-creators.${format}`)
+      .catch(error => toast(error.message, 'error'));
+  }));
   $('#clearWorkspace').addEventListener('click', async () => {
     const confirmed = window.confirm(
       'Clear every creator, processed channel, and discovery run? This cannot be undone.'
@@ -618,15 +689,18 @@ async function initialize() {
   setupCreatorActions();
   setupDrawer();
   setupDiscovery();
+  setupWorkspaceAccess();
   setupExports();
+  let initialRoute = location.hash.slice(1) || 'overview';
   try {
     await loadConfig();
     await Promise.all([loadStats(), loadRecent(), loadCreators(), loadJobs()]);
   } catch (error) {
     console.error(error);
     toast(`Could not load the workspace: ${error.message}`, 'error');
+    if (String(error.message).includes('Workspace key')) initialRoute = 'settings';
   }
-  routeTo(location.hash.slice(1) || 'overview', false);
+  routeTo(initialRoute, false);
 }
 
 document.addEventListener('DOMContentLoaded', initialize);

@@ -68,6 +68,9 @@ class _PostgresCursor:
     def fetchall(self):
         return [self._row(row) for row in self.cursor.fetchall()]
 
+    def __iter__(self):
+        for row in self.cursor:
+            yield self._row(row)
 
 class _PostgresCompat:
     """Small qmark/named-parameter compatibility layer over psycopg."""

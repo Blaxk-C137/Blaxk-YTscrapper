@@ -1,3 +1,10 @@
+[project]
+name = "creatorscope"
+version = "1.4.1"
+description = "Private YouTube creator discovery and outreach workspace"
+requires-python = ">=3.10"
+dependencies = []
+
 [tool.pytest.ini_options]
 addopts = "-q"
 testpaths = ["tests", "."]

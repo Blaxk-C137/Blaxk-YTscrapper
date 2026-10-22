@@ -97,7 +97,7 @@ https://YOUR-RENDER-SERVICE.onrender.com/api/health
 ```
 
 A healthy hosted response reports `database: "postgresql"`,
-`deployment: "render-free"`, and version `1.4.0`. The first request after an idle
+`deployment: "render-free"`, and version `1.4.1`. The first request after an idle
 period can take about a minute while Render wakes the service.
 
 CreatorScope intentionally refuses to start in Render mode without PostgreSQL
@@ -105,15 +105,21 @@ or a workspace key. This prevents accidental ephemeral or public deployments.
 
 ## 4. Deploy the frontend to Vercel
 
-Import the same repository into Vercel. `vercel.json` runs the static build and
-publishes `public/`. Add this project environment variable for Production (and
-Preview if desired):
+Import the same repository into Vercel and set **Root Directory** to `static`.
+This isolates the frontend from the FastAPI backend so Vercel does not try to
+install the root Python project. `static/vercel.json` runs the dependency-free
+build and publishes `static/public/`.
+
+Set the framework preset to **Other**, then add this project environment
+variable for Production (and Preview if desired):
 
 | Variable | Value |
 |---|---|
 | `CREATORSCOPE_API_URL` | `https://YOUR-RENDER-SERVICE.onrender.com` |
 
-Do not add a trailing slash. Deploy, then copy the production Vercel URL.
+Do not add a trailing slash. Deploy, then copy the production Vercel URL. If an
+older Vercel project used the repository root, change **Settings → Build and
+Deployment → Root Directory** to `static`, save, and redeploy.
 
 Return to Render and replace `CORS_ORIGINS=*` with the exact frontend origin:
 

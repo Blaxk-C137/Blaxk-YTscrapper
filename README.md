@@ -3,7 +3,7 @@
 A private, polished creator-discovery workspace built from the original
 YouTube Creator Finder script.
 
-CreatorScope searches YouTube by market and niche, reviews channel About pages,
+CreatorScope searches YouTube by market andStopped safely. Saved 0 creator(s). niche, reviews channel About pages,
 collects creator-published business contact points, and turns the results into a
 usable relationship pipeline—not another raw CSV.
 
@@ -110,12 +110,13 @@ static/
   index.html            dependency-free responsive SPA
   styles.css            design system and layouts
   app.js                remote/local API and dashboard state
+  build_frontend.mjs    isolated Vercel static build
+  vercel.json           Vercel config (use `static` as Root Directory)
 scripts/
   connect_youtube.py    interactive session setup and hosted export
-  build_frontend.mjs    Vercel static build
 
 render.yaml             Render Free Blueprint
-vercel.json             Vercel build configuration
+vercel.json             repository-root compatibility configuration
 youtube_creator_finder.py   scraper engine and CLI
 ```
 

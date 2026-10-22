@@ -1,5 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "installCommand": "echo 'CreatorScope frontend has no package dependencies'",
   "buildCommand": "node scripts/build_frontend.mjs",
   "outputDirectory": "public",
   "headers": [

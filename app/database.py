@@ -71,7 +71,10 @@ class _PostgresCursor:
     def __iter__(self):
         for row in self.cursor:
             yield self._row(row)
+<<<<<<< HEAD
 
+=======
+>>>>>>> 709e649a0727ae9d3c67e5ac2bdd0cc2090787fb
 
 class _PostgresCompat:
     """Small qmark/named-parameter compatibility layer over psycopg."""

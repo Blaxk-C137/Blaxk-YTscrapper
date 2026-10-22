@@ -5,6 +5,17 @@ from __future__ import annotations
 import os
 from pathlib import Path
 
+def clean_workspace_key(value: str) -> str:
+    """Tolerate common dashboard copy/paste wrappers without weakening the key."""
+    text = (value or "").strip()
+    for _ in range(2):
+        if len(text) >= 2 and text[0] == text[-1] and text[0] in {'"', "'", "`"}:
+            text = text[1:-1].strip()
+        if text.startswith("CREATORSCOPE_API_KEY="):
+            text = text.split("=", 1)[1].strip()
+    return text
+
+
 ROOT_DIR = Path(__file__).resolve().parents[1]
 DATA_DIR = Path(os.getenv("CREATORSCOPE_DATA_DIR", ROOT_DIR / ".runtime"))
 DATA_DIR.mkdir(parents=True, exist_ok=True)
@@ -29,13 +40,13 @@ CORS_ORIGINS = [
     ).split(",")
     if origin.strip()
 ]
-API_KEY = os.getenv("CREATORSCOPE_API_KEY", "").strip()
+API_KEY = clean_workspace_key(os.getenv("CREATORSCOPE_API_KEY", ""))
 STATIC_DIR = ROOT_DIR / "static"
 EXPORT_DIR = ROOT_DIR / "exports"
 EXPORT_DIR.mkdir(parents=True, exist_ok=True)
 
 APP_NAME = "CreatorScope"
-APP_VERSION = "1.4.1"
+APP_VERSION = "1.5.0"
 MAX_PAGE_SIZE = 100
 DEFAULT_PAGE_SIZE = 25
 

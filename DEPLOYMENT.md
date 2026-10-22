@@ -11,7 +11,8 @@ Browser → Vercel static frontend → Render FastAPI/Playwright → YouTube
                                   ↘ Neon PostgreSQL
 ```
 
-- The browser sends a private workspace key with every protected API request.
+- On a full Render deployment, the private workspace key is exchanged once for
+  a secure HttpOnly browser session. A split Vercel frontend uses the key header.
 - Vercel receives only the Render API URL. Never put the private key or YouTube
   session in a Vercel variable; build-time frontend values are public.
 - Local development keeps using SQLite. A hosted deployment uses `DATABASE_URL`.
@@ -97,7 +98,7 @@ https://YOUR-RENDER-SERVICE.onrender.com/api/health
 ```
 
 A healthy hosted response reports `database: "postgresql"`,
-`deployment: "render-free"`, and version `1.4.1`. The first request after an idle
+`deployment: "render-free"`, and version `1.5.0`. The first request after an idle
 period can take about a minute while Render wakes the service.
 
 CreatorScope intentionally refuses to start in Render mode without PostgreSQL
@@ -135,8 +136,8 @@ https://YOUR-PROJECT.vercel.app,http://localhost:3000
 
 Save the Render variables and allow the service to redeploy. In the Vercel app,
 open **Settings → Private API key**, enter `CREATORSCOPE_API_KEY`, and save it.
-The key stays in that browser's local storage and is sent only to the Render
-backend.
+A same-origin Render frontend exchanges the key for a secure HttpOnly cookie.
+The optional cross-origin Vercel frontend retains the header-based fallback.
 
 ## 5. Verify the complete path
 

@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import asyncio
 import csv
+import hashlib
 import hmac
 import io
 import json
@@ -26,6 +27,7 @@ from .config import (
     IS_RENDER_FREE,
     MAX_PAGE_SIZE,
     STATIC_DIR,
+    clean_workspace_key,
 )
 from .database import Database, utcnow
 from .schemas import BulkUpdate, CreatorUpdate, DiscoveryRequest
@@ -37,6 +39,23 @@ if IS_RENDER_FREE and not API_KEY:
 
 db = Database()
 jobs = JobManager(db)
+AUTH_COOKIE_NAME = "creatorscope_session"
+
+
+def _auth_cookie_value() -> str:
+    return hmac.new(
+        API_KEY.encode("utf-8"), b"creatorscope-browser-session", hashlib.sha256
+    ).hexdigest()
+
+
+def _is_authenticated(request: Request) -> bool:
+    if not API_KEY:
+        return True
+    provided = clean_workspace_key(request.headers.get("X-Creator-Key", ""))
+    if provided and hmac.compare_digest(provided, API_KEY):
+        return True
+    cookie = request.cookies.get(AUTH_COOKIE_NAME, "")
+    return bool(cookie and hmac.compare_digest(cookie, _auth_cookie_value()))
 
 
 @asynccontextmanager
@@ -79,23 +98,28 @@ app.add_middleware(
 
 @app.middleware("http")
 async def workspace_auth(request: Request, call_next):
-    public_paths = {"/api/health", "/api/docs", "/api/openapi.json", "/openapi.json"}
+    public_paths = {
+        "/api/health",
+        "/api/auth/login",
+        "/api/auth/status",
+        "/api/docs",
+        "/api/openapi.json",
+        "/openapi.json",
+    }
     if (
-        API_KEY
-        and request.method != "OPTIONS"
+        request.method != "OPTIONS"
         and request.url.path.startswith("/api/")
         and request.url.path not in public_paths
+        and not _is_authenticated(request)
     ):
-        provided = request.headers.get("X-Creator-Key", "")
-        if not hmac.compare_digest(provided, API_KEY):
-            response = JSONResponse(
-                status_code=401,
-                content={"detail": "Enter your CreatorScope workspace key"},
-            )
-            origin = request.headers.get("Origin", "").rstrip("/")
-            if origin and (origin in CORS_ORIGINS or "*" in CORS_ORIGINS):
-                response.headers["Access-Control-Allow-Origin"] = origin
-            return response
+        response = JSONResponse(
+            status_code=401,
+            content={"detail": "Workspace session expired. Sign in again in Settings."},
+        )
+        origin = request.headers.get("Origin", "").rstrip("/")
+        if origin and (origin in CORS_ORIGINS or "*" in CORS_ORIGINS):
+            response.headers["Access-Control-Allow-Origin"] = origin
+        return response
     return await call_next(request)
 
 
@@ -125,6 +149,43 @@ def health():
         "database": "postgresql" if db.is_postgres else "sqlite",
         "deployment": "render-free" if IS_RENDER_FREE else "local",
     }
+
+
+@app.get("/api/auth/status")
+def auth_status(request: Request):
+    return {"required": bool(API_KEY), "authenticated": _is_authenticated(request)}
+
+
+@app.post("/api/auth/login")
+async def auth_login(request: Request):
+    try:
+        payload = await request.json()
+    except (ValueError, UnicodeDecodeError):
+        payload = {}
+    provided = clean_workspace_key(str(payload.get("key", "")))
+    if not API_KEY or not provided or not hmac.compare_digest(provided, API_KEY):
+        raise HTTPException(
+            status_code=401,
+            detail="That key does not match CREATORSCOPE_API_KEY on Render",
+        )
+    response = JSONResponse({"authenticated": True})
+    response.set_cookie(
+        key=AUTH_COOKIE_NAME,
+        value=_auth_cookie_value(),
+        max_age=60 * 60 * 24 * 30,
+        httponly=True,
+        secure=IS_RENDER_FREE,
+        samesite="strict",
+        path="/",
+    )
+    return response
+
+
+@app.delete("/api/auth/logout")
+def auth_logout():
+    response = JSONResponse({"authenticated": False})
+    response.delete_cookie(AUTH_COOKIE_NAME, path="/")
+    return response
 
 
 @app.get("/api/config")

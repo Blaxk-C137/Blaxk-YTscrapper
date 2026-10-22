@@ -3,7 +3,7 @@
 A private, polished creator-discovery workspace built from the original
 YouTube Creator Finder script.
 
-CreatorScope searches YouTube by market andStopped safely. Saved 0 creator(s). niche, reviews channel About pages,
+CreatorScope searches YouTube by market and niche, reviews channel About pages,
 collects creator-published business contact points, and turns the results into a
 usable relationship pipeline—not another raw CSV.
 

@@ -3,8 +3,15 @@ import json
 
 import pytest
 
-from app.database import CompatRow, _PostgresCompat
+from app.config import clean_workspace_key
+from app.database import CompatRow, _PostgresCompat, _PostgresCursor
 import app.scraper_service as scraper_service
+
+
+def test_workspace_key_cleanup_tolerates_dashboard_copy_formats():
+    assert clean_workspace_key('  "secret-key"  ') == "secret-key"
+    assert clean_workspace_key("CREATORSCOPE_API_KEY=secret-key") == "secret-key"
+    assert clean_workspace_key("'CREATORSCOPE_API_KEY=secret-key'") == "secret-key"
 
 
 def test_postgres_compat_translates_portable_sql():
@@ -28,6 +35,13 @@ def test_compat_row_supports_mapping_and_integer_access():
     assert row["total"] == 7
     assert row[0] == 7
     assert row[1] == "Nigeria"
+
+
+def test_postgres_cursor_is_iterable_like_sqlite_cursor():
+    cursor = _PostgresCursor(iter([{"region": "Nigeria"}, {"region": "Canada"}]))
+    rows = list(cursor)
+    assert [row["region"] for row in rows] == ["Nigeria", "Canada"]
+    assert all(isinstance(row, CompatRow) for row in rows)
 
 
 def test_hosted_storage_state_decodes_base64(monkeypatch):

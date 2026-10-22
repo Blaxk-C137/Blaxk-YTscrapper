@@ -78,6 +78,21 @@ def test_workspace_key_protects_api_but_not_health(tmp_path: Path, monkeypatch):
             )
             assert allowed.status_code == 200
 
+            wrong_login = await client.post(
+                "/api/auth/login", json={"key": "wrong-key"}
+            )
+            assert wrong_login.status_code == 401
+            assert "does not match" in wrong_login.json()["detail"]
+
+            login = await client.post(
+                "/api/auth/login",
+                json={"key": "CREATORSCOPE_API_KEY=correct-horse-battery-staple"},
+            )
+            assert login.status_code == 200
+            assert "HttpOnly" in login.headers["set-cookie"]
+            cookie_access = await client.get("/api/stats")
+            assert cookie_access.status_code == 200
+
             preflight = await client.options(
                 "/api/stats",
                 headers={

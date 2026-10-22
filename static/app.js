@@ -1,6 +1,6 @@
 const runtimeConfig = window.CREATOR_SCOPE_CONFIG || {};
 const API_BASE = String(runtimeConfig.apiBase || '').replace(/\/$/, '');
-let workspaceKey = localStorage.getItem('creatorscope_workspace_key') || '';
+let workspaceKey = cleanWorkspaceKey(localStorage.getItem('creatorscope_workspace_key') || '');
 
 const state = {
   route: 'overview',
@@ -81,6 +81,17 @@ function apiUrl(path) {
   return `${API_BASE}${path}`;
 }
 
+function cleanWorkspaceKey(value = '') {
+  let key = String(value).trim();
+  for (let index = 0; index < 2; index += 1) {
+    if (key.length >= 2 && ['"', "'", '`'].includes(key[0]) && key.at(-1) === key[0]) {
+      key = key.slice(1, -1).trim();
+    }
+    if (key.startsWith('CREATORSCOPE_API_KEY=')) key = key.split('=', 2)[1].trim();
+  }
+  return key;
+}
+
 function apiHeaders(extra = {}) {
   return {
     'Content-Type': 'application/json',
@@ -92,12 +103,12 @@ function apiHeaders(extra = {}) {
 async function api(path, options = {}) {
   const response = await fetch(apiUrl(path), {
     ...options,
+    credentials: options.credentials || (API_BASE ? 'omit' : 'same-origin'),
     headers: apiHeaders(options.headers || {}),
   });
   if (!response.ok) {
     let detail = `Request failed (${response.status})`;
     try { detail = (await response.json()).detail || detail; } catch (_) { /* no-op */ }
-    if (response.status === 401) detail = 'Workspace key required. Add it in Settings.';
     throw new Error(detail);
   }
   return response.status === 204 ? null : response.json();
@@ -105,11 +116,13 @@ async function api(path, options = {}) {
 
 async function downloadExport(path, filename) {
   const response = await fetch(apiUrl(path), {
+    credentials: API_BASE ? 'omit' : 'same-origin',
     headers: workspaceKey ? { 'X-Creator-Key': workspaceKey } : {},
   });
   if (!response.ok) {
-    if (response.status === 401) throw new Error('Workspace key required. Add it in Settings.');
-    throw new Error(`Export failed (${response.status})`);
+    let detail = `Export failed (${response.status})`;
+    try { detail = (await response.json()).detail || detail; } catch (_) { /* no-op */ }
+    throw new Error(detail);
   }
   const url = URL.createObjectURL(await response.blob());
   const link = document.createElement('a');
@@ -639,15 +652,34 @@ function renderActiveJob(job) {
 function setupWorkspaceAccess() {
   const input = $('#workspaceKey');
   input.value = workspaceKey;
-  $('#apiEndpoint').textContent = API_BASE ? `Backend: ${API_BASE}` : 'Backend: same origin (local mode)';
+  $('#apiEndpoint').textContent = API_BASE ? `Backend: ${API_BASE}` : 'Backend: this Render service (same origin)';
   $('#saveWorkspaceKey').addEventListener('click', async () => {
-    workspaceKey = input.value.trim();
-    if (workspaceKey) localStorage.setItem('creatorscope_workspace_key', workspaceKey);
-    else localStorage.removeItem('creatorscope_workspace_key');
+    const enteredKey = cleanWorkspaceKey(input.value);
     try {
+      if (!API_BASE && enteredKey) {
+        const response = await fetch('/api/auth/login', {
+          method: 'POST',
+          credentials: 'same-origin',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ key: enteredKey }),
+        });
+        if (!response.ok) {
+          let detail = `Sign-in failed (${response.status})`;
+          try { detail = (await response.json()).detail || detail; } catch (_) { /* no-op */ }
+          throw new Error(detail);
+        }
+        workspaceKey = '';
+        localStorage.removeItem('creatorscope_workspace_key');
+        input.value = '';
+        input.placeholder = 'Secure browser session active';
+      } else {
+        workspaceKey = enteredKey;
+        if (workspaceKey) localStorage.setItem('creatorscope_workspace_key', workspaceKey);
+        else localStorage.removeItem('creatorscope_workspace_key');
+      }
       await loadConfig();
       await Promise.all([loadStats(), loadRecent(), loadCreators(), loadJobs()]);
-      toast(workspaceKey ? 'Workspace key saved in this browser' : 'Workspace key removed');
+      toast(enteredKey ? 'Workspace unlocked securely' : 'Workspace access refreshed');
       routeTo('overview');
     } catch (error) {
       toast(error.message, 'error');

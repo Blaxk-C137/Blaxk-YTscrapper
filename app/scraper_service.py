@@ -33,6 +33,8 @@ from youtube_creator_finder import (
 
 from .config import (
     API_CONCURRENCY_LIMIT,
+    BROWSER_RECYCLE_INTERVAL,
+    LOW_MEMORY_MODE,
     MAX_ACTIVE_JOBS,
     PROFILE_DIR,
     REVIEW_CONCURRENCY,
@@ -159,7 +161,10 @@ def hosted_storage_state() -> dict[str, Any] | None:
 
 
 async def _block_assets(route) -> None:
-    if route.request.resource_type in BLOCKED_RESOURCE_TYPES:
+    resource_type = route.request.resource_type
+    if resource_type in BLOCKED_RESOURCE_TYPES or (
+        LOW_MEMORY_MODE and resource_type == "stylesheet"
+    ):
         await route.abort()
     else:
         await route.continue_()
@@ -232,35 +237,79 @@ class JobManager:
             "--disable-blink-features=AutomationControlled",
             "--disable-dev-shm-usage",
             "--no-sandbox",
+            "--disable-background-networking",
+            "--disable-breakpad",
+            "--disable-component-update",
+            "--disable-default-apps",
+            "--disable-extensions",
+            "--disable-gpu",
+            "--disable-sync",
+            "--metrics-recording-only",
+            "--mute-audio",
+            "--no-default-browser-check",
+            "--no-first-run",
         ]
+        if LOW_MEMORY_MODE:
+            launch_args.extend(
+                [
+                    "--renderer-process-limit=1",
+                    "--js-flags=--max-old-space-size=128",
+                ]
+            )
+        viewport = {"width": 1024, "height": 720} if LOW_MEMORY_MODE else {
+            "width": 1440,
+            "height": 900,
+        }
         storage_state = hosted_storage_state()
+        browser = None
         if storage_state:
             launch_kwargs = {"headless": True, "args": launch_args}
+            # Playwright's default headless shell is leaner than full Chromium;
+            # prefer it on 512 MB hosts and retain the channel fallback.
             try:
-                browser = await pw.chromium.launch(channel="chromium", **launch_kwargs)
-            except Exception:
                 browser = await pw.chromium.launch(**launch_kwargs)
+            except Exception:
+                browser = await pw.chromium.launch(
+                    channel="chromium", **launch_kwargs
+                )
             context = await browser.new_context(
                 storage_state=storage_state,
                 locale="en-US",
-                viewport={"width": 1440, "height": 900},
+                viewport=viewport,
             )
         else:
             kwargs = dict(
                 user_data_dir=str(PROFILE_DIR),
                 headless=True,
                 locale="en-US",
-                viewport={"width": 1440, "height": 900},
+                viewport=viewport,
                 args=launch_args,
             )
             try:
+                context = await pw.chromium.launch_persistent_context(**kwargs)
+            except Exception:
                 context = await pw.chromium.launch_persistent_context(
                     channel="chromium", **kwargs
                 )
-            except Exception:
-                context = await pw.chromium.launch_persistent_context(**kwargs)
         await context.route("**/*", _block_assets)
-        return context
+        return context, browser
+
+    @staticmethod
+    async def _close_context(context, browser) -> None:
+        try:
+            if context is not None:
+                await context.close()
+        finally:
+            if browser is not None and browser.is_connected():
+                await browser.close()
+
+    @staticmethod
+    async def _validate_session(context) -> None:
+        cookie_names = {cookie["name"] for cookie in await context.cookies(BASE_URL)}
+        if not (cookie_names & AUTH_COOKIES):
+            raise RuntimeError(
+                "The saved YouTube session has expired. Reconnect it locally."
+            )
 
     @staticmethod
     def _candidate_multiplier(preferences: dict[str, Any]) -> int:
@@ -305,15 +354,9 @@ class JobManager:
         review_limit_reached = False
         try:
             async with async_playwright() as pw:
-                context = await self._launch_context(pw)
+                context, browser = await self._launch_context(pw)
                 try:
-                    cookie_names = {
-                        cookie["name"] for cookie in await context.cookies(BASE_URL)
-                    }
-                    if not (cookie_names & AUTH_COOKIES):
-                        raise RuntimeError(
-                            "The saved YouTube session has expired. Reconnect it locally."
-                        )
+                    await self._validate_session(context)
 
                     api_sem = asyncio.Semaphore(
                         min(API_CONCURRENCY, API_CONCURRENCY_LIMIT)
@@ -533,6 +576,26 @@ class JobManager:
                                 counts["found"] += 1
                                 self.db.update_job(job_id, **counts)
 
+                            if (
+                                BROWSER_RECYCLE_INTERVAL
+                                and counts["processed"] > 0
+                                and counts["processed"] % BROWSER_RECYCLE_INTERVAL == 0
+                                and counts["found"] < job["target"]
+                                and not self._cancelled(job_id)
+                            ):
+                                self.db.update_job(
+                                    job_id,
+                                    message=(
+                                        "Releasing browser memory before continuing · "
+                                        f"{counts['found']}/{job['target']} contacts saved"
+                                    ),
+                                )
+                                await self._close_context(context, browser)
+                                context = None
+                                browser = None
+                                context, browser = await self._launch_context(pw)
+                                await self._validate_session(context)
+
                         if every_search_exhausted:
                             search_exhausted = True
 
@@ -541,7 +604,7 @@ class JobManager:
                         and counts["found"] < job["target"]
                     )
                 finally:
-                    await context.close()
+                    await self._close_context(context, browser)
 
             if self._cancelled(job_id):
                 status = "cancelled"

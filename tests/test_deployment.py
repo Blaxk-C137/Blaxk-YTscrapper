@@ -1,3 +1,4 @@
+import asyncio
 import base64
 import json
 
@@ -42,6 +43,29 @@ def test_postgres_cursor_is_iterable_like_sqlite_cursor():
     rows = list(cursor)
     assert [row["region"] for row in rows] == ["Nigeria", "Canada"]
     assert all(isinstance(row, CompatRow) for row in rows)
+
+
+def test_browser_and_context_are_both_closed_to_release_memory():
+    class FakeContext:
+        closed = False
+
+        async def close(self):
+            self.closed = True
+
+    class FakeBrowser:
+        closed = False
+
+        def is_connected(self):
+            return not self.closed
+
+        async def close(self):
+            self.closed = True
+
+    context = FakeContext()
+    browser = FakeBrowser()
+    asyncio.run(scraper_service.JobManager._close_context(context, browser))
+    assert context.closed is True
+    assert browser.closed is True
 
 
 def test_hosted_storage_state_decodes_base64(monkeypatch):

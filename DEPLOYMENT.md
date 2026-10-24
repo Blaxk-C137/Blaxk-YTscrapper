@@ -16,8 +16,9 @@ Browser → Vercel static frontend → Render FastAPI/Playwright → YouTube
 - Vercel receives only the Render API URL. Never put the private key or YouTube
   session in a Vercel variable; build-time frontend values are public.
 - Local development keeps using SQLite. A hosted deployment uses `DATABASE_URL`.
-- Render runs one web process and one discovery job at a time. Review concurrency
-  defaults to 2 to fit the Free plan's 512 MB memory limit.
+- Render runs one web process and one discovery job at a time. Low-memory mode
+  reviews one rendered channel at a time and periodically recycles Chromium to
+  stay within the Free plan's 512 MB memory limit.
 
 ## Before deploying
 
@@ -86,9 +87,11 @@ Keep these non-secret Blueprint defaults unless the Render plan changes:
 
 ```text
 CREATORSCOPE_MAX_ACTIVE_JOBS=1
-CREATORSCOPE_REVIEW_CONCURRENCY=2
-CREATORSCOPE_API_CONCURRENCY=4
-CREATORSCOPE_DB_POOL_SIZE=4
+CREATORSCOPE_LOW_MEMORY=true
+CREATORSCOPE_REVIEW_CONCURRENCY=1
+CREATORSCOPE_API_CONCURRENCY=2
+CREATORSCOPE_BROWSER_RECYCLE_INTERVAL=20
+CREATORSCOPE_DB_POOL_SIZE=2
 ```
 
 Deploy and open:
@@ -98,7 +101,7 @@ https://YOUR-RENDER-SERVICE.onrender.com/api/health
 ```
 
 A healthy hosted response reports `database: "postgresql"`,
-`deployment: "render-free"`, and version `1.5.0`. The first request after an idle
+`deployment: "render-free"`, and version `1.6.0`. The first request after an idle
 period can take about a minute while Render wakes the service.
 
 CreatorScope intentionally refuses to start in Render mode without PostgreSQL
@@ -156,9 +159,10 @@ The optional cross-origin Vercel frontend retains the header-based fallback.
   polling provides inbound requests, which keeps the free Render service awake.
   If Render restarts anyway, partial leads remain saved and the interrupted run
   is marked failed on the next boot.
-- Run one job at a time. Increasing browser page concurrency above 2 on a 512 MB
-  instance can cause out-of-memory restarts and usually reduces, rather than
-  improves, total lead throughput.
+- Run one job and one rendered channel page at a time. Increasing browser page
+  concurrency above 1 on a 512 MB instance can cause out-of-memory restarts and
+  usually reduces, rather than improves, total lead throughput. Chromium is
+  recycled every 20 reviews to release caches from long discovery runs.
 - Use broader creator preferences when contact volume matters most. Requiring a
   business email and a narrow subscriber range naturally needs many more channel
   reviews.
@@ -180,9 +184,11 @@ The optional cross-origin Vercel frontend retains the header-based fallback.
 | `CORS_ORIGINS` | Hosted | Comma-separated allowed frontend origins |
 | `YOUTUBE_STORAGE_STATE_B64` | Discovery | Base64 Playwright storage-state JSON |
 | `CREATORSCOPE_DEPLOYMENT_MODE` | Yes | `render-free` in the Blueprint |
-| `CREATORSCOPE_REVIEW_CONCURRENCY` | No | Parallel channel pages; Free default is 2 |
-| `CREATORSCOPE_API_CONCURRENCY` | No | YouTube internal API requests; Free default is 4 |
-| `CREATORSCOPE_DB_POOL_SIZE` | No | PostgreSQL pool limit; default is 4 |
+| `CREATORSCOPE_LOW_MEMORY` | No | Enables Render-safe Chromium flags and resource blocking |
+| `CREATORSCOPE_REVIEW_CONCURRENCY` | No | Parallel channel pages; Free default is 1 |
+| `CREATORSCOPE_API_CONCURRENCY` | No | YouTube internal API requests; Free default is 2 |
+| `CREATORSCOPE_BROWSER_RECYCLE_INTERVAL` | No | Restarts Chromium after this many reviews; Free default is 20 |
+| `CREATORSCOPE_DB_POOL_SIZE` | No | PostgreSQL pool limit; Blueprint value is 2 |
 | `CREATORSCOPE_MAX_ACTIVE_JOBS` | No | Simultaneous discovery jobs; keep 1 on Free |
 
 ### Frontend (Vercel)

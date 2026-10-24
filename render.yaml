@@ -11,12 +11,16 @@ services:
         value: render-free
       - key: CREATORSCOPE_MAX_ACTIVE_JOBS
         value: "1"
+      - key: CREATORSCOPE_LOW_MEMORY
+        value: "true"
       - key: CREATORSCOPE_REVIEW_CONCURRENCY
-        value: "2"
+        value: "1"
       - key: CREATORSCOPE_API_CONCURRENCY
-        value: "4"
+        value: "2"
+      - key: CREATORSCOPE_BROWSER_RECYCLE_INTERVAL
+        value: "20"
       - key: CREATORSCOPE_DB_POOL_SIZE
-        value: "4"
+        value: "2"
       - key: DATABASE_URL
         sync: false
       - key: CREATORSCOPE_API_KEY

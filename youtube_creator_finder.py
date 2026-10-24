@@ -662,6 +662,8 @@ async def first_text(page, selectors):
             el = await page.query_selector(sel)
             if el:
                 txt = (await el.inner_text() or '').strip()
+                if not txt:
+                    txt = (await el.text_content() or '').strip()
                 if txt:
                     return txt
         except Exception:

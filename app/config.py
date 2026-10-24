@@ -27,11 +27,17 @@ PROFILE_DIR = Path(os.getenv("CREATORSCOPE_PROFILE_DIR", ROOT_DIR / "browser_pro
 YOUTUBE_STORAGE_STATE_B64 = os.getenv("YOUTUBE_STORAGE_STATE_B64", "").strip()
 DEPLOYMENT_MODE = os.getenv("CREATORSCOPE_DEPLOYMENT_MODE", "local").strip().lower()
 IS_RENDER_FREE = DEPLOYMENT_MODE == "render-free" or bool(os.getenv("RENDER"))
+LOW_MEMORY_MODE = os.getenv(
+    "CREATORSCOPE_LOW_MEMORY", "true" if IS_RENDER_FREE else "false"
+).strip().lower() not in {"0", "false", "no", "off"}
 REVIEW_CONCURRENCY = max(
-    1, int(os.getenv("CREATORSCOPE_REVIEW_CONCURRENCY", "2" if IS_RENDER_FREE else "6"))
+    1, int(os.getenv("CREATORSCOPE_REVIEW_CONCURRENCY", "1" if LOW_MEMORY_MODE else "6"))
 )
 API_CONCURRENCY_LIMIT = max(
-    1, int(os.getenv("CREATORSCOPE_API_CONCURRENCY", "4" if IS_RENDER_FREE else "8"))
+    1, int(os.getenv("CREATORSCOPE_API_CONCURRENCY", "2" if LOW_MEMORY_MODE else "8"))
+)
+BROWSER_RECYCLE_INTERVAL = max(
+    0, int(os.getenv("CREATORSCOPE_BROWSER_RECYCLE_INTERVAL", "20" if LOW_MEMORY_MODE else "0"))
 )
 CORS_ORIGINS = [
     origin.strip().rstrip("/")
@@ -46,7 +52,7 @@ EXPORT_DIR = ROOT_DIR / "exports"
 EXPORT_DIR.mkdir(parents=True, exist_ok=True)
 
 APP_NAME = "CreatorScope"
-APP_VERSION = "1.5.0"
+APP_VERSION = "1.6.0"
 MAX_PAGE_SIZE = 100
 DEFAULT_PAGE_SIZE = 25
 

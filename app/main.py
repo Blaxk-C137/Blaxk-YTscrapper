@@ -9,6 +9,7 @@ import hmac
 import io
 import json
 from contextlib import asynccontextmanager
+from pathlib import Path
 from typing import Annotated
 
 from fastapi import FastAPI, HTTPException, Query, Request
@@ -25,6 +26,7 @@ from .config import (
     CORS_ORIGINS,
     DEFAULT_PAGE_SIZE,
     IS_RENDER_FREE,
+    LOW_MEMORY_MODE,
     MAX_PAGE_SIZE,
     STATIC_DIR,
     clean_workspace_key,
@@ -140,6 +142,20 @@ async def value_error_handler(_: Request, exc: ValueError):
     return JSONResponse(status_code=400, content={"detail": str(exc)})
 
 
+def _container_memory() -> dict[str, int | None]:
+    """Report whole-container memory on cgroup v2 hosts such as Render."""
+    try:
+        current = int(Path("/sys/fs/cgroup/memory.current").read_text().strip())
+        raw_limit = Path("/sys/fs/cgroup/memory.max").read_text().strip()
+        limit = None if raw_limit == "max" else int(raw_limit)
+        return {
+            "used_mb": round(current / 1024 / 1024),
+            "limit_mb": round(limit / 1024 / 1024) if limit else None,
+        }
+    except (OSError, ValueError):
+        return {"used_mb": None, "limit_mb": None}
+
+
 @app.get("/api/health")
 def health():
     return {
@@ -148,6 +164,8 @@ def health():
         "version": APP_VERSION,
         "database": "postgresql" if db.is_postgres else "sqlite",
         "deployment": "render-free" if IS_RENDER_FREE else "local",
+        "low_memory_mode": LOW_MEMORY_MODE,
+        "memory": _container_memory(),
     }
 
 
